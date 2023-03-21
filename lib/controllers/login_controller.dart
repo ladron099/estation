@@ -1,4 +1,5 @@
 import 'package:estation/components/appVars.dart';
+import 'package:estation/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -47,6 +48,9 @@ class LoginController extends GetxController {
     validate().then((value) {
       if (value) {
         Get.snackbar('Success', 'Login successful');
+        Get.to(() => HomePageScreen(),
+            transition: Transition.fadeIn,
+            duration: Duration(milliseconds: 500));
       }
     });
   }
