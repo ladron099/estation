@@ -84,3 +84,83 @@ class PrimaryButton extends StatelessWidget {
     );
   }
 }
+class ReleveButton extends StatelessWidget {
+  String text;
+  VoidCallback onpress;
+
+  ReleveButton({required this.text, required this.onpress, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 0.w),
+      child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              primary: primaryColor,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25.r))),
+          onPressed: () {
+            onpress();
+          },
+          child: Text(
+            text,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 10.sp,
+                fontWeight: FontWeight.w300,
+                fontFamily: 'inter'),
+          ).tr()),
+    );
+  }
+}
+
+
+class ReleveBox extends StatelessWidget {
+  const ReleveBox({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(padding: EdgeInsets.all(0.w),
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.25),
+                spreadRadius: -1,
+                blurRadius: 7,
+                offset: Offset(0, 0), // changes position of shadow
+              ),
+            ],
+          ),
+          child: Card(
+              elevation: 0,
+              color: Colors.transparent,
+              child: Padding(
+                  padding: EdgeInsets.fromLTRB(15.w, 15.w, 15.w, 15.w),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Pompe ID",
+                            style: primaryTitle,
+                            textAlign: TextAlign.left,
+                          ).tr(),
+                          Text(
+                            "Relevé non soumis",
+                            style: dangerText,
+                            textAlign: TextAlign.left,
+                          ).tr(),
+                        ],
+                      ),
+                      ReleveButton(text: "Soumettre ->", onpress: () => {},)
+                    ],
+                  ))),
+        ));
+  }
+}
