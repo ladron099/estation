@@ -22,8 +22,22 @@ class PrimaryTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: 52.h,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.r),
+        boxShadow: [
+          BoxShadow(
+            color: Color.fromARGB(255, 187, 186, 186),
+            blurRadius: 2.2, // soften the shadow
+            spreadRadius: 1.0, //extend the shadow
+            offset: Offset(
+              1.0, // Move to right 10  horizontally
+              0.10, // Move to bottom 10 Vertically
+            ),
+          )
+        ],
+      ),
       child: TextFormField(
         controller: controller,
         obscureText: visibility ?? false,
@@ -32,14 +46,16 @@ class PrimaryTextField extends StatelessWidget {
           contentPadding:
               EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
           filled: true,
-          fillColor: Color(0xff1E293B).withOpacity(0.04),
+          fillColor: Color.fromARGB(255, 241, 240, 240),
           prefixIconColor: Color(0xff14213D),
           hintText: tr(hintText),
           hintStyle: hintStyle,
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.circular(10.r),
+          ),
           border: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Color(0xff1E293B).withOpacity(0.2),
-            ),
+            borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(10.r),
           ),
           prefixIcon: prefixIcon,
@@ -84,6 +100,7 @@ class PrimaryButton extends StatelessWidget {
     );
   }
 }
+
 class ReleveButton extends StatelessWidget {
   String text;
   VoidCallback onpress;
@@ -114,13 +131,13 @@ class ReleveButton extends StatelessWidget {
   }
 }
 
-
 class ReleveBox extends StatelessWidget {
   const ReleveBox({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: EdgeInsets.all(0.w),
+    return Padding(
+        padding: EdgeInsets.all(0.w),
         child: Container(
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
@@ -158,7 +175,10 @@ class ReleveBox extends StatelessWidget {
                           ).tr(),
                         ],
                       ),
-                      ReleveButton(text: "Soumettre ->", onpress: () => {},)
+                      ReleveButton(
+                        text: "Soumettre ->",
+                        onpress: () => {},
+                      )
                     ],
                   ))),
         ));
