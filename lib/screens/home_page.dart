@@ -16,7 +16,7 @@ class HomePageScreen extends StatelessWidget {
         builder: (controller) {
           return Scaffold(
             appBar: AppBar(
-              title: Text('Home Page'),
+              title: const Text('Home Page'),
             ),
           );
         });
