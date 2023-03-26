@@ -3,5 +3,13 @@
     "connect": "Connectez-vous pour continuer",
     "enteremail":"Entrez votre E-mail",
     "enterpassword":"Entrez votre mot de passe",
-    "login": "Se connecter"
+    "login": "Se connecter",
+    "welcomeuser": "Bienvenue, user \uD83D\uDC4B",
+    "welcomemsg": "Voici un aperçu géneral de votre activité récente.",
+    "releve": "Relevé",
+    "NoReleve": "Vous n’avez pas encore \nremis aucun relevé aujourd’hui",
+    "DoneReleve": "Vous avez remis \nun/vos relevé aujourd’hui",
+    "forgotpassword": "Mot de passe oublié ?",
+    "resetpassword": "Réinitialiser le mot de passe",
+    "reset":"Réinitialiser"
 }

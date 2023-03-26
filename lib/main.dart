@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
 import 'package:estation/utils/services.dart';
@@ -9,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() async { 
+void main() async {
   await GetStorage.init();
   Widget? main;
   await initWidget().then(
@@ -34,8 +33,8 @@ void main() async {
           debugShowCheckedModeBanner: false,
           title: 'EStation',
           theme: ThemeData(
-          useMaterial3:true, 
-          primaryColor: primaryColor,
+            useMaterial3: true,
+            primaryColor: primaryColor,
           ),
           home: main,
         );

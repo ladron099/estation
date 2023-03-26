@@ -3,5 +3,13 @@
     "connect":"Log-in to continue",
     "enteremail":"Enter your E-mail",
     "enterpassword":"Enter your password",
-    "login": "Login"
+    "login": "Login",
+    "welcomeuser": "Welcome, user \uD83D\uDC4B",
+    "welcomemsg": "Here's a general overview of your recent activity.",
+    "releve": "Summary",
+    "NoReleve": "You have not yet submitted today's summaries",
+    "DoneReleve": "You have submitted today's summaries",
+    "forgotpassword":"Forgot Password ?",
+    "resetpassword":"Reset Password",
+    "reset":"Reset"
 }
