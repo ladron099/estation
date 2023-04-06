@@ -33,7 +33,8 @@ void main() async {
           debugShowCheckedModeBanner: false,
           title: 'EStation',
           theme: ThemeData(
-            useMaterial3: true,
+            useMaterial3: true, 
+            fontFamily: 'inter',
             primaryColor: primaryColor,
           ),
           home: main,

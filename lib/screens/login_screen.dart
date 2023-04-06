@@ -46,6 +46,7 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             appBar: AppBar(
+               automaticallyImplyLeading: false,
               toolbarHeight: 184.h,
               backgroundColor: Colors.transparent,
               title: Padding(

@@ -11,5 +11,15 @@
     "DoneReleve": "You have submitted today's summaries",
     "forgotpassword":"Forgot Password ?",
     "resetpassword":"Reset Password",
-    "reset":"Reset"
+    "reset":"Reset",
+    "notsubmitted":"Receipt not Submitted",
+    "submitted":"Receipt Submitted",
+    "submit":"Submit",
+    "receipt":"Receipt",
+    "tosubmitinfo":"To submit your reading, you must take a photo of the corresponding pump meter",
+    "scan":"Scan ->",
+    "taphere":"Tap here to add photo",
+    "verifynumber":"Verify the number",
+    "validatenumber":"Validate Number",
+    "receiptsubmitted":"Receipt Submitted"
 }

@@ -11,7 +11,7 @@ class LoginController extends GetxController {
 
   var colors = [
     primaryColor,
-    primaryColor.withOpacity(0.6),
+    primaryColor.withOpacity(0.8),
   ];
 
   var durations = [
@@ -47,7 +47,8 @@ class LoginController extends GetxController {
   submit() {
     validate().then((value) {
       if (value) {
-        Get.snackbar('Success', 'Login successful');
+        Get.snackbar('Success', 'Login successful',
+            colorText: Colors.white, backgroundColor: successColor);
         Get.to(() => HomePageScreen(),
             transition: Transition.fadeIn,
             duration: Duration(milliseconds: 500));

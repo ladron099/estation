@@ -22,14 +22,21 @@ class HomePageScreen extends StatelessWidget {
           return Scaffold(
             extendBodyBehindAppBar: true,
             appBar: AppBar(
-
+              automaticallyImplyLeading: false,
               backgroundColor: Colors.transparent,
-              title: Padding(padding: EdgeInsets.symmetric(horizontal: 10.w), child:Image.asset("assets/img/logoWhite.png", width: 140.w,)),
+              title: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10.w),
+                  child: Image.asset(
+                    "assets/img/logoWhite.png",
+                    width: 140.w,
+                  )),
               actions: [
-                Padding(padding: EdgeInsets.symmetric(horizontal: 10.w),
-                    child: IconButton(onPressed: () => {},
-                        icon: const Icon(Icons.logout_rounded, color: Colors.white)))
-
+                Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.w),
+                    child: IconButton(
+                        onPressed: () => {},
+                        icon: const Icon(Icons.logout_rounded,
+                            color: Colors.white)))
               ],
             ),
             body: Stack(
@@ -40,7 +47,7 @@ class HomePageScreen extends StatelessWidget {
                       width: double.infinity,
                       height: 300.h,
                       decoration: const BoxDecoration(
-                          gradient: gradientColor,
+                        gradient: gradientColor,
                       ),
                     ),
                     Container(
@@ -59,59 +66,23 @@ class HomePageScreen extends StatelessWidget {
                           physics: const BouncingScrollPhysics(),
                           child: Column(
                             children: [
-                              Padding(padding: EdgeInsets.all(0.w),
-                                  child: Container(
-                                width: MediaQuery.of(context).size.width,
-                                margin: const EdgeInsets.only(left: 30, right: 30),
-                                decoration: BoxDecoration(
-                                  gradient: lightGradientColor,
-                                  borderRadius: const BorderRadius.all(Radius.circular(20)),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.25),
-                                      spreadRadius: -1,
-                                      blurRadius: 7,
-                                      offset: Offset(0, 0), // changes position of shadow
-                                    ),
-                                  ],
-                                ),
-                                child: Card(
-                                    elevation: 0,
-                                    color: Colors.transparent,
-                                    child: Padding(
-                                        padding: EdgeInsets.fromLTRB(25.w, 20.w, 25.w, 25.w),
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "welcomeuser",
-                                              style: whiteTitle,
-                                              textAlign: TextAlign.left,
-                                            ).tr(),
-                                            SizedBox(
-                                              height: 5.h,
-                                            ),
-                                            Text(
-                                              "welcomemsg",
-                                              style: whiteText,
-                                              textAlign: TextAlign.left,
-                                            ).tr(),
-                                          ],
-                                        ))),
-                              )),
-                              Padding(padding: EdgeInsets.only( top: 30.h),
+                              Padding(
+                                  padding: EdgeInsets.all(0.w),
                                   child: Container(
                                     width: MediaQuery.of(context).size.width,
-                                    margin: const EdgeInsets.only(left: 30, right: 30),
+                                    margin: const EdgeInsets.only(
+                                        left: 30, right: 30),
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: const BorderRadius.all(Radius.circular(20)),
+                                      gradient: lightGradientColor,
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(20)),
                                       boxShadow: [
                                         BoxShadow(
                                           color: Colors.grey.withOpacity(0.25),
                                           spreadRadius: -1,
                                           blurRadius: 7,
-                                          offset: Offset(0, 0), // changes position of shadow
+                                          offset: Offset(0,
+                                              0), // changes position of shadow
                                         ),
                                       ],
                                     ),
@@ -119,12 +90,61 @@ class HomePageScreen extends StatelessWidget {
                                         elevation: 0,
                                         color: Colors.transparent,
                                         child: Padding(
-                                            padding: const EdgeInsets.fromLTRB(20, 20, 20, 30),
+                                            padding: EdgeInsets.fromLTRB(
+                                                25.w, 20.w, 25.w, 25.w),
                                             child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "welcomeuser",
+                                                  style: whiteTitle,
+                                                  textAlign: TextAlign.left,
+                                                ).tr(),
+                                                SizedBox(
+                                                  height: 5.h,
+                                                ),
+                                                Text(
+                                                  "welcomemsg",
+                                                  style: whiteText,
+                                                  textAlign: TextAlign.left,
+                                                ).tr(),
+                                              ],
+                                            ))),
+                                  )),
+                              Padding(
+                                  padding: EdgeInsets.only(top: 30.h),
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    margin: const EdgeInsets.only(
+                                        left: 30, right: 30),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(20)),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.25),
+                                          spreadRadius: -1,
+                                          blurRadius: 7,
+                                          offset: Offset(0,
+                                              0), // changes position of shadow
+                                        ),
+                                      ],
+                                    ),
+                                    child: Card(
+                                        elevation: 0,
+                                        color: Colors.transparent,
+                                        child: Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                20, 20, 20, 30),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
                                                       "releve",
@@ -142,14 +162,17 @@ class HomePageScreen extends StatelessWidget {
                                                   ],
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsets.only(top: 40.h),
+                                                  padding: EdgeInsets.only(
+                                                      top: 40.h),
                                                   child: Column(
-                                                    children:  [
-                                                      ReleveBox(),
-                                                      SizedBox(
-                                                        height: 20.h,
+                                                    children: [
+                                                      ReleveBox(
+                                                        verified: false,
                                                       ),
-                                                      ReleveBox()
+                                                      20.verticalSpace,
+                                                      ReleveBox(
+                                                        verified: true,
+                                                      )
                                                     ],
                                                   ),
                                                 ),
@@ -163,7 +186,7 @@ class HomePageScreen extends StatelessWidget {
                     ),
                   ],
                 )
-              ], 
+              ],
             ),
           );
         });

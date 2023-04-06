@@ -32,6 +32,7 @@ class ForgetPasswordScreen extends StatelessWidget {
           return Scaffold(
             extendBodyBehindAppBar: true,
             bottomNavigationBar: BottomAppBar(
+              
               padding: EdgeInsets.symmetric(horizontal: 0.w),
               elevation: 0,
               child: WaveWidget(

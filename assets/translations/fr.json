@@ -11,5 +11,15 @@
     "DoneReleve": "Vous avez remis \nun/vos relevé aujourd’hui",
     "forgotpassword": "Mot de passe oublié ?",
     "resetpassword": "Réinitialiser le mot de passe",
-    "reset":"Réinitialiser"
+    "reset":"Réinitialiser",
+    "notsubmitted": "Relevé non soumis",
+    "submitted": "Relevé soumis",
+    "submit":"Soumettre",
+    "receipt":"Relevé ",
+    "tosubmitinfo": "Pour soumettre votre relevé, vous devez prendre une photo du compteur de la pompe correspondante",
+    "scan":"Scanner ->",
+    "taphere": "Tapez ici pour ajouter la photo",
+    "verifynumber": "Veuillez vérifier le nombre",
+    "validatenumber":"Valider le numéro",
+    "receiptsubmitted":" Relevé soumis"
 }
