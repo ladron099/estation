@@ -120,11 +120,13 @@ class ScanInfoScreen extends StatelessWidget {
                             30.verticalSpace,
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 55.w),
-                              child: Text(
-                                'tosubmitinfo',
-                                style: secondaryStyle,
-                                textAlign: TextAlign.center,
-                              ).tr(),
+                              child: InkWell(
+                                child: Text(
+                                  'tosubmitinfo',
+                                  style: secondaryStyle,
+                                  textAlign: TextAlign.center,
+                                ).tr(),
+                              ),
                             ),
                             35.verticalSpace,
                             Center(

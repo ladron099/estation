@@ -74,3 +74,5 @@ final hintStyle = TextStyle(
     fontSize: 13.sp,
     fontWeight: FontWeight.w500,
     fontFamily: 'inter');
+ 
+String apiUrl = "https://estation-api.herokuapp.com/api";

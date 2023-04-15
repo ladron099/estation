@@ -68,8 +68,10 @@ class PrimaryTextField extends StatelessWidget {
 class PrimaryButton extends StatelessWidget {
   String text;
   VoidCallback onpress;
+  bool? loading;
 
-  PrimaryButton({required this.text, required this.onpress, super.key});
+  PrimaryButton(
+      {required this.text, required this.onpress, this.loading, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -85,16 +87,26 @@ class PrimaryButton extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.r))),
               onPressed: () {
-                onpress();
+                loading == true ? null : onpress();
               },
-              child: Text(
-                text,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w300,
-                    fontFamily: 'inter'),
-              ).tr()),
+              child: loading == true
+                  ? Container(
+                      width: 24,
+                      height: 24,
+                      padding: const EdgeInsets.all(2.0),
+                      child: const CircularProgressIndicator(
+                        color: Colors.white,
+                        strokeWidth: 3,
+                      ),
+                    )
+                  : Text(
+                      text,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w300,
+                          fontFamily: 'inter'),
+                    ).tr()),
         ),
       ),
     );

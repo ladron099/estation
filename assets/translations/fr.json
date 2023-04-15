@@ -21,5 +21,6 @@
     "taphere": "Tapez ici pour ajouter la photo",
     "verifynumber": "Veuillez vérifier le nombre",
     "validatenumber":"Valider le numéro",
-    "receiptsubmitted":" Relevé soumis"
+    "receiptsubmitted":" Relevé soumis",
+    "user_note_found":"L'utilisateur non trouvé"
 }

@@ -9,9 +9,13 @@ import 'package:image_picker/image_picker.dart';
 
 class ScanController extends GetxController {
   XFile? image;
+  RxBool loadingImage = false.obs;
+  RxBool loading = false.obs;
   File? ImageFile;
   TextEditingController number = TextEditingController();
   selectImage() async {
+    loadingImage.toggle();
+    update();
     try {
       image = await ImagePicker().pickImage(source: ImageSource.camera);
       if (image != null) {
@@ -23,11 +27,13 @@ class ScanController extends GetxController {
         number.text = recognizedText.text;
         var aStr = number.text.replaceAll(new RegExp(r'[^0-9]'), '');
         number.text = aStr;
-        update(); 
+      
       }
     } catch (e) {
       print(e);
     }
+    loadingImage.toggle();
+    update();
   }
 
   Future<bool> verify() async {

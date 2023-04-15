@@ -112,26 +112,36 @@ class ScanScreen extends StatelessWidget {
                                 ),
                               ),
                               55.verticalSpace,
-                              // Center(
-                              //   child: Image(
-                              //     height: 200.h,
-                              //     image: AssetImage("assets/img/scaninfo.png"),
-                              //   ),
-                              // ),
                               InkWell(
                                   onTap: () {
-                                    print("object");
-                                    controller.selectImage();
+                                    if (controller.loadingImage.value ==
+                                            false &&
+                                        controller.loading.value == false)
+                                      controller.selectImage();
                                   },
                                   child: controller.image == null
                                       ? Container(
                                           width: 300.w,
                                           height: 200.h,
-                                          child: Image(
-                                            height: 200.h,
-                                            image: AssetImage(
-                                                "assets/img/card.png"),
-                                          ),
+                                          child: controller.loadingImage.value
+                                              ? Container(
+                                                  width: 24,
+                                                  height: 24,
+                                                  padding:
+                                                      const EdgeInsets.all(2.0),
+                                                  child: Center(
+                                                    child:
+                                                        const CircularProgressIndicator(
+                                                      color: Color(0xff342BC5),
+                                                      strokeWidth: 3,
+                                                    ),
+                                                  ),
+                                                )
+                                              : Image(
+                                                  height: 200.h,
+                                                  image: AssetImage(
+                                                      "assets/img/card.png"),
+                                                ),
                                         )
                                       : Container(
                                           width: 300.w,
@@ -139,19 +149,42 @@ class ScanScreen extends StatelessWidget {
                                           child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(12),
-                                            child: Image.file(
-                                              controller.ImageFile!,
-                                              fit: BoxFit.cover,
-                                            ),
+                                            child: controller.loadingImage.value
+                                                ? Container(
+                                                    width: 24,
+                                                    height: 24,
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            2.0),
+                                                    child: Center(
+                                                      child:
+                                                          const CircularProgressIndicator(
+                                                        color:
+                                                            Color(0xff342BC5),
+                                                        strokeWidth: 3,
+                                                      ),
+                                                    ),
+                                                  )
+                                                : Image.file(
+                                                    controller.ImageFile!,
+                                                    fit: BoxFit.cover,
+                                                  ),
                                           ),
                                         )),
                               4.verticalSpace,
                               Center(
-                                  child: Text(
-                                "taphere",
-                                style: TextStyle(
-                                    color: primaryColor.withOpacity(0.8)),
-                              ).tr()),
+                                  child: InkWell(
+                                onTap: () {
+                                  if (controller.loadingImage.value == false &&
+                                      controller.loading.value == false)
+                                    controller.selectImage();
+                                },
+                                child: Text(
+                                  "taphere",
+                                  style: TextStyle(
+                                      color: primaryColor.withOpacity(0.8)),
+                                ).tr(),
+                              )),
                               30.verticalSpace,
                               Text(
                                 'verifynumber',

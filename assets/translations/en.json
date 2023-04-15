@@ -21,5 +21,6 @@
     "taphere":"Tap here to add photo",
     "verifynumber":"Verify the number",
     "validatenumber":"Validate Number",
-    "receiptsubmitted":"Receipt Submitted"
+    "receiptsubmitted":"Receipt Submitted",
+    "user_not_found":"User not found"
 }
