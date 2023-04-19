@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/apiFunctions/auth.dart';
 import 'package:estation/components/appVars.dart';
+import 'package:estation/screens/admin/admin_home_screen.dart';
 import 'package:estation/screens/pompiste/home_page.dart';
 import 'package:estation/utils/models/User.dart';
 import 'package:flutter/material.dart';
@@ -69,10 +70,9 @@ class LoginController extends GetxController {
               SessionManager().set("user", user);
               print(user.nom);
               if (user.profile!.nom == "ADMIN") {
-                Get.offAll(() => const HomePageScreen());
+                Get.offAll(() => const AdminHomeScreen());
               } else {
-                Get.snackbar('Error', 'You are not an admin',
-                    colorText: Colors.white, backgroundColor: dangerColor);
+              Get.offAll(() => const HomePageScreen());
               }
             } else {
               Get.snackbar('Error', tr(json.decode(value.body)['msg']),

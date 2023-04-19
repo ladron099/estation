@@ -4,6 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
 import 'package:estation/components/widgets.dart';
 import 'package:estation/controllers/pompiste/home_page.dart';
+import 'package:estation/utils/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -46,7 +47,7 @@ class HomePageScreen extends StatelessWidget {
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20.sp),
-                                  onConfirm: () => {controller.logout()})
+                                  onConfirm: () => {logout()})
                               // controller.logout()
                             },
                         icon: const Icon(Icons.logout_rounded,

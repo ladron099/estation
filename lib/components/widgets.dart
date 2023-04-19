@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
-import 'package:estation/screens/pompiste/scan_info.dart'; 
+import 'package:estation/screens/pompiste/scan_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -216,5 +216,20 @@ class ReleveBox extends StatelessWidget {
             ],
           ),
         ));
+  }
+}
+
+class DrawerWidget extends StatelessWidget {
+  const DrawerWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+        child: Column(
+      children: [
+        Text('hi'),
+        Text('hi'),
+      ],
+    ));
   }
 }

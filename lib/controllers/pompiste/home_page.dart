@@ -8,12 +8,7 @@ class HomePageController extends GetxController {
   User? user;
   String test = "john";
   RxBool loading = false.obs;
-  logout() async {
-    await SessionManager().set("loggedin", false);
-    await SessionManager().set("token", "");
-    await SessionManager().set("user", "");
-    Get.offAll(() => const LoginScreen());
-  }
+ 
 
   @override
   void onInit() async {
