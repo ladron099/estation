@@ -6,7 +6,7 @@ final supportedLocales = [
   Locale('fr'),
 ];
 
-final primaryColor = Color(0xff342BC5);
+final primaryColor = Color(0xff4F46E5);
 final darkColor = Color(0xff1E293B);
 final dangerColor = Color(0xffEF233C);
 final successColor = Color(0xff3ECB98);

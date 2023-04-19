@@ -2,16 +2,14 @@ import 'dart:ffi';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
-import 'package:estation/controllers/home_page.dart';
+import 'package:estation/components/widgets.dart';
+import 'package:estation/controllers/pompiste/scan_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
-
-import '../components/widgets.dart';
-import '../controllers/scan_controller.dart';
 
 class ScanScreen extends StatelessWidget {
   const ScanScreen({super.key});

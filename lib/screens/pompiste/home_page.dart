@@ -2,14 +2,13 @@ import 'dart:ffi';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
-import 'package:estation/controllers/home_page.dart';
+import 'package:estation/components/widgets.dart';
+import 'package:estation/controllers/pompiste/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
-import '../components/widgets.dart';
 
 class HomePageScreen extends StatelessWidget {
   const HomePageScreen({super.key});
@@ -35,17 +34,20 @@ class HomePageScreen extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 10.w),
                     child: IconButton(
                         onPressed: () => {
-                              // Get.defaultDialog(
-                              //     title: "Logout",
-                              //     middleText:
-                              //         "Are you sure you want to logout?",
-                              //     textConfirm: "Yes",
-                              //     textCancel: "No",
-                              //     confirmTextColor: Colors.white,
-                              //     cancelTextColor: Colors.white,
-                              //     buttonColor: primaryColor,
-                              //     onConfirm: () => {controller.logout()})
-                              controller.logout()
+                              Get.defaultDialog(
+                                  title: 'Logout',
+                                  contentPadding: EdgeInsets.all(20.w),
+                                  titlePadding: EdgeInsets.only(top: 20.w),
+                                  middleText:
+                                      "Are you sure you want to logout?",
+                                  textConfirm: "Yes",
+                                  textCancel: "No",
+                                  titleStyle: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20.sp),
+                                  onConfirm: () => {controller.logout()})
+                              // controller.logout()
                             },
                         icon: const Icon(Icons.logout_rounded,
                             color: Colors.white)))
@@ -66,11 +68,11 @@ class HomePageScreen extends StatelessWidget {
                       margin: EdgeInsets.only(top: 170.h),
                       width: double.infinity,
                       height: double.infinity,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(30),
-                          topRight: Radius.circular(30),
+                          topLeft: Radius.circular(30.r),
+                          topRight: Radius.circular(30.r),
                         ),
                       ),
                       child: Center(
@@ -82,12 +84,12 @@ class HomePageScreen extends StatelessWidget {
                                   padding: EdgeInsets.all(0.w),
                                   child: Container(
                                     width: MediaQuery.of(context).size.width,
-                                    margin: const EdgeInsets.only(
-                                        left: 30, right: 30),
+                                    margin: EdgeInsets.only(
+                                        left: 30.w, right: 30.w),
                                     decoration: BoxDecoration(
                                       gradient: lightGradientColor,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(20)),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20.r)),
                                       boxShadow: [
                                         BoxShadow(
                                           color: Colors.grey.withOpacity(0.25),
@@ -108,11 +110,23 @@ class HomePageScreen extends StatelessWidget {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                Text(
-                                                  "welcomeuser",
-                                                  style: whiteTitle,
-                                                  textAlign: TextAlign.left,
-                                                ).tr(),
+                                                !controller.loading.value
+                                                    ? Text(
+                                                        plural('welcomeuser', 0,
+                                                            args: [
+                                                              controller
+                                                                  .user!.nom!
+                                                            ]),
+                                                        style: whiteTitle,
+                                                        textAlign:
+                                                            TextAlign.left,
+                                                      ).tr()
+                                                    : Text(
+                                                        'welcome',
+                                                        style: whiteTitle,
+                                                        textAlign:
+                                                            TextAlign.left,
+                                                      ).tr(),
                                                 SizedBox(
                                                   height: 5.h,
                                                 ),
@@ -128,12 +142,12 @@ class HomePageScreen extends StatelessWidget {
                                   padding: EdgeInsets.only(top: 30.h),
                                   child: Container(
                                     width: MediaQuery.of(context).size.width,
-                                    margin: const EdgeInsets.only(
-                                        left: 30, right: 30),
+                                    margin: EdgeInsets.only(
+                                        left: 30.h, right: 30.h),
                                     decoration: BoxDecoration(
                                       color: Colors.white,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(20)),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20.r)),
                                       boxShadow: [
                                         BoxShadow(
                                           color: Colors.grey.withOpacity(0.25),
@@ -148,8 +162,8 @@ class HomePageScreen extends StatelessWidget {
                                         elevation: 0,
                                         color: Colors.transparent,
                                         child: Padding(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                20, 20, 20, 30),
+                                            padding: EdgeInsets.fromLTRB(
+                                                20.w, 20.h, 20.w, 30.h),
                                             child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,

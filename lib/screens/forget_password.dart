@@ -10,9 +10,7 @@ import 'package:iconly/iconly.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
-import 'package:easy_localization/easy_localization.dart';
-import 'package:estation/components/appVars.dart';
-import 'package:estation/controllers/home_page.dart';
+import 'package:easy_localization/easy_localization.dart'; 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';

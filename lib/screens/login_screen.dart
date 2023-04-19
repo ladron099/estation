@@ -13,7 +13,6 @@ import 'package:wave/wave.dart';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
-import 'package:estation/controllers/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -111,10 +110,15 @@ class LoginScreen extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
                                             children: [
-                                              Text(
-                                                "welcome",
-                                                style: primaryStyle,
-                                              ).tr(),
+                                              MediaQuery.of(context)
+                                                          .viewInsets!
+                                                          .bottom ==
+                                                      0
+                                                  ? Text(
+                                                      "welcome",
+                                                      style: primaryStyle,
+                                                    ).tr()
+                                                  : Container(),
                                               SizedBox(
                                                   width: 212.w,
                                                   child: Center(

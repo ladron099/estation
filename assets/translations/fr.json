@@ -4,7 +4,7 @@
     "enteremail":"Entrez votre E-mail",
     "enterpassword":"Entrez votre mot de passe",
     "login": "Se connecter",
-    "welcomeuser": "Bienvenue, user \uD83D\uDC4B",
+    "welcomeuser": "Bienvenue, {} \uD83D\uDC4B",
     "welcomemsg": "Voici un aperçu géneral de votre activité récente.",
     "releve": "Relevé",
     "NoReleve": "Vous n’avez pas encore \nremis aucun relevé aujourd’hui",
@@ -22,5 +22,6 @@
     "verifynumber": "Veuillez vérifier le nombre",
     "validatenumber":"Valider le numéro",
     "receiptsubmitted":" Relevé soumis",
-    "user_note_found":"L'utilisateur non trouvé"
+    "user_note_found":"L'utilisateur non trouvé",
+    "password_not_match":"Le mot de passe ne correspond pas"
 }
