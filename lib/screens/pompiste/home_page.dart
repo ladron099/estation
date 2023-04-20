@@ -35,19 +35,7 @@ class HomePageScreen extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 10.w),
                     child: IconButton(
                         onPressed: () => {
-                              Get.defaultDialog(
-                                  title: 'Logout',
-                                  contentPadding: EdgeInsets.all(20.w),
-                                  titlePadding: EdgeInsets.only(top: 20.w),
-                                  middleText:
-                                      "Are you sure you want to logout?",
-                                  textConfirm: "Yes",
-                                  textCancel: "No",
-                                  titleStyle: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.sp),
-                                  onConfirm: () => {logout()})
+                              logout()
                               // controller.logout()
                             },
                         icon: const Icon(Icons.logout_rounded,
@@ -61,7 +49,7 @@ class HomePageScreen extends StatelessWidget {
                     Container(
                       width: double.infinity,
                       height: 300.h,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         gradient: gradientColor,
                       ),
                     ),

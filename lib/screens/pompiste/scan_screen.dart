@@ -46,7 +46,7 @@ class ScanScreen extends StatelessWidget {
                     Container(
                       width: double.infinity,
                       height: 300.h,
-                      decoration: const BoxDecoration(
+                      decoration:   BoxDecoration(
                         gradient: gradientColor,
                       ),
                     ),

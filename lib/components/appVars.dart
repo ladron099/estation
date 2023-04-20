@@ -13,14 +13,21 @@ final successColor = Color(0xff3ECB98);
 final secondaryColor = Color(0xff342BC5);
 final blueColor = Color(0xff231F63);
 final darkBlueColor = Color(0xff13103C);
-const gradientColor = LinearGradient(
+final gradientColor = LinearGradient(
   begin: Alignment.topCenter,
   end: Alignment.bottomCenter,
   colors: [
-    Color(0xff231F63),
+    blueColor,
     Color(0xff13103C),
   ],
 );
+final cardGradient = LinearGradient(
+  begin: Alignment.centerRight,
+  end: Alignment.centerLeft,
+ colors: [
+    primaryColor,
+    primaryColor.withOpacity(0.6)
+  ]);
 const lightGradientColor = LinearGradient(
   begin: Alignment.topCenter,
   end: Alignment.bottomCenter,
@@ -74,5 +81,5 @@ final hintStyle = TextStyle(
     fontSize: 13.sp,
     fontWeight: FontWeight.w500,
     fontFamily: 'inter');
- 
+
 String apiUrl = "https://estation-api.herokuapp.com/api";

@@ -32,8 +32,7 @@ class ScanInfoScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 10.w),
               child: IconButton(
                   onPressed: () => {},
-                  icon: const Icon(Icons.logout_rounded,
-                      color: Colors.white)))
+                  icon: const Icon(Icons.logout_rounded, color: Colors.white)))
         ],
       ),
       body: Stack(
@@ -43,7 +42,7 @@ class ScanInfoScreen extends StatelessWidget {
               Container(
                 width: double.infinity,
                 height: 300.h,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   gradient: gradientColor,
                 ),
               ),

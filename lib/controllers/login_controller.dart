@@ -62,7 +62,6 @@ class LoginController extends GetxController {
           auth
               .login(emailController.text.trim(), passwordController.text)
               .then((value) {
-            print(value.body);
             if (value.statusCode == 200) {
               SessionManager().set("loggedin", true);
               SessionManager().set("token", jsonDecode(value.body)['token']);
@@ -70,17 +69,21 @@ class LoginController extends GetxController {
               SessionManager().set("user", user);
               print(user.nom);
               if (user.profile!.nom == "ADMIN") {
+                loading.toggle();
+                update();
                 Get.offAll(() => const AdminHomeScreen());
               } else {
-              Get.offAll(() => const HomePageScreen());
+                loading.toggle();
+                update();
+                Get.offAll(() => const HomePageScreen());
               }
             } else {
               Get.snackbar('Error', tr(json.decode(value.body)['msg']),
                   colorText: Colors.white, backgroundColor: dangerColor);
+              loading.toggle();
+              update();
             }
           });
-          loading.toggle();
-          update();
         });
       }
     });

@@ -23,5 +23,13 @@
     "validatenumber":"Valider le numéro",
     "receiptsubmitted":" Relevé soumis",
     "user_note_found":"L'utilisateur non trouvé",
-    "password_not_match":"Le mot de passe ne correspond pas"
+    "password_not_match":"Le mot de passe ne correspond pas",
+    "today_number":"Nombre d'aujourd'hui",
+    "overview":"Voici un aperçu géneral de vos stations.",
+    "home":"Page d'accueil",
+    "products":"Produits",
+    "employees":"Employés",
+    "citernes":"Citernes",
+    "logout":"Se deconnecter",
+    "manager":"Gérant"
 }

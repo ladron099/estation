@@ -23,5 +23,13 @@
     "validatenumber":"Validate Number",
     "receiptsubmitted":"Receipt Submitted",
     "user_not_found":"User not found",
-    "password_not_match":"The password does not match"
+    "password_not_match":"The password does not match",
+    "today_number":"Today's number",
+    "overview":"Here is an overview of your stations.",
+    "home":"Home page",
+    "products":"Products",
+    "employees":"Employees",
+    "citernes":"Tanks",
+    "logout":"Logout",
+    "manager":"Manager"
 }

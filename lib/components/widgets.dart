@@ -1,6 +1,14 @@
+import 'dart:ui';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
+import 'package:estation/screens/admin/admin_home_screen.dart';
+import 'package:estation/screens/admin/employees_list_screen.dart';
+import 'package:estation/screens/pompiste/home_page.dart';
 import 'package:estation/screens/pompiste/scan_info.dart';
+import 'package:estation/utils/models/ListItem.dart';
+import 'package:estation/utils/services.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -224,12 +232,233 @@ class DrawerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-        child: Column(
-      children: [
-        Text('hi'),
-        Text('hi'),
-      ],
-    ));
+    return Container(
+      width: 260.w,
+      child: Drawer(
+          elevation: 0,
+          backgroundColor: blueColor,
+          child: BackdropFilter(
+              filter: ImageFilter.blur(
+                sigmaX: 8,
+                sigmaY: 8,
+              ),
+              child: Expanded(
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: blueColor,
+                    borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.h),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        40.verticalSpace,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Image.asset(
+                              'assets/img/logoWhite.png',
+                              width: 120.w,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Get.back();
+                              },
+                              child: Icon(
+                                IconlyLight.arrow_left_circle,
+                                color: Colors.white,
+                                size: 26.sp,
+                              ),
+                            )
+                          ],
+                        ),
+                        80.verticalSpace,
+                        InkWell(
+                          onTap: () {
+                            Get.back();
+                            Get.to(() => AdminHomeScreen());
+                          },
+                          child: Row(
+                            children: [
+                              Icon(
+                                CupertinoIcons.home,
+                                color: Colors.white,
+                                size: 26.sp,
+                              ),
+                              20.horizontalSpace,
+                              Text("home",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16.05.sp,
+                                          fontFamily: 'inter'))
+                                  .tr()
+                            ],
+                          ),
+                        ),
+                        38.verticalSpace,
+                        InkWell(
+                          onTap: () {
+                            Get.back();
+                            Get.to(() => EmployeesListScreen());
+                          },
+                          child: Row(
+                            children: [
+                              Icon(
+                                IconlyBold.user_3,
+                                color: Colors.white,
+                                size: 26.sp,
+                              ),
+                              20.horizontalSpace,
+                              Text("employees",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16.05.sp,
+                                          fontFamily: 'inter'))
+                                  .tr()
+                            ],
+                          ),
+                        ),
+                        38.verticalSpace,
+                        InkWell(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: Row(
+                            children: [
+                              Icon(
+                                CupertinoIcons.drop_fill,
+                                color: Colors.white,
+                                size: 26.sp,
+                              ),
+                              20.horizontalSpace,
+                              Text("citernes",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16.05.sp,
+                                          fontFamily: 'inter'))
+                                  .tr()
+                            ],
+                          ),
+                        ),
+                        38.verticalSpace,
+                        InkWell(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: Row(
+                            children: [
+                              Icon(
+                                IconlyLight.more_square,
+                                color: Colors.white,
+                                size: 26.sp,
+                              ),
+                              20.horizontalSpace,
+                              Text("products",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16.05.sp,
+                                          fontFamily: 'inter'))
+                                  .tr()
+                            ],
+                          ),
+                        ),
+                        Spacer(),
+                        InkWell(
+                          onTap: () {
+                            Get.back();
+                            logout();
+                          },
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.logout_rounded,
+                                color: Colors.white,
+                                size: 26.sp,
+                              ),
+                              20.horizontalSpace,
+                              Text("logout",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16.05.sp,
+                                          fontFamily: 'inter'))
+                                  .tr()
+                            ],
+                          ),
+                        ),
+                        40.verticalSpace
+                      ],
+                    ),
+                  ),
+                ),
+              ))),
+    );
+  }
+}
+
+class DropDownMenu extends StatefulWidget {
+  List<DropdownMenuItem<ListItem>>? items;
+  ListItem? listItem;
+  final Function(ListItem?)? function;
+
+  DropDownMenu(
+      {required this.items,
+      required this.listItem,
+      required this.function,
+      Key? key})
+      : super(key: key);
+
+  @override
+  State<DropDownMenu> createState() => _DropDownMenuState();
+}
+
+class _DropDownMenuState extends State<DropDownMenu> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      child: Container(
+        height: 60.h,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(25.r),
+          border: Border.all(color: const Color(0xffAAAAAA), width: 1),
+        ),
+        child: Row(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
+              child: SizedBox(
+                height: 65.h,
+                width: 300.w,
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton<ListItem>(
+                    value: widget.listItem,
+                    items: widget.items,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
+                    iconSize: 20,
+                    icon: const Icon(
+                      CupertinoIcons.chevron_down,
+                      color: Colors.black,
+                    ),
+                    iconEnabledColor: Colors.grey[800],
+                    isExpanded: true,
+                    onChanged: widget.function,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
