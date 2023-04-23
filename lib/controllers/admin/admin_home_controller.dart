@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:estation/utils/models/User.dart';
 import 'package:estation/utils/services.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class AdminHomeController extends GetxController {

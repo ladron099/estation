@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:estation/components/appVars.dart';
 import 'package:http/http.dart' as http;
 
 class Auth {

@@ -1,21 +1,34 @@
 class Profile {
-  int? idProfile;
-  String? nom;
-  String? description;
+    Profile({
+        this.idProfile,
+        this.nom,
+        this.description,
+    });
 
-  Profile({this.idProfile, this.nom, this.description});
+    int? idProfile;
+    String? nom;
+    String? description;
 
-  Profile.fromJson(Map<String, dynamic> json) {
-    idProfile = json['id_profile'];
-    nom = json['nom'];
-    description = json['description'];
-  }
+    Profile copyWith({
+        int? idProfile,
+        String? nom,
+        String? description,
+    }) => 
+        Profile(
+            idProfile: idProfile ?? this.idProfile,
+            nom: nom ?? this.nom,
+            description: description ?? this.description,
+        );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id_profile'] = this.idProfile;
-    data['nom'] = this.nom;
-    data['description'] = this.description;
-    return data;
-  }
+    factory Profile.fromJson(Map<String, dynamic> json) => Profile(
+        idProfile: json["id_profile"],
+        nom: json["nom"],
+        description: json["description"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "id_profile": idProfile,
+        "nom": nom,
+        "description": description,
+    };
 }

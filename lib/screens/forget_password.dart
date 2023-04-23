@@ -1,23 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:estation/components/appVars.dart';
 import 'package:estation/components/widgets.dart';
 import 'package:estation/controllers/forget_password.dart';
-import 'package:estation/controllers/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:iconly/iconly.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
-import 'package:easy_localization/easy_localization.dart'; 
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../components/widgets.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
@@ -40,7 +31,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                   heightPercentages: controller.heightPercentages,
                 ),
                 backgroundColor: controller.backgroundColor,
-                size: Size(double.infinity, double.infinity),
+                size: const Size(double.infinity, double.infinity),
                 waveAmplitude: 0,
               ),
             ),
@@ -76,7 +67,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                       width: double.infinity,
                       height: 300.h,
                       decoration: BoxDecoration(
-                        color: Color(0xff231F63).withOpacity(0.9),
+                        color: const Color(0xff231F63).withOpacity(0.9),
                       ),
                     ),
                     Container(
@@ -111,7 +102,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                                             onTap: () {
                                               Get.back();
                                             },
-                                            child: Icon(
+                                            child: const Icon(
                                               IconlyLight.arrow_left_circle,
                                               color: Color(0xff14213D),
                                             ),
@@ -122,7 +113,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                                             style: TextStyle(
                                               fontSize: 18.sp,
                                               fontWeight: FontWeight.w700,
-                                              color: Color(0xff14213D),
+                                              color: const Color(0xff14213D),
                                             ),
                                           ).tr(),
                                         ],
@@ -131,7 +122,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                                       Center(
                                         child: Image(
                                           height: 105.h,
-                                          image: AssetImage(
+                                          image: const AssetImage(
                                               "assets/img/forgetpassword.png"),
                                         ),
                                       ),
@@ -139,7 +130,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                                       PrimaryTextField(
                                         controller: controller.emailController,
                                         hintText: "enteremail",
-                                        prefixIcon: Icon(
+                                        prefixIcon: const Icon(
                                           IconlyLight.message,
                                           color: Color(0xff14213D),
                                         ),

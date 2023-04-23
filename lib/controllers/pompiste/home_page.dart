@@ -1,7 +1,5 @@
-import 'package:estation/screens/login_screen.dart';
 import 'package:estation/utils/models/User.dart';
 import 'package:estation/utils/services.dart';
-import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:get/get.dart';
 
 class HomePageController extends GetxController {

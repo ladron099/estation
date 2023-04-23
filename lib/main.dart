@@ -1,7 +1,6 @@
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
-import 'package:estation/screens/admin/employees_list_screen.dart';
 import 'package:estation/utils/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,7 +15,7 @@ void main() async {
   Widget? main;
   await initWidget().then(
     (value) {
-      main = EmployeesListScreen();
+      main = value;
     },
   );
   runApp(ConnectivityAppWrapper(

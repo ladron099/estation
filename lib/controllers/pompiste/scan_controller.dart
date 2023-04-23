@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:estation/screens/pompiste/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -25,7 +24,7 @@ class ScanController extends GetxController {
         final inputImage = InputImage.fromFilePath(image!.path);
         final recognizedText = await textRecognizer.processImage(inputImage);
         number.text = recognizedText.text;
-        var aStr = number.text.replaceAll(new RegExp(r'[^0-9]'), '');
+        var aStr = number.text.replaceAll(RegExp(r'[^0-9]'), '');
         number.text = aStr;
       
       }
@@ -59,7 +58,7 @@ class ScanController extends GetxController {
       if (value) {
         Get.snackbar('Success', 'Scan successful',
             colorText: Colors.white, backgroundColor: Colors.green);
-        Get.to(() => HomePageScreen());
+        Get.to(() => const HomePageScreen());
       }
     });
   }

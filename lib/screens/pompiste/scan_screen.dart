@@ -1,12 +1,9 @@
-import 'dart:ffi';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
 import 'package:estation/components/widgets.dart';
 import 'package:estation/controllers/pompiste/scan_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
@@ -78,7 +75,7 @@ class ScanScreen extends StatelessWidget {
                                       onTap: () {
                                         Get.back();
                                       },
-                                      child: Icon(
+                                      child: const Icon(
                                         IconlyLight.arrow_left_circle,
                                         color: Color(0xff14213D),
                                       ),
@@ -90,7 +87,7 @@ class ScanScreen extends StatelessWidget {
                                     style: TextStyle(
                                       fontSize: 18.sp,
                                       fontWeight: FontWeight.w700,
-                                      color: Color(0xff14213D),
+                                      color: const Color(0xff14213D),
                                     ),
                                   ).tr(),
                                 ],
@@ -104,7 +101,7 @@ class ScanScreen extends StatelessWidget {
                                       fontSize: 18.sp,
                                       fontFamily: '',
                                       fontWeight: FontWeight.w400,
-                                      color: Color(0xff14213D),
+                                      color: const Color(0xff14213D),
                                     ),
                                   ),
                                 ),
@@ -114,11 +111,12 @@ class ScanScreen extends StatelessWidget {
                                   onTap: () {
                                     if (controller.loadingImage.value ==
                                             false &&
-                                        controller.loading.value == false)
+                                        controller.loading.value == false) {
                                       controller.selectImage();
+                                    }
                                   },
                                   child: controller.image == null
-                                      ? Container(
+                                      ? SizedBox(
                                           width: 300.w,
                                           height: 200.h,
                                           child: controller.loadingImage.value
@@ -127,9 +125,9 @@ class ScanScreen extends StatelessWidget {
                                                   height: 24,
                                                   padding:
                                                       const EdgeInsets.all(2.0),
-                                                  child: Center(
+                                                  child: const Center(
                                                     child:
-                                                        const CircularProgressIndicator(
+                                                        CircularProgressIndicator(
                                                       color: Color(0xff342BC5),
                                                       strokeWidth: 3,
                                                     ),
@@ -137,11 +135,11 @@ class ScanScreen extends StatelessWidget {
                                                 )
                                               : Image(
                                                   height: 200.h,
-                                                  image: AssetImage(
+                                                  image: const AssetImage(
                                                       "assets/img/card.png"),
                                                 ),
                                         )
-                                      : Container(
+                                      : SizedBox(
                                           width: 300.w,
                                           height: 200.h,
                                           child: ClipRRect(
@@ -154,9 +152,9 @@ class ScanScreen extends StatelessWidget {
                                                     padding:
                                                         const EdgeInsets.all(
                                                             2.0),
-                                                    child: Center(
+                                                    child: const Center(
                                                       child:
-                                                          const CircularProgressIndicator(
+                                                          CircularProgressIndicator(
                                                         color:
                                                             Color(0xff342BC5),
                                                         strokeWidth: 3,
@@ -174,8 +172,9 @@ class ScanScreen extends StatelessWidget {
                                   child: InkWell(
                                 onTap: () {
                                   if (controller.loadingImage.value == false &&
-                                      controller.loading.value == false)
+                                      controller.loading.value == false) {
                                     controller.selectImage();
+                                  }
                                 },
                                 child: Text(
                                   "taphere",
@@ -200,7 +199,7 @@ class ScanScreen extends StatelessWidget {
                                 ),
                               ),
                               35.verticalSpace,
-                              Container(
+                              SizedBox(
                                   width: 150.w,
                                   child: PrimaryButton(
                                       text: 'submit',

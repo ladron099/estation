@@ -2,31 +2,28 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
 import 'package:estation/components/widgets.dart';
 import 'package:estation/controllers/admin/employees_list_controller.dart';
-import 'package:estation/screens/pompiste/scan_screen.dart';
 import 'package:estation/utils/services.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:iconly/iconly.dart';
 
 class EmployeesListScreen extends StatelessWidget {
   const EmployeesListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> _key = GlobalKey();
+    final GlobalKey<ScaffoldState> key = GlobalKey();
     return Scaffold(
       backgroundColor: blueColor,
-      key: _key,
+      key: key,
       extendBodyBehindAppBar: true,
-      drawer: DrawerWidget(),
+      drawer: const DrawerWidget(),
       appBar: AppBar(
         leading: InkWell(
           onTap: () {
-            _key.currentState!.openDrawer();
+            key.currentState!.openDrawer();
           },
-          child: Icon(
+          child: const Icon(
             Icons.menu,
             color: Colors.white,
           ),
@@ -51,7 +48,7 @@ class EmployeesListScreen extends StatelessWidget {
               Container(
                 width: double.infinity,
                 height: 300.h,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: blueColor,
                 ),
               ),

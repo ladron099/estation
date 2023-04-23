@@ -1,12 +1,9 @@
-import 'dart:ffi';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
 import 'package:estation/components/widgets.dart';
 import 'package:estation/screens/pompiste/scan_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
@@ -73,7 +70,7 @@ class ScanInfoScreen extends StatelessWidget {
                               onTap: () {
                                 Get.back();
                               },
-                              child: Icon(
+                              child: const Icon(
                                 IconlyLight.arrow_left_circle,
                                 color: Color(0xff14213D),
                               ),
@@ -85,7 +82,7 @@ class ScanInfoScreen extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xff14213D),
+                              color: const Color(0xff14213D),
                             ),
                           ).tr(),
                         ],
@@ -99,7 +96,7 @@ class ScanInfoScreen extends StatelessWidget {
                               fontSize: 18.sp,
                               fontFamily: '',
                               fontWeight: FontWeight.w400,
-                              color: Color(0xff14213D),
+                              color: const Color(0xff14213D),
                             ),
                           ),
                         ),
@@ -108,7 +105,7 @@ class ScanInfoScreen extends StatelessWidget {
                       Center(
                         child: Image(
                           height: 200.h,
-                          image: AssetImage("assets/img/scaninfo.png"),
+                          image: const AssetImage("assets/img/scaninfo.png"),
                         ),
                       ),
                       30.verticalSpace,
@@ -124,13 +121,13 @@ class ScanInfoScreen extends StatelessWidget {
                       ),
                       35.verticalSpace,
                       Center(
-                        child: Container(
+                        child: SizedBox(
                             width: 150.w,
                             child: PrimaryButton(
                                 text: 'scan',
                                 onpress: () {
                                   Get.to(
-                                    () => ScanScreen(),
+                                    () => const ScanScreen(),
                                     transition: Transition.rightToLeft,
                                   );
                                 })),

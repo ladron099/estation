@@ -58,7 +58,7 @@ class LoginController extends GetxController {
       if (value) {
         loading.toggle();
         update();
-        Timer(Duration(seconds: 1), () {
+        Timer(const Duration(seconds: 1), () {
           auth
               .login(emailController.text.trim(), passwordController.text)
               .then((value) {

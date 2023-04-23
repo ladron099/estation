@@ -4,14 +4,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
 import 'package:estation/screens/admin/admin_home_screen.dart';
 import 'package:estation/screens/admin/employees_list_screen.dart';
-import 'package:estation/screens/pompiste/home_page.dart';
 import 'package:estation/screens/pompiste/scan_info.dart';
 import 'package:estation/utils/models/ListItem.dart';
 import 'package:estation/utils/services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
@@ -42,7 +39,7 @@ class PrimaryTextField extends StatelessWidget {
             color: Colors.grey.withOpacity(0.50),
             spreadRadius: -1,
             blurRadius: 7,
-            offset: Offset(0, 0), // changes position of shadow
+            offset: const Offset(0, 0), // changes position of shadow
           ),
         ],
       ),
@@ -54,8 +51,8 @@ class PrimaryTextField extends StatelessWidget {
           contentPadding:
               EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
           filled: true,
-          fillColor: Color.fromARGB(255, 243, 243, 243),
-          prefixIconColor: Color(0xff14213D),
+          fillColor: const Color.fromARGB(255, 243, 243, 243),
+          prefixIconColor: const Color(0xff14213D),
           hintText: tr(hintText),
           hintStyle: hintStyle,
           enabledBorder: OutlineInputBorder(
@@ -91,7 +88,7 @@ class PrimaryButton extends StatelessWidget {
           height: 49.h,
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  primary: primaryColor,
+                  backgroundColor: primaryColor,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.r))),
               onPressed: () {
@@ -99,8 +96,8 @@ class PrimaryButton extends StatelessWidget {
               },
               child: loading == true
                   ? Container(
-                      width: 24,
-                      height: 24,
+                      width: 24.w,
+                      height: 24.h,
                       padding: const EdgeInsets.all(2.0),
                       child: const CircularProgressIndicator(
                         color: Colors.white,
@@ -166,7 +163,7 @@ class ReleveBox extends StatelessWidget {
                 color: Colors.grey.withOpacity(0.25),
                 spreadRadius: -1,
                 blurRadius: 7,
-                offset: Offset(0, 0), // changes position of shadow
+                offset: const Offset(0, 0), // changes position of shadow
               ),
             ],
           ),
@@ -215,7 +212,7 @@ class ReleveBox extends StatelessWidget {
                           ),
                           onpress: () => {
                             Get.to(
-                              () => ScanInfoScreen(),
+                              () => const ScanInfoScreen(),
                             )
                           },
                         ),
@@ -232,7 +229,7 @@ class DrawerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 260.w,
       child: Drawer(
           elevation: 0,
@@ -245,9 +242,9 @@ class DrawerWidget extends StatelessWidget {
               child: Expanded(
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: blueColor,
-                    borderRadius: const BorderRadius.only(
+                    borderRadius: BorderRadius.only(
                       topRight: Radius.circular(20),
                       bottomRight: Radius.circular(20),
                     ),
@@ -281,7 +278,7 @@ class DrawerWidget extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             Get.back();
-                            Get.to(() => AdminHomeScreen());
+                            Get.to(() => const AdminHomeScreen());
                           },
                           child: Row(
                             children: [
@@ -304,7 +301,7 @@ class DrawerWidget extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             Get.back();
-                            Get.to(() => EmployeesListScreen());
+                            Get.to(() => const EmployeesListScreen());
                           },
                           child: Row(
                             children: [
@@ -367,7 +364,7 @@ class DrawerWidget extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         InkWell(
                           onTap: () {
                             Get.back();

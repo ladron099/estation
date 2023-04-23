@@ -45,9 +45,9 @@ class ForgetPasswordController extends GetxController{
     validate().then((value) {
       if (value) {
         Get.snackbar('Success', 'Verification succeeded');
-        Get.to(() => LoginScreen(),
+        Get.to(() => const LoginScreen(),
             transition: Transition.fadeIn,
-            duration: Duration(milliseconds: 500));
+            duration: const Duration(milliseconds: 500));
       }
     });
   }

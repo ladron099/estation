@@ -6,20 +6,12 @@ import 'package:estation/screens/forget_password.dart';
 import 'package:estation/utils/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:iconly/iconly.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
-import 'package:easy_localization/easy_localization.dart';
-import 'package:estation/components/appVars.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../components/widgets.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -42,7 +34,7 @@ class LoginScreen extends StatelessWidget {
                     heightPercentages: controller.heightPercentages,
                   ),
                   backgroundColor: controller.backgroundColor,
-                  size: Size(double.infinity, double.infinity),
+                  size: const Size(double.infinity, double.infinity),
                   waveAmplitude: 0,
                 ),
               ),
@@ -78,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                         width: double.infinity,
                         height: 300.h,
                         decoration: BoxDecoration(
-                          color: Color(0xff231F63).withOpacity(0.9),
+                          color: const Color(0xff231F63).withOpacity(0.9),
                         ),
                       ),
                       Container(
@@ -102,7 +94,7 @@ class LoginScreen extends StatelessWidget {
                                       width: MediaQuery.of(context).size.width,
                                       margin: const EdgeInsets.only(
                                           left: 30, right: 30),
-                                      child: Container(
+                                      child: SizedBox(
                                         width: 390.w,
                                         child: Column(
                                             mainAxisAlignment:
@@ -111,8 +103,7 @@ class LoginScreen extends StatelessWidget {
                                                 CrossAxisAlignment.center,
                                             children: [
                                               MediaQuery.of(context)
-                                                          .viewInsets!
-                                                          .bottom ==
+                                                          .viewInsets.bottom ==
                                                       0
                                                   ? Text(
                                                       "welcome",
@@ -134,7 +125,7 @@ class LoginScreen extends StatelessWidget {
                                                 controller:
                                                     controller.emailController,
                                                 hintText: "enteremail",
-                                                prefixIcon: Icon(
+                                                prefixIcon: const Icon(
                                                   IconlyLight.message,
                                                   color: Color(0xff14213D),
                                                 ),
@@ -145,7 +136,7 @@ class LoginScreen extends StatelessWidget {
                                                     .passwordController,
                                                 visibility: true,
                                                 hintText: "enterpassword",
-                                                prefixIcon: Icon(
+                                                prefixIcon: const Icon(
                                                   IconlyLight.lock,
                                                   color: Color(0xff14213D),
                                                 ),
@@ -164,7 +155,7 @@ class LoginScreen extends StatelessWidget {
                                                     onPressed: () {
                                                       Get.to(
                                                           () =>
-                                                              ForgetPasswordScreen(),
+                                                              const ForgetPasswordScreen(),
                                                           transition: Transition
                                                               .rightToLeft);
                                                     },

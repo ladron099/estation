@@ -1,42 +1,64 @@
-import 'Profile.dart';
+ 
+
+import 'dart:convert';
+
+import 'package:estation/utils/models/Profile.dart';
+
+User userFromJson(String str) => User.fromJson(json.decode(str));
+
+String userToJson(User data) => json.encode(data.toJson());
 
 class User {
-  int? idUser;
-  String? nom;
-  String? prenom;
-  String? email;
-  String? matricule;
-  Profile? profile;
+    User({
+        this.idUser,
+        this.nom,
+        this.prenom,
+        this.email,
+        this.matricule,
+        this.profile,
+    });
 
-  User(
-      {this.idUser,
-      this.nom,
-      this.prenom,
-      this.email,
-      this.matricule,
-      this.profile});
+    int? idUser;                                                                                                                                                                                                                                                                              
+    String? nom;
+    String? prenom;
+    String? email;
+    String? matricule;
+    Profile? profile;
 
-  User.fromJson(Map<String, dynamic> json) {
-    idUser = json['id_user'];
-    nom = json['nom'];
-    prenom = json['prenom'];
-    email = json['email'];
-    matricule = json['matricule'];
-    profile =
-        json['profile'] != null ? new Profile.fromJson(json['profile']) : null;
-  }
+    User copyWith({
+        int? idUser,
+        String? nom,
+        String? prenom,
+        String? email,
+        String? matricule,
+        Profile? profile,
+    }) => 
+        User(
+            idUser: idUser ?? this.idUser,
+            nom: nom ?? this.nom,
+            prenom: prenom ?? this.prenom,
+            email: email ?? this.email,
+            matricule: matricule ?? this.matricule,
+            profile: profile ?? this.profile,
+        );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id_user'] = this.idUser;
-    data['nom'] = this.nom;
-    data['prenom'] = this.prenom;
-    data['email'] = this.email;
-    data['matricule'] = this.matricule;
-    if (this.profile != null) {
-      data['profile'] = this.profile!.toJson();
-    }
-    return data;
-  }
+    factory User.fromJson(Map<String, dynamic> json) => User(
+        idUser: json["id_user"],
+        nom: json["nom"],
+        prenom: json["prenom"],
+        email: json["email"],
+        matricule: json["matricule"],
+        profile: json["profile"] == null ? null : Profile.fromJson(json["profile"]),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "id_user": idUser,
+        "nom": nom,
+        "prenom": prenom,
+        "email": email,
+        "matricule": matricule,
+        "profile": profile?.toJson(),
+    };
 }
+
 

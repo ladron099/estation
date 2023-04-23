@@ -7,34 +7,30 @@ import 'package:estation/utils/connectivity_wrapper.dart';
 import 'package:estation/utils/services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:iconly/iconly.dart';
 
 class AdminHomeScreen extends StatelessWidget {
   const AdminHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> _key = GlobalKey();
+    final GlobalKey<ScaffoldState> key = GlobalKey();
     return GetBuilder<AdminHomeController>(
         init: AdminHomeController(),
         builder: (controller) {
           return connectivityWrapper(
              Scaffold(
                 backgroundColor: blueColor,
-                key: _key,
+                key: key,
                 extendBodyBehindAppBar: true,
-                drawer: DrawerWidget(),
+                drawer: const DrawerWidget(),
                 appBar: AppBar(
                   leading: InkWell(
                     onTap: () {
-                      _key.currentState!.openDrawer();
+                      key.currentState!.openDrawer();
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.menu,
                       color: Colors.white,
                     ),
@@ -108,9 +104,9 @@ class AdminHomeScreen extends StatelessWidget {
                                     controller.changeIndex(index, reason);
                                   },
                                   height: 229.h,
-                                  autoPlayInterval: Duration(seconds: 3),
+                                  autoPlayInterval: const Duration(seconds: 3),
                                   autoPlayAnimationDuration:
-                                      Duration(milliseconds: 800),
+                                      const Duration(milliseconds: 800),
                                   autoPlayCurve: Curves.fastOutSlowIn,
                                   enlargeCenterPage: true,
                                   scrollDirection: Axis.horizontal,
@@ -226,13 +222,13 @@ class AdminHomeScreen extends StatelessWidget {
                                                   InkWell(
                                                     onTap: () {
                                                       context.locale ==
-                                                              Locale('fr')
+                                                              const Locale('fr')
                                                           ? context.locale =
-                                                              Locale('en')
+                                                              const Locale('en')
                                                           : context.locale =
-                                                              Locale('fr');
+                                                              const Locale('fr');
                                                       Get.updateLocale(
-                                                          Locale('fr'));
+                                                          const Locale('fr'));
                                                       controller.update();
                                                     },
                                                     child: Container(
@@ -308,7 +304,7 @@ class AdminHomeScreen extends StatelessWidget {
                                     color: Colors.grey.withOpacity(0.25),
                                     spreadRadius: -1,
                                     blurRadius: 7,
-                                    offset: Offset(
+                                    offset: const Offset(
                                         0, 0), // changes position of shadow
                                   ),
                                 ],
@@ -329,7 +325,7 @@ class AdminHomeScreen extends StatelessWidget {
                                             fontWeight: FontWeight.bold),
                                         textAlign: TextAlign.left,
                                       ),
-                                      Text(
+                                      const Text(
                                         "Pompistes",
                                         textAlign: TextAlign.left,
                                       ).tr()
@@ -359,7 +355,7 @@ class AdminHomeScreen extends StatelessWidget {
                                     color: Colors.grey.withOpacity(0.25),
                                     spreadRadius: -1,
                                     blurRadius: 7,
-                                    offset: Offset(
+                                    offset: const Offset(
                                         0, 0), // changes position of shadow
                                   ),
                                 ],
@@ -380,7 +376,7 @@ class AdminHomeScreen extends StatelessWidget {
                                             fontWeight: FontWeight.bold),
                                         textAlign: TextAlign.left,
                                       ),
-                                      Text(
+                                      const Text(
                                         "Citernes",
                                         textAlign: TextAlign.left,
                                       ).tr()
@@ -410,7 +406,7 @@ class AdminHomeScreen extends StatelessWidget {
                                     color: Colors.grey.withOpacity(0.25),
                                     spreadRadius: -1,
                                     blurRadius: 7,
-                                    offset: Offset(
+                                    offset: const Offset(
                                         0, 0), // changes position of shadow
                                   ),
                                 ],
@@ -431,7 +427,7 @@ class AdminHomeScreen extends StatelessWidget {
                                             fontWeight: FontWeight.bold),
                                         textAlign: TextAlign.left,
                                       ),
-                                      Text(
+                                      const Text(
                                         "Pompes",
                                         textAlign: TextAlign.left,
                                       ).tr()
@@ -440,7 +436,7 @@ class AdminHomeScreen extends StatelessWidget {
                                   Center(
                                     child: Icon(
                                       CupertinoIcons.gear_solid,
-                                      color: Color(0xff48A7F5),
+                                      color: const Color(0xff48A7F5),
                                       size: 35.sp,
                                     ),
                                   )

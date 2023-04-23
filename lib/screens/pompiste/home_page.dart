@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
@@ -6,8 +5,6 @@ import 'package:estation/components/widgets.dart';
 import 'package:estation/controllers/pompiste/home_page.dart';
 import 'package:estation/utils/services.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -84,7 +81,7 @@ class HomePageScreen extends StatelessWidget {
                                           color: Colors.grey.withOpacity(0.25),
                                           spreadRadius: -1,
                                           blurRadius: 7,
-                                          offset: Offset(0,
+                                          offset: const Offset(0,
                                               0), // changes position of shadow
                                         ),
                                       ],
@@ -142,7 +139,7 @@ class HomePageScreen extends StatelessWidget {
                                           color: Colors.grey.withOpacity(0.25),
                                           spreadRadius: -1,
                                           blurRadius: 7,
-                                          offset: Offset(0,
+                                          offset: const Offset(0,
                                               0), // changes position of shadow
                                         ),
                                       ],
