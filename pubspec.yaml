@@ -48,6 +48,7 @@ dependencies:
   flutter_session_manager: ^1.0.3
   connectivity_wrapper: ^1.1.3
   carousel_slider: ^4.2.1
+  loading_animation_widget: ^1.2.0+4
   fl_chart: ^0.62.0
 
 dev_dependencies:

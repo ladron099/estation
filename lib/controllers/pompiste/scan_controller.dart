@@ -26,10 +26,9 @@ class ScanController extends GetxController {
         number.text = recognizedText.text;
         var aStr = number.text.replaceAll(RegExp(r'[^0-9]'), '');
         number.text = aStr;
-      
       }
     } catch (e) {
-      print(e);
+      rethrow;
     }
     loadingImage.toggle();
     update();

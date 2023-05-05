@@ -6,7 +6,6 @@ class HomePageController extends GetxController {
   User? user;
   String test = "john";
   RxBool loading = false.obs;
- 
 
   @override
   void onInit() async {
@@ -14,7 +13,6 @@ class HomePageController extends GetxController {
     update();
     await getUserFromMemory()!.then((value) {
       user = value;
-      print(user);
       update();
     });
     loading.toggle();

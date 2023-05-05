@@ -44,11 +44,15 @@ logout() async {
       titleStyle: TextStyle(
           color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20.sp),
       onConfirm: () async {
-        await SessionManager().set("loggedin", false);
-        await SessionManager().set("token", "");
-        await SessionManager().set("user", "");
-        Get.offAll(() => const LoginScreen());
+        simpleLogout();
       });
+}
+
+simpleLogout() async {
+  await SessionManager().set("loggedin", false);
+  await SessionManager().set("token", "");
+  await SessionManager().set("user", "");
+  Get.offAll(() => const LoginScreen());
 }
 
 List<DropdownMenuItem<ListItem>>? buildDropDownMenuItems(List listItems) {

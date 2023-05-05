@@ -1,5 +1,8 @@
 {
     "cSpell.words": [
         "receiptsubmitted"
-    ]
+    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+     }
 }

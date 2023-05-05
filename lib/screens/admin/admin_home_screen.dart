@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import 'employees_list_screen.dart';
+
 class AdminHomeScreen extends StatelessWidget {
   const AdminHomeScreen({super.key});
 
@@ -328,58 +330,68 @@ class AdminHomeScreen extends StatelessWidget {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 20.w, vertical: 20.h),
-                                    width: MediaQuery.of(context).size.width,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(20)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.25),
-                                          spreadRadius: -1,
-                                          blurRadius: 7,
-                                          offset: const Offset(0,
-                                              0), // changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              "10",
-                                              style: TextStyle(
-                                                  color: primaryColor,
-                                                  fontSize: 20.sp,
-                                                  fontWeight: FontWeight.bold),
-                                              textAlign: TextAlign.left,
-                                            ),
-                                            const Text(
-                                              "Pompistes",
-                                              textAlign: TextAlign.left,
-                                            ).tr()
-                                          ],
-                                        ),
-                                        Center(
-                                          child: Icon(
-                                            CupertinoIcons.person_alt_circle,
-                                            color: primaryColor,
-                                            size: 35.sp,
+                                  InkWell(
+                                    onTap: () {
+                                      Get.to(() => const EmployeesListScreen(),
+                                          transition: Transition.upToDown);
+                                      controller.update();
+                                    },
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 20.w, vertical: 20.h),
+                                      width: MediaQuery.of(context).size.width,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(20)),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color:
+                                                Colors.grey.withOpacity(0.25),
+                                            spreadRadius: -1,
+                                            blurRadius: 7,
+                                            offset: const Offset(0,
+                                                0), // changes position of shadow
                                           ),
-                                        )
-                                      ],
+                                        ],
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                controller.users.length
+                                                    .toString(),
+                                                style: TextStyle(
+                                                    color: primaryColor,
+                                                    fontSize: 20.sp,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                                textAlign: TextAlign.left,
+                                              ),
+                                              const Text(
+                                                "Pompistes",
+                                                textAlign: TextAlign.left,
+                                              ).tr()
+                                            ],
+                                          ),
+                                          Center(
+                                            child: Icon(
+                                              CupertinoIcons.person_alt_circle,
+                                              color: primaryColor,
+                                              size: 35.sp,
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   10.verticalSpace,

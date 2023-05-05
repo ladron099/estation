@@ -89,4 +89,12 @@ class LoginController extends GetxController {
       }
     });
   }
+
+  @override
+  void onInit() {
+    emailController.text = "admin@gmail.com";
+    passwordController.text = "Yasser123+";
+    // TODO: implement onInit
+    super.onInit();
+  }
 }

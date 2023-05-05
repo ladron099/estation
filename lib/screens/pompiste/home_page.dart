@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
 import 'package:estation/components/widgets.dart';
@@ -46,7 +45,7 @@ class HomePageScreen extends StatelessWidget {
                     Container(
                       width: double.infinity,
                       height: 300.h,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         gradient: gradientColor,
                       ),
                     ),
@@ -125,72 +124,74 @@ class HomePageScreen extends StatelessWidget {
                                             ))),
                                   )),
                               Padding(
-                                  padding: EdgeInsets.only(top: 30.h),
-                                  child: Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    margin: EdgeInsets.only(
-                                        left: 30.h, right: 30.h),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(20.r)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.25),
-                                          spreadRadius: -1,
-                                          blurRadius: 7,
-                                          offset: const Offset(0,
-                                              0), // changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: Card(
-                                        elevation: 0,
-                                        color: Colors.transparent,
-                                        child: Padding(
-                                            padding: EdgeInsets.fromLTRB(
-                                                20.w, 20.h, 20.w, 30.h),
+                                padding: EdgeInsets.only(top: 30.h),
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  margin:
+                                      EdgeInsets.only(left: 30.h, right: 30.h),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20.r)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.25),
+                                        spreadRadius: -1,
+                                        blurRadius: 7,
+                                        offset: const Offset(
+                                            0, 0), // changes position of shadow
+                                      ),
+                                    ],
+                                  ),
+                                  child: Card(
+                                    elevation: 0,
+                                    color: Colors.transparent,
+                                    child: Padding(
+                                      padding: EdgeInsets.fromLTRB(
+                                          20.w, 20.h, 20.w, 30.h),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "releve",
+                                                style: primaryStyle,
+                                                textAlign: TextAlign.left,
+                                              ).tr(),
+                                              SizedBox(
+                                                height: 5.h,
+                                              ),
+                                              Text(
+                                                "NoReleve",
+                                                style: primaryText,
+                                                textAlign: TextAlign.left,
+                                              ).tr(),
+                                            ],
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.only(top: 40.h),
                                             child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
                                               children: [
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      "releve",
-                                                      style: primaryStyle,
-                                                      textAlign: TextAlign.left,
-                                                    ).tr(),
-                                                    SizedBox(
-                                                      height: 5.h,
-                                                    ),
-                                                    Text(
-                                                      "NoReleve",
-                                                      style: primaryText,
-                                                      textAlign: TextAlign.left,
-                                                    ).tr(),
-                                                  ],
+                                                ReleveBox(
+                                                  verified: false,
                                                 ),
-                                                Padding(
-                                                  padding: EdgeInsets.only(
-                                                      top: 40.h),
-                                                  child: Column(
-                                                    children: [
-                                                      ReleveBox(
-                                                        verified: false,
-                                                      ),
-                                                      20.verticalSpace,
-                                                      ReleveBox(
-                                                        verified: true,
-                                                      )
-                                                    ],
-                                                  ),
-                                                ),
+                                                20.verticalSpace,
+                                                ReleveBox(
+                                                  verified: true,
+                                                )
                                               ],
-                                            ))),
-                                  )),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),

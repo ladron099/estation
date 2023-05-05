@@ -31,5 +31,6 @@
     "employees":"Employees",
     "citernes":"Tanks",
     "logout":"Logout",
-    "manager":"Manager"
+    "manager":"Manager",
+    "moredetails":"More details ->" 
 }

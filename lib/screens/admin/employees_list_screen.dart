@@ -3,6 +3,7 @@ import 'package:estation/components/appVars.dart';
 import 'package:estation/components/widgets.dart';
 import 'package:estation/controllers/admin/employees_list_controller.dart';
 import 'package:estation/utils/services.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -68,91 +69,290 @@ class EmployeesListScreen extends StatelessWidget {
                   child: GetBuilder<EmployeesListController>(
                       init: EmployeesListController(),
                       builder: (controller) {
-                        return Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            20.verticalSpace,
-                            DropDownMenu(
-                              items: controller.dropdownSexeItems,
-                              listItem: controller.sexe,
-                              function: (value) {
-                                controller.dropDownMenuChange(value);
-                                controller.update();
-                              },
-                            ),
-                            25.verticalSpace,
-                            // Padding(
-                            //   padding: EdgeInsets.symmetric(horizontal: 20.w),
-                            //   child: Row(
-                            //     mainAxisAlignment:
-                            //         MainAxisAlignment.spaceBetween,
-                            //     children: [
-                            //       Text(
-                            //         'employees',
-                            //         style: TextStyle(
-                            //           color: blueColor,
-                            //           fontSize: 20.sp,
-                            //           fontWeight: FontWeight.w600,
-                            //         ),
-                            //       ).tr(),
-                            //       InkWell(
-                            //         onTap: () {
-                            //           Get.to(() => ScanScreen());
-                            //         },
-                            //         child: Container(
-                            //           padding: EdgeInsets.symmetric(
-                            //               horizontal: 20.w, vertical: 10.h),
-                            //           decoration: BoxDecoration(
-                            //             color: blueColor,
-                            //             borderRadius: BorderRadius.circular(10),
-                            //           ),
-                            //           child: Row(
-                            //             children: [
-                            //               Icon(
-                            //                 IconlyBold.plus,
-                            //                 color: Colors.white,
-                            //                 size: 20.sp,
-                            //               ),
-                            //               10.horizontalSpace,
-                            //               Text(
-                            //                 'add',
-                            //                 style: TextStyle(
-                            //                   color: Colors.white,
-                            //                   fontSize: 16.sp,
-                            //                   fontWeight: FontWeight.w600,
-                            //                 ),
-                            //               ),
-                            //             ],
-                            //           ),
-                            //         ),
-                            //       ),
-                            //     ],
-                            //   ),
-                            // ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 20.0.w),
-                              child: Text(
-                                'manager',
-                                style: primaryStyle,
-                              ).tr(),
-                            ),
-                            20.verticalSpace,
-                            // ListView.builder(
-                            //   scrollDirection: Axis.horizontal,
-                            //   itemCount: 10,
-                            //   shrinkWrap: true,
-                            //   itemBuilder: (BuildContext context, int index) {
-                            //     return Container(
-                            //       width: 150.w,
-                            //       height: 150.w,
-                            //       decoration: BoxDecoration(
-                            //           gradient: lightGradientColor),
-                            //     );
-                            //   },
-                            // )
-                          ],
-                        );
+                        return controller.loading.value
+                            ? Padding(
+                                padding: EdgeInsets.only(top: 700.h / 2),
+                                child: LodingWidget(),
+                              )
+                            : Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  20.verticalSpace,
+                                  DropDownMenu(
+                                    items: controller.dropdownSexeItems,
+                                    listItem: controller.sexe,
+                                    function: (value) {
+                                      controller.dropDownMenuChange(value);
+                                      controller.update();
+                                    },
+                                  ),
+                                  25.verticalSpace,
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 20.0.w),
+                                    child: Text(
+                                      'manager',
+                                      style: TextStyle(
+                                          color: darkColor,
+                                          fontSize: 19.5.sp,
+                                          fontWeight: FontWeight.w700,
+                                          fontFamily: 'inter'),
+                                    ).tr(),
+                                  ),
+                                  20.verticalSpace,
+                                  Container(
+                                    constraints:
+                                        BoxConstraints(minHeight: 140.h),
+                                    height: 145.h,
+                                    child: ListView.separated(
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.horizontal,
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 20.w),
+                                      itemBuilder: (BuildContext context,
+                                              int index) =>
+                                          Container(
+                                              width: 150.w,
+                                              decoration: BoxDecoration(
+                                                gradient: const LinearGradient(
+                                                  end: Alignment.topCenter,
+                                                  begin: Alignment.bottomCenter,
+                                                  colors: [
+                                                    Color(0xFF0661AB),
+                                                    Color(0xFF48A7F5),
+                                                  ],
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(20.r),
+                                              ),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  const Icon(
+                                                    CupertinoIcons
+                                                        .person_alt_circle,
+                                                    color: Colors.white,
+                                                    size: 37,
+                                                  ),
+                                                  10.verticalSpace,
+                                                  Text(
+                                                    "${controller.users[index].prenom} ${controller.users[index].nom}",
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 13.sp,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
+                                                  ).tr(),
+                                                  Text(
+                                                    "${controller.users[index].email} ",
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 13.sp,
+                                                    ),
+                                                  ).tr(),
+                                                  12.verticalSpace,
+                                                  Text(
+                                                    "moredetails",
+                                                    style: TextStyle(
+                                                      color: Colors.white
+                                                          .withOpacity(0.5),
+                                                      fontSize: 12.sp,
+                                                    ),
+                                                  ).tr(),
+                                                ],
+                                              )),
+                                      itemCount: controller.users.length,
+                                      separatorBuilder:
+                                          (BuildContext context, int index) =>
+                                              10.horizontalSpace,
+                                    ),
+                                  ),
+                                  15.verticalSpace,
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 20.0.w),
+                                    child: Text(
+                                      'Pompistes',
+                                      style: TextStyle(
+                                          color: darkColor,
+                                          fontSize: 19.5.sp,
+                                          fontWeight: FontWeight.w700,
+                                          fontFamily: 'inter'),
+                                    ).tr(),
+                                  ),
+                                  10.verticalSpace,
+                                  Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    margin: EdgeInsets.only(
+                                        left: 30.h, right: 30.h),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20.r)),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.25),
+                                          spreadRadius: -1,
+                                          blurRadius: 7,
+                                          offset: const Offset(0,
+                                              0), // changes position of shadow
+                                        ),
+                                      ],
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsets.fromLTRB(
+                                          7.w, 20.h, 7.w, 0.h),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.only(top: 25.h),
+                                            child: Container(
+                                              constraints: BoxConstraints(
+                                                  minHeight: 230.h),
+                                              height: 230.h,
+                                              child: ListView.separated(
+                                                shrinkWrap: true,
+                                                scrollDirection: Axis.vertical,
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 20.w),
+                                                itemBuilder:
+                                                    (BuildContext context,
+                                                            int index) =>
+                                                        Column(
+                                                  children: [
+                                                    Container(
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 20.w,
+                                                              vertical: 20.h),
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                              .size
+                                                              .width,
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.white,
+                                                        borderRadius:
+                                                            const BorderRadius
+                                                                    .all(
+                                                                Radius.circular(
+                                                                    15)),
+                                                        boxShadow: [
+                                                          BoxShadow(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.25),
+                                                            spreadRadius: -1,
+                                                            blurRadius: 7,
+                                                            offset: const Offset(
+                                                                0,
+                                                                0), // changes position of shadow
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      child: Column(
+                                                        children: [
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Column(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Text(
+                                                                    "${controller.users[index].prenom} ${controller.users[index].nom}",
+                                                                    style: TextStyle(
+                                                                        color:
+                                                                            darkColor,
+                                                                        fontSize: 15
+                                                                            .sp,
+                                                                        fontWeight:
+                                                                            FontWeight.bold),
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .left,
+                                                                  ),
+                                                                  Text(
+                                                                    "${controller.users[index].email} ",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color:
+                                                                          darkColor,
+                                                                      fontSize:
+                                                                          15.sp,
+                                                                    ),
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .left,
+                                                                  ).tr()
+                                                                ],
+                                                              ),
+                                                              Column(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: const [
+                                                                  Center(
+                                                                    child: Text(
+                                                                        "Pompe 7",
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color:
+                                                                              darkColor,
+                                                                          fontSize:
+                                                                              13,
+                                                                        )),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          10.verticalSpace,
+                                                          Text(
+                                                            "moredetails",
+                                                            style: TextStyle(
+                                                              color: Colors
+                                                                  .black
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                              fontSize: 12.sp,
+                                                            ),
+                                                          ).tr(),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                itemCount:
+                                                    controller.users.length,
+                                                separatorBuilder:
+                                                    (BuildContext context,
+                                                            int index) =>
+                                                        10.verticalSpace,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              );
                       }),
                 ),
               ),

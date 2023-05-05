@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class PrimaryTextField extends StatelessWidget {
   String hintText;
@@ -139,6 +140,33 @@ class ReleveButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.r),
         ),
         child: Center(child: icon),
+      ),
+    );
+  }
+}
+
+class LodingWidget extends StatelessWidget {
+  bool hasHeight;
+  bool isFullPage;
+  LodingWidget({
+    super.key,
+    this.hasHeight = false,
+    this.isFullPage = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: SizedBox(
+        height: hasHeight
+            ? isFullPage
+                ? 812.h
+                : 630.h
+            : 40.h,
+        child: LoadingAnimationWidget.inkDrop(
+          color: primaryColor,
+          size: 40.h,
+        ),
       ),
     );
   }
