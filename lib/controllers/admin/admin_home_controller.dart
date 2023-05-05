@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_controller.dart';
+import 'package:estation/apiFunctions/user_dao.dart';
 import 'package:estation/utils/models/User.dart';
 import 'package:estation/utils/services.dart';
 import 'package:get/get.dart';
@@ -22,10 +23,14 @@ class AdminHomeController extends GetxController {
     // TODO: implement onInit
     getUserFromMemory()!.then((value) {
       user = value;
-      loading.toggle();
+      UserDao.getUsers().then((value) {
+        print(value.statusCode);
+         loading.toggle();
       update();
+      });
+     
     });
 
-    super.onInit();                                                                                                                                                                
+    super.onInit();
   }
 }

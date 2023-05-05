@@ -65,9 +65,10 @@ class LoginController extends GetxController {
             if (value.statusCode == 200) {
               SessionManager().set("loggedin", true);
               SessionManager().set("token", jsonDecode(value.body)['token']);
+              SessionManager()
+                  .set("refreshToken", jsonDecode(value.body)['refreshToken']);
               User user = User.fromJson(jsonDecode(value.body)['user']);
               SessionManager().set("user", user);
-              print(user.nom);
               if (user.profile!.nom == "ADMIN") {
                 loading.toggle();
                 update();
