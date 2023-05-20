@@ -155,7 +155,7 @@ class AdminHomeScreen extends StatelessWidget {
                                                                 .start,
                                                         children: [
                                                           Text(
-                                                            "${i.id}",
+                                                            "${i.nomStation}",
                                                             style: TextStyle(
                                                                 color: Colors
                                                                     .white,
