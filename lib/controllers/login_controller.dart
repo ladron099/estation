@@ -60,7 +60,7 @@ class LoginController extends GetxController {
         update();
         Timer(const Duration(seconds: 1), () {
           auth
-              .login(emailController.text.trim(), passwordController.text)
+              .login(emailController.text.trim().toLowerCase(), passwordController.text)
               .then((value) {
             if (value.statusCode == 200) {
               SessionManager().set("loggedin", true);

@@ -60,140 +60,132 @@ class HomePageScreen extends StatelessWidget {
                           topRight: Radius.circular(30.r),
                         ),
                       ),
-                      child: Center(
-                        child: SingleChildScrollView(
-                          physics: const BouncingScrollPhysics(),
-                          child: Column(
-                            children: [
-                              Padding(
-                                  padding: EdgeInsets.all(0.w),
-                                  child: Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    margin: EdgeInsets.only(
-                                        left: 30.w, right: 30.w),
-                                    decoration: BoxDecoration(
-                                      gradient: lightGradientColor,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(20.r)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.25),
-                                          spreadRadius: -1,
-                                          blurRadius: 7,
-                                          offset: const Offset(0,
-                                              0), // changes position of shadow
-                                        ),
-                                      ],
+                      child: SingleChildScrollView(
+                        physics: const BouncingScrollPhysics(),
+                        child: Column(
+                          children: [
+                            40.verticalSpace,
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 30.w),
+                              child: Container(
+                                width: double.infinity,
+                                height: 100.h,
+                                decoration: BoxDecoration(
+                                  gradient: lightGradientColor,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20.r)),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.25),
+                                      spreadRadius: -1,
+                                      blurRadius: 7,
+                                      offset: const Offset(
+                                          0, 0), // changes position of shadow
                                     ),
-                                    child: Card(
-                                        elevation: 0,
-                                        color: Colors.transparent,
-                                        child: Padding(
-                                            padding: EdgeInsets.fromLTRB(
-                                                25.w, 20.w, 25.w, 25.w),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                !controller.loading.value
-                                                    ? Text(
-                                                        plural('welcomeuser', 0,
-                                                            args: [
-                                                              controller
-                                                                  .user!.nom!
-                                                            ]),
-                                                        style: whiteTitle,
-                                                        textAlign:
-                                                            TextAlign.left,
-                                                      ).tr()
-                                                    : Text(
-                                                        'welcome',
-                                                        style: whiteTitle,
-                                                        textAlign:
-                                                            TextAlign.left,
-                                                      ).tr(),
-                                                SizedBox(
-                                                  height: 5.h,
-                                                ),
-                                                Text(
-                                                  "welcomemsg",
-                                                  style: whiteText,
-                                                  textAlign: TextAlign.left,
-                                                ).tr(),
-                                              ],
-                                            ))),
-                                  )),
-                              Padding(
-                                padding: EdgeInsets.only(top: 30.h),
-                                child: Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  margin:
-                                      EdgeInsets.only(left: 30.h, right: 30.h),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20.r)),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.25),
-                                        spreadRadius: -1,
-                                        blurRadius: 7,
-                                        offset: const Offset(
-                                            0, 0), // changes position of shadow
+                                  ],
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 19),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      !controller.loading.value
+                                          ? Text(
+                                              plural('welcomeuser', 0, args: [
+                                                controller.user!.nom!
+                                              ]),
+                                              style: whiteTitle,
+                                              textAlign: TextAlign.left,
+                                            ).tr()
+                                          : Text(
+                                              'welcome',
+                                              style: whiteTitle,
+                                              textAlign: TextAlign.left,
+                                            ).tr(),
+                                      5.verticalSpace,
+                                      SizedBox(
+                                        width: 221.w,
+                                        child: Text(
+                                          "welcomemsg",
+                                          style: whiteText,
+                                          textAlign: TextAlign.left,
+                                        ).tr(),
                                       ),
                                     ],
                                   ),
-                                  child: Card(
-                                    elevation: 0,
-                                    color: Colors.transparent,
-                                    child: Padding(
-                                      padding: EdgeInsets.fromLTRB(
-                                          20.w, 20.h, 20.w, 30.h),
-                                      child: Column(
+                                ),
+                              ),
+                            ),
+                            44.verticalSpace,
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              margin: EdgeInsets.only(left: 30.h, right: 30.h),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20.r)),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.25),
+                                    spreadRadius: -1,
+                                    blurRadius: 7,
+                                    offset: const Offset(
+                                        0, 0), // changes position of shadow
+                                  ),
+                                ],
+                              ),
+                              child: Card(
+                                elevation: 0,
+                                color: Colors.transparent,
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(
+                                      20.w, 20.h, 20.w, 30.h),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "releve",
-                                                style: primaryStyle,
-                                                textAlign: TextAlign.left,
-                                              ).tr(),
-                                              SizedBox(
-                                                height: 5.h,
-                                              ),
-                                              Text(
-                                                "NoReleve",
-                                                style: primaryText,
-                                                textAlign: TextAlign.left,
-                                              ).tr(),
-                                            ],
+                                          Text(
+                                            "releve",
+                                            style: primaryStyle,
+                                            textAlign: TextAlign.left,
+                                          ).tr(),
+                                          SizedBox(
+                                            height: 5.h,
                                           ),
-                                          Padding(
-                                            padding: EdgeInsets.only(top: 40.h),
-                                            child: Column(
-                                              children: [
-                                                ReleveBox(
-                                                  verified: false,
-                                                ),
-                                                20.verticalSpace,
-                                                ReleveBox(
-                                                  verified: true,
-                                                )
-                                              ],
-                                            ),
-                                          ),
+                                          Text(
+                                            "NoReleve",
+                                            style: primaryText,
+                                            textAlign: TextAlign.left,
+                                          ).tr(),
                                         ],
                                       ),
-                                    ),
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 40.h),
+                                        child: Column(
+                                          children: [
+                                            ReleveBox(
+                                              verified: false,
+                                            ),
+                                            20.verticalSpace,
+                                            ReleveBox(
+                                              verified: true,
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),

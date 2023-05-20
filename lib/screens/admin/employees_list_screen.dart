@@ -80,8 +80,8 @@ class EmployeesListScreen extends StatelessWidget {
                                 children: [
                                   20.verticalSpace,
                                   DropDownMenu(
-                                    items: controller.dropdownSexeItems,
-                                    listItem: controller.sexe,
+                                    items: controller.dropdownItems,
+                                    listItem: controller.selectedStation,
                                     function: (value) {
                                       controller.dropDownMenuChange(value);
                                       controller.update();
@@ -140,7 +140,7 @@ class EmployeesListScreen extends StatelessWidget {
                                                   ),
                                                   10.verticalSpace,
                                                   Text(
-                                                    "${controller.users[index].prenom} ${controller.users[index].nom}",
+                                                    "${controller.selectedStation!.users![index].user!.prenom} ${controller.selectedStation!.users![index].user!.nom}",
                                                     style: TextStyle(
                                                       color: Colors.white,
                                                       fontSize: 13.sp,
@@ -149,7 +149,7 @@ class EmployeesListScreen extends StatelessWidget {
                                                     ),
                                                   ).tr(),
                                                   Text(
-                                                    "${controller.users[index].email} ",
+                                                    "${controller.selectedStation!.users![index].user!.email} ",
                                                     style: TextStyle(
                                                       color: Colors.white,
                                                       fontSize: 13.sp,
@@ -166,7 +166,8 @@ class EmployeesListScreen extends StatelessWidget {
                                                   ).tr(),
                                                 ],
                                               )),
-                                      itemCount: controller.users.length,
+                                      itemCount: controller
+                                          .selectedStation!.users!.length,
                                       separatorBuilder:
                                           (BuildContext context, int index) =>
                                               10.horizontalSpace,
@@ -275,7 +276,7 @@ class EmployeesListScreen extends StatelessWidget {
                                                                         .center,
                                                                 children: [
                                                                   Text(
-                                                                    "${controller.users[index].prenom} ${controller.users[index].nom}",
+                                                                    "${controller.selectedStation!.users![index].user!.prenom} ${controller.selectedStation!.users![index].user!.nom}",
                                                                     style: TextStyle(
                                                                         color:
                                                                             darkColor,
@@ -288,7 +289,7 @@ class EmployeesListScreen extends StatelessWidget {
                                                                             .left,
                                                                   ),
                                                                   Text(
-                                                                    "${controller.users[index].email} ",
+                                                                    "${controller.selectedStation!.users![index].user!.email} ",
                                                                     style:
                                                                         TextStyle(
                                                                       color:
@@ -338,8 +339,10 @@ class EmployeesListScreen extends StatelessWidget {
                                                     ),
                                                   ],
                                                 ),
-                                                itemCount:
-                                                    controller.users.length,
+                                                itemCount: controller
+                                                    .selectedStation!
+                                                    .users!
+                                                    .length,
                                                 separatorBuilder:
                                                     (BuildContext context,
                                                             int index) =>

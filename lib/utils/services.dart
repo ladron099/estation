@@ -1,7 +1,7 @@
 import 'package:estation/screens/admin/admin_home_screen.dart';
 import 'package:estation/screens/pompiste/home_page.dart';
-import 'package:estation/utils/models/ListItem.dart';
 import 'package:estation/utils/models/User.dart';
+import 'package:estation/utils/models/station.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
@@ -55,13 +55,13 @@ simpleLogout() async {
   Get.offAll(() => const LoginScreen());
 }
 
-List<DropdownMenuItem<ListItem>>? buildDropDownMenuItems(List listItems) {
-  List<DropdownMenuItem<ListItem>>? items = [];
-  for (ListItem listItem in listItems) {
+List<DropdownMenuItem<Station>>? buildDropDownMenuItems(List listItems) {
+  List<DropdownMenuItem<Station>>? items = [];
+  for (Station listItem in listItems) {
     items.add(
       DropdownMenuItem(
         value: listItem,
-        child: Text(listItem.name),
+        child: Text(listItem.nomStation!),
       ),
     );
   }

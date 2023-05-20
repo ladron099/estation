@@ -3,57 +3,65 @@ import 'dart:convert';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:estation/apiFunctions/auth.dart';
 import 'package:estation/apiFunctions/station_dao.dart';
-import 'package:estation/apiFunctions/user_dao.dart';
 import 'package:estation/utils/models/User.dart';
+import 'package:estation/utils/models/station.dart';
 import 'package:estation/utils/services.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../components/appVars.dart';
 
 class AdminHomeController extends GetxController {
   int currentIndex = 0;
   CarouselController carouselController = CarouselController();
   User? user;
   List<User> users = [];
+  List<Station> stations = [];
   RxBool loading = false.obs;
   changeIndex(index, reason) {
     currentIndex = index;
+    update();
     carouselController.animateToPage(index);
-    update(); 
+    print("test index $index: $reason");
+    update();
   }
 
   @override
   void onInit() {
     loading.toggle();
     update();
-    // TODO: implement onInit
     getUserFromMemory()!.then((value) {
       user = value;
-      UserDao.getUsers().then((value) {
-        if (value.statusCode == 200) {
-          for (var element in jsonDecode(value.body)) {
-            users.add(User.fromJson(element));
-          }
-        } else if (value.statusCode == 401) {
-          Auth().refreshToken().then((value) {
-            UserDao.getUsers().then((value) {
-              if (value.statusCode == 200) {
-                for (var element in jsonDecode(value.body)) {
-                  users.add(User.fromJson(element));
-                }
-              } else {
-                simpleLogout();
-              }
-            });
-          });
-        } else {
-          Get.snackbar('Error', 'Error while fetching users',
-              colorText: Colors.white, backgroundColor: dangerColor);
-        }
 
-        loading.toggle();
-        update();
+      StationDao.getStations().then((value) {
+        print("status code: ${value.body}");
+        switch (value.statusCode) {
+          case 200:
+            for (var element in json.decode(value.body)) {
+              stations.add(Station.fromJson(element));
+              update();
+            }
+            loading.toggle();
+            update();
+            break;
+          case 401:
+            Auth().refreshToken().then((value) {
+              StationDao.getStations().then((value) {
+                print("status code: ${value.body}");
+                switch (value.statusCode) {
+                  case 200:
+                    for (var element in json.decode(value.body)) {
+                      stations.add(Station.fromJson(element));
+
+                      update();
+                    }
+                    loading.toggle();
+                    update();
+                    break;
+                  default:
+                }
+              });
+            });
+            break;
+          default:
+        }
       });
     });
 

@@ -5,7 +5,7 @@ import 'package:estation/components/appVars.dart';
 import 'package:estation/screens/admin/admin_home_screen.dart';
 import 'package:estation/screens/admin/employees_list_screen.dart';
 import 'package:estation/screens/pompiste/scan_info.dart';
-import 'package:estation/utils/models/ListItem.dart';
+import 'package:estation/utils/models/station.dart';
 import 'package:estation/utils/services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -426,9 +426,9 @@ class DrawerWidget extends StatelessWidget {
 }
 
 class DropDownMenu extends StatefulWidget {
-  List<DropdownMenuItem<ListItem>>? items;
-  ListItem? listItem;
-  final Function(ListItem?)? function;
+  List<DropdownMenuItem<Station>>? items;
+  Station? listItem;
+  final Function(Station?)? function;
 
   DropDownMenu(
       {required this.items,
@@ -462,7 +462,7 @@ class _DropDownMenuState extends State<DropDownMenu> {
                 height: 65.h,
                 width: 300.w,
                 child: DropdownButtonHideUnderline(
-                  child: DropdownButton<ListItem>(
+                  child: DropdownButton<Station>(
                     value: widget.listItem,
                     items: widget.items,
                     style: const TextStyle(

@@ -25,7 +25,7 @@ class AdminHomeScreen extends StatelessWidget {
             Scaffold(
                 backgroundColor: blueColor,
                 key: key,
-                extendBodyBehindAppBar: true,
+                // extendBodyBehindAppBar: true,
                 drawer: const DrawerWidget(),
                 appBar: AppBar(
                   leading: InkWell(
@@ -51,24 +51,19 @@ class AdminHomeScreen extends StatelessWidget {
                             color: Colors.white))
                   ],
                 ),
-                body: SingleChildScrollView(
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: Get.height,
-                      minWidth: Get.width,
-                    ),
-                    child: IntrinsicHeight(
-                      child: Column(
-                        children: [
-                          Container(
-                            color: blueColor,
+                body: controller.loading.value
+                    ? LodingWidget()
+                    : SingleChildScrollView(
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            minHeight: Get.height,
+                            minWidth: Get.width,
                           ),
-                          Center(
+                          child: IntrinsicHeight(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                98.verticalSpace,
                                 !controller.loading.value
                                     ? Padding(
                                         padding: EdgeInsets.symmetric(
@@ -104,170 +99,84 @@ class AdminHomeScreen extends StatelessWidget {
                                 40.verticalSpace,
                                 Column(
                                   children: [
-                                    CarouselSlider(
-                                      carouselController:
-                                          controller.carouselController,
-                                      options: CarouselOptions(
-                                        enlargeFactor: 0.12,
-                                        onPageChanged: (index, reason) {
-                                          controller.changeIndex(index, reason);
-                                        },
-                                        height: 229.h,
-                                        autoPlayInterval:
-                                            const Duration(seconds: 3),
-                                        autoPlayAnimationDuration:
-                                            const Duration(milliseconds: 800),
-                                        autoPlayCurve: Curves.fastOutSlowIn,
-                                        enlargeCenterPage: true,
-                                        scrollDirection: Axis.horizontal,
-                                      ),
-                                      items: [1, 2, 3].map((i) {
-                                        return Builder(
-                                          builder: (BuildContext context) {
-                                            return Container(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 16.w),
-                                                width: MediaQuery.of(context)
-                                                    .size
-                                                    .width,
-                                                margin: EdgeInsets.symmetric(
-                                                    horizontal: 5.0.w),
-                                                decoration: BoxDecoration(
-                                                    gradient: cardGradient,
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                20.r))),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      'Station $i',
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: 18.sp,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    ),
-                                                    4.verticalSpace,
-                                                    Text(
-                                                      'Adresse 12, Numero 5, Rue 10',
-                                                      style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: 14.sp,
-                                                      ),
-                                                    ),
-                                                    9.verticalSpace,
-                                                    Container(
-                                                      height: 2.h,
-                                                      width: 150.w,
+                                    GetBuilder<AdminHomeController>(
+                                        init: AdminHomeController(),
+                                        builder: (controller) {
+                                          return CarouselSlider(
+                                            carouselController:
+                                                controller.carouselController,
+                                            options: CarouselOptions(
+                                              viewportFraction: 0.8,
+                                              enlargeFactor: 0.12,
+                                              onPageChanged: (index, reason) {
+                                                controller.changeIndex(
+                                                    index, reason);
+                                              },
+                                              height: 229.h,
+                                              autoPlayInterval:
+                                                  const Duration(seconds: 3),
+                                              autoPlayAnimationDuration:
+                                                  const Duration(
+                                                      milliseconds: 800),
+                                              autoPlayCurve:
+                                                  Curves.fastOutSlowIn,
+                                              enlargeCenterPage: true,
+                                              scrollDirection: Axis.horizontal,
+                                            ),
+                                            items: controller.stations.map((i) {
+                                              return Builder(
+                                                builder:
+                                                    (BuildContext context) {
+                                                  return Container(
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 16.w),
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                              .size
+                                                              .width,
+                                                      margin:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal:
+                                                                  5.0.w),
                                                       decoration: BoxDecoration(
-                                                          color: Colors.white
-                                                              .withOpacity(0.5),
+                                                          gradient:
+                                                              cardGradient,
                                                           borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      20.r)),
-                                                    ),
-                                                    9.verticalSpace,
-                                                    Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              'receipt',
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontSize:
-                                                                      14.sp,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold),
-                                                            ).tr(),
-                                                            4.verticalSpace,
-                                                            Text(
-                                                              'notsubmitted',
-                                                              style: TextStyle(
+                                                              BorderRadius.all(
+                                                                  Radius.circular(
+                                                                      20.r))),
+                                                      child: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            "${i.id}",
+                                                            style: TextStyle(
                                                                 color: Colors
                                                                     .white,
-                                                                fontSize: 13.sp,
-                                                              ),
-                                                            ).tr(),
-                                                            4.verticalSpace,
-                                                            Text(
-                                                              'today_number',
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontSize:
-                                                                      14.sp,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold),
-                                                            ).tr(),
-                                                            4.verticalSpace,
-                                                            Text(
-                                                              '3005',
-                                                              style: TextStyle(
-                                                                color: Colors
-                                                                    .white,
-                                                                fontSize: 13.sp,
-                                                              ),
-                                                            ).tr(),
-                                                            4.verticalSpace,
-                                                            Text(
-                                                              'today_number',
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontSize:
-                                                                      15.sp,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold),
-                                                            ).tr(),
-                                                            4.verticalSpace,
-                                                            Text(
-                                                              '8995',
-                                                              style: TextStyle(
-                                                                color: Colors
-                                                                    .white,
-                                                                fontSize: 13.sp,
-                                                              ),
-                                                            ).tr(),
-                                                          ],
-                                                        ),
-                                                        InkWell(
-                                                          onTap: () {
-                                                            context.locale ==
-                                                                    const Locale(
-                                                                        'fr')
-                                                                ? context
-                                                                        .locale =
-                                                                    const Locale(
-                                                                        'en')
-                                                                : context
-                                                                        .locale =
-                                                                    const Locale(
-                                                                        'fr');
-                                                            Get.updateLocale(
-                                                                const Locale(
-                                                                    'fr'));
-                                                            controller.update();
-                                                          },
-                                                          child: Container(
-                                                            width: 110.w,
-                                                            height: 120.h,
+                                                                fontSize: 18.sp,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold),
+                                                          ),
+                                                          4.verticalSpace,
+                                                          Text(
+                                                            "${i.adresse}",
+                                                            style: TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 14.sp,
+                                                            ),
+                                                          ),
+                                                          9.verticalSpace,
+                                                          Container(
+                                                            height: 2.h,
+                                                            width: 150.w,
                                                             decoration: BoxDecoration(
                                                                 color: Colors
                                                                     .white
@@ -278,15 +187,93 @@ class AdminHomeScreen extends StatelessWidget {
                                                                         .circular(
                                                                             20.r)),
                                                           ),
-                                                        ),
-                                                      ],
-                                                    )
-                                                  ],
-                                                ));
-                                          },
-                                        );
-                                      }).toList(),
-                                    ),
+                                                          9.verticalSpace,
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Column(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                    'receipt',
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontSize: 14
+                                                                            .sp,
+                                                                        fontWeight:
+                                                                            FontWeight.bold),
+                                                                  ).tr(),
+                                                                  4.verticalSpace,
+                                                                  Text(
+                                                                    'notsubmitted',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontSize:
+                                                                          13.sp,
+                                                                    ),
+                                                                  ).tr(),
+                                                                  4.verticalSpace,
+                                                                  Text(
+                                                                    'today_number',
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontSize: 14
+                                                                            .sp,
+                                                                        fontWeight:
+                                                                            FontWeight.bold),
+                                                                  ).tr(),
+                                                                  4.verticalSpace,
+                                                                  Text(
+                                                                    '3005',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontSize:
+                                                                          13.sp,
+                                                                    ),
+                                                                  ).tr(),
+                                                                  4.verticalSpace,
+                                                                  Text(
+                                                                    'today_number',
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontSize: 15
+                                                                            .sp,
+                                                                        fontWeight:
+                                                                            FontWeight.bold),
+                                                                  ).tr(),
+                                                                  4.verticalSpace,
+                                                                  Text(
+                                                                    '8995',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontSize:
+                                                                          13.sp,
+                                                                    ),
+                                                                  ).tr(),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          )
+                                                        ],
+                                                      ));
+                                                },
+                                              );
+                                            }).toList(),
+                                          );
+                                        }),
                                     10.verticalSpace,
                                     Container(
                                       alignment: Alignment.bottomCenter,
@@ -295,7 +282,7 @@ class AdminHomeScreen extends StatelessWidget {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: List.generate(
-                                            3,
+                                            controller.stations.length,
                                             (index) => Container(
                                                   height: 10.h,
                                                   width: 10.w,
@@ -317,202 +304,224 @@ class AdminHomeScreen extends StatelessWidget {
                                     3.verticalSpace,
                                   ],
                                 ),
+                                Expanded(
+                                  child: Container(
+                                    width: double.infinity,
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 40.w),
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                            BorderRadius.circular(20.r)),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          onTap: () {
+                                            Get.to(
+                                                () =>
+                                                    const EmployeesListScreen(),
+                                                transition:
+                                                    Transition.upToDown);
+                                            controller.update();
+                                          },
+                                          child: Container(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 20.w,
+                                                vertical: 20.h),
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  const BorderRadius.all(
+                                                      Radius.circular(20)),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.25),
+                                                  spreadRadius: -1,
+                                                  blurRadius: 7,
+                                                  offset: const Offset(0,
+                                                      0), // changes position of shadow
+                                                ),
+                                              ],
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      controller
+                                                          .stations[controller
+                                                              .currentIndex]
+                                                          .users!
+                                                          .length
+                                                          .toString(),
+                                                      style: TextStyle(
+                                                          color: primaryColor,
+                                                          fontSize: 20.sp,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                      textAlign: TextAlign.left,
+                                                    ),
+                                                    const Text(
+                                                      "Pompistes",
+                                                      textAlign: TextAlign.left,
+                                                    ).tr()
+                                                  ],
+                                                ),
+                                                Center(
+                                                  child: Icon(
+                                                    CupertinoIcons
+                                                        .person_alt_circle,
+                                                    color: primaryColor,
+                                                    size: 35.sp,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        10.verticalSpace,
+                                        Container(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 20.w, vertical: 20.h),
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(20)),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.grey
+                                                    .withOpacity(0.25),
+                                                spreadRadius: -1,
+                                                blurRadius: 7,
+                                                offset: const Offset(0,
+                                                    0), // changes position of shadow
+                                              ),
+                                            ],
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
+                                            children: [
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    "5",
+                                                    style: TextStyle(
+                                                        color: primaryColor,
+                                                        fontSize: 20.sp,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                    textAlign: TextAlign.left,
+                                                  ),
+                                                  const Text(
+                                                    "Citernes",
+                                                    textAlign: TextAlign.left,
+                                                  ).tr()
+                                                ],
+                                              ),
+                                              Center(
+                                                child: Icon(
+                                                  CupertinoIcons.drop,
+                                                  color: successColor,
+                                                  size: 35.sp,
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        10.verticalSpace,
+                                        Container(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 20.w, vertical: 20.h),
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(20)),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.grey
+                                                    .withOpacity(0.25),
+                                                spreadRadius: -1,
+                                                blurRadius: 7,
+                                                offset: const Offset(0,
+                                                    0), // changes position of shadow
+                                              ),
+                                            ],
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
+                                            children: [
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    "8",
+                                                    style: TextStyle(
+                                                        color: primaryColor,
+                                                        fontSize: 20.sp,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                    textAlign: TextAlign.left,
+                                                  ),
+                                                  const Text(
+                                                    "Pompes",
+                                                    textAlign: TextAlign.left,
+                                                  ).tr()
+                                                ],
+                                              ),
+                                              Center(
+                                                child: Icon(
+                                                  CupertinoIcons.gear_solid,
+                                                  color:
+                                                      const Color(0xff48A7F5),
+                                                  size: 35.sp,
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
-                          Expanded(
-                            child: Container(
-                              width: double.infinity,
-                              padding: EdgeInsets.symmetric(horizontal: 40.w),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20.r)),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  InkWell(
-                                    onTap: () {
-                                      Get.to(() => const EmployeesListScreen(),
-                                          transition: Transition.upToDown);
-                                      controller.update();
-                                    },
-                                    child: Container(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 20.w, vertical: 20.h),
-                                      width: MediaQuery.of(context).size.width,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: const BorderRadius.all(
-                                            Radius.circular(20)),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color:
-                                                Colors.grey.withOpacity(0.25),
-                                            spreadRadius: -1,
-                                            blurRadius: 7,
-                                            offset: const Offset(0,
-                                                0), // changes position of shadow
-                                          ),
-                                        ],
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                controller.users.length
-                                                    .toString(),
-                                                style: TextStyle(
-                                                    color: primaryColor,
-                                                    fontSize: 20.sp,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                                textAlign: TextAlign.left,
-                                              ),
-                                              const Text(
-                                                "Pompistes",
-                                                textAlign: TextAlign.left,
-                                              ).tr()
-                                            ],
-                                          ),
-                                          Center(
-                                            child: Icon(
-                                              CupertinoIcons.person_alt_circle,
-                                              color: primaryColor,
-                                              size: 35.sp,
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  10.verticalSpace,
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 20.w, vertical: 20.h),
-                                    width: MediaQuery.of(context).size.width,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(20)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.25),
-                                          spreadRadius: -1,
-                                          blurRadius: 7,
-                                          offset: const Offset(0,
-                                              0), // changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              "5",
-                                              style: TextStyle(
-                                                  color: primaryColor,
-                                                  fontSize: 20.sp,
-                                                  fontWeight: FontWeight.bold),
-                                              textAlign: TextAlign.left,
-                                            ),
-                                            const Text(
-                                              "Citernes",
-                                              textAlign: TextAlign.left,
-                                            ).tr()
-                                          ],
-                                        ),
-                                        Center(
-                                          child: Icon(
-                                            CupertinoIcons.drop,
-                                            color: successColor,
-                                            size: 35.sp,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  10.verticalSpace,
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 20.w, vertical: 20.h),
-                                    width: MediaQuery.of(context).size.width,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(20)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.25),
-                                          spreadRadius: -1,
-                                          blurRadius: 7,
-                                          offset: const Offset(0,
-                                              0), // changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              "8",
-                                              style: TextStyle(
-                                                  color: primaryColor,
-                                                  fontSize: 20.sp,
-                                                  fontWeight: FontWeight.bold),
-                                              textAlign: TextAlign.left,
-                                            ),
-                                            const Text(
-                                              "Pompes",
-                                              textAlign: TextAlign.left,
-                                            ).tr()
-                                          ],
-                                        ),
-                                        Center(
-                                          child: Icon(
-                                            CupertinoIcons.gear_solid,
-                                            color: const Color(0xff48A7F5),
-                                            size: 35.sp,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                )),
+                        ),
+                      )),
           );
         });
   }
