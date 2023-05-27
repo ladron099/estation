@@ -17,7 +17,7 @@ Future<Widget> initWidget() async {
       if (value.profile!.nom == "ADMIN") {
         mainPage = const AdminHomeScreen();
       } else if (value.profile!.nom == "USER") {
-        mainPage = const HomePageScreen();
+        mainPage = const HomePageScreen();  
       } else {
         mainPage = const LoginScreen();
       }

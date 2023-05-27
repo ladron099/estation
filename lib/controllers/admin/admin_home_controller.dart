@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:estation/apiFunctions/auth.dart';
 import 'package:estation/apiFunctions/station_dao.dart';
+import 'package:estation/screens/login_screen.dart';
 import 'package:estation/utils/models/User.dart';
 import 'package:estation/utils/models/station.dart';
 import 'package:estation/utils/services.dart';
@@ -32,6 +33,8 @@ class AdminHomeController extends GetxController {
 
       StationDao.getStations().then((value) {
         print("status code: ${value.body}");
+        print("status code: ${value.statusCode}");
+
         switch (value.statusCode) {
           case 200:
             for (var element in json.decode(value.body)) {
@@ -41,23 +44,29 @@ class AdminHomeController extends GetxController {
             loading.toggle();
             update();
             break;
-          case 401:
+          case 400:
             Auth().refreshToken().then((value) {
-              StationDao.getStations().then((value) {
-                print("status code: ${value.body}");
-                switch (value.statusCode) {
-                  case 200:
-                    for (var element in json.decode(value.body)) {
-                      stations.add(Station.fromJson(element));
+              if (value.statusCode == 200) {
+                StationDao.getStations().then((value) {
+                  print("status code: ${value.body}");
+                  print("status code: ${value.statusCode}");
+                  switch (value.statusCode) {
+                    case 200:
+                      for (var element in json.decode(value.body)) {
+                        stations.add(Station.fromJson(element));
 
+                        update();
+                      }
+                      loading.toggle();
                       update();
-                    }
-                    loading.toggle();
-                    update();
-                    break;
-                  default:
-                }
-              });
+                      break;
+
+                    default:
+                  }
+                });
+              } else {
+                simpleLogout();
+              }
             });
             break;
           default:

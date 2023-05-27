@@ -1,14 +1,19 @@
 import 'dart:io';
 
-import 'package:estation/screens/pompiste/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../apiFunctions/auth.dart';
+import '../../apiFunctions/user_dao.dart';
+import '../../screens/pompiste/home_page.dart';
+import '../../utils/services.dart';
+
 class ScanController extends GetxController {
   XFile? image;
   RxBool loadingImage = false.obs;
+  int pompeUser = 0;
   RxBool loading = false.obs;
   File? ImageFile;
   TextEditingController number = TextEditingController();
@@ -23,7 +28,7 @@ class ScanController extends GetxController {
         final textRecognizer = TextRecognizer();
         final inputImage = InputImage.fromFilePath(image!.path);
         final recognizedText = await textRecognizer.processImage(inputImage);
-        number.text = recognizedText.text;
+        number.text = recognizedText.text.substring(1, 10);
         var aStr = number.text.replaceAll(RegExp(r'[^0-9]'), '');
         number.text = aStr;
       }
@@ -53,12 +58,54 @@ class ScanController extends GetxController {
   }
 
   submit() async {
-    verify().then((value) {
+    verify().then((value) async {
       if (value) {
-        Get.snackbar('Success', 'Scan successful',
-            colorText: Colors.white, backgroundColor: Colors.green);
-        Get.to(() => const HomePageScreen());
+        await addReleve();
       }
     });
+  }
+
+  addReleve() async {
+    loading.toggle();
+    update();
+    print(number.text.trim());
+    print(pompeUser);
+    await UserDao.addReleve(number.text.trim(), pompeUser).then((value) {
+      switch (value.statusCode) {
+        case 201:
+          Get.snackbar('Success', 'Releve added',
+              colorText: Colors.white, backgroundColor: Colors.green);
+          Get.offAll(() => const HomePageScreen());
+          break;
+        case 400:
+          print(value.statusCode);
+          print(value.body);
+          Auth().refreshToken().then((value) {
+            print(value.body);
+            print(value.statusCode);
+            if (value.statusCode == 200) {
+              UserDao.addReleve(number.text.trim(), pompeUser).then((value) {
+                switch (value.statusCode) {
+                  case 201:
+                    Get.snackbar('Success', 'Releve added',
+                        colorText: Colors.white, backgroundColor: Colors.green);
+                    Get.offAll(() => const HomePageScreen());
+                    loading.toggle();
+                    update();
+                    break;
+
+                  default:
+                }
+              });
+            } else {
+              simpleLogout();
+            }
+          });
+          break;
+        default:
+      }
+    });
+    loading.toggle();
+    update();
   }
 }

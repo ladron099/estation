@@ -4,7 +4,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
 import 'package:estation/screens/admin/admin_home_screen.dart';
 import 'package:estation/screens/admin/employees_list_screen.dart';
-import 'package:estation/screens/pompiste/scan_info.dart';
 import 'package:estation/utils/models/station.dart';
 import 'package:estation/utils/services.dart';
 import 'package:flutter/cupertino.dart';
@@ -121,26 +120,20 @@ class PrimaryButton extends StatelessWidget {
 
 class ReleveButton extends StatelessWidget {
   Icon icon;
-  VoidCallback onpress;
 
-  ReleveButton({required this.icon, required this.onpress, super.key});
+  ReleveButton({required this.icon, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        onpress();
-      },
-      child: Container(
-        alignment: Alignment.center,
-        width: 45.w,
-        height: 45.h,
-        decoration: BoxDecoration(
-          color: primaryColor,
-          borderRadius: BorderRadius.circular(10.r),
-        ),
-        child: Center(child: icon),
+    return Container(
+      alignment: Alignment.center,
+      width: 45.w,
+      height: 45.h,
+      decoration: BoxDecoration(
+        color: primaryColor,
+        borderRadius: BorderRadius.circular(10.r),
       ),
+      child: Center(child: icon),
     );
   }
 }
@@ -174,7 +167,10 @@ class LodingWidget extends StatelessWidget {
 
 class ReleveBox extends StatelessWidget {
   bool verified;
-  ReleveBox({required this.verified, Key? key}) : super(key: key);
+  String? pompeId;
+  VoidCallback? press;
+  ReleveBox({this.pompeId = "", this.press, required this.verified, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -205,11 +201,15 @@ class ReleveBox extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "Pompe ID",
-                      style: primaryTitle,
-                      textAlign: TextAlign.left,
-                    ).tr(),
+                    SizedBox(
+                      width: 100.w,
+                      child: Text(
+                        pompeId!,
+                        style: primaryTitle,
+                        textAlign: TextAlign.left,
+                        overflow: TextOverflow.ellipsis,
+                      ).tr(),
+                    ),
                     !verified
                         ? Text(
                             "notsubmitted",
@@ -232,17 +232,17 @@ class ReleveBox extends StatelessWidget {
                   : Padding(
                       padding: EdgeInsets.symmetric(horizontal: 15.w),
                       child: Center(
-                        child: ReleveButton(
-                          icon: Icon(
-                            IconlyLight.camera,
-                            color: Colors.white,
-                            size: 20.sp,
-                          ),
-                          onpress: () => {
-                            Get.to(
-                              () => const ScanInfoScreen(),
-                            )
+                        child: InkWell(
+                          onTap: () {
+                            press!();
                           },
+                          child: ReleveButton(
+                            icon: Icon(
+                              IconlyLight.camera,
+                              color: Colors.white,
+                              size: 20.sp,
+                            ),
+                          ),
                         ),
                       ),
                     )

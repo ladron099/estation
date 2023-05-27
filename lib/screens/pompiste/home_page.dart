@@ -112,6 +112,8 @@ class HomePageScreen extends StatelessWidget {
                                           "welcomemsg",
                                           style: whiteText,
                                           textAlign: TextAlign.left,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 2,
                                         ).tr(),
                                       ),
                                     ],
@@ -137,51 +139,62 @@ class HomePageScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              child: Card(
-                                elevation: 0,
-                                color: Colors.transparent,
-                                child: Padding(
-                                  padding: EdgeInsets.fromLTRB(
-                                      20.w, 20.h, 20.w, 30.h),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "releve",
-                                            style: primaryStyle,
-                                            textAlign: TextAlign.left,
-                                          ).tr(),
-                                          SizedBox(
-                                            height: 5.h,
-                                          ),
-                                          Text(
-                                            "NoReleve",
-                                            style: primaryText,
-                                            textAlign: TextAlign.left,
-                                          ).tr(),
-                                        ],
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(top: 40.h),
-                                        child: Column(
-                                          children: [
-                                            ReleveBox(
-                                              verified: false,
-                                            ),
-                                            20.verticalSpace,
-                                            ReleveBox(
-                                              verified: true,
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 30.w),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    20.verticalSpace,
+                                    Text(
+                                      "releve",
+                                      style: primaryStyle,
+                                      textAlign: TextAlign.left,
+                                    ).tr(),
+                                    SizedBox(
+                                      height: 5.h,
+                                    ),
+                                    Text(
+                                      "NoReleve",
+                                      style: primaryText,
+                                      textAlign: TextAlign.left,
+                                    ).tr(),
+                                    40.verticalSpace,
+                                    ListView.separated(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 10.w),
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: controller.myPompes.length,
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        return ReleveBox(
+                                          press: () {
+                                            controller.changeData(
+                                                controller.myPompes[index]);
+                                          },
+                                          pompeId:
+                                              "${controller.myPompes[index].pompe!.nomPompe} :  ${controller.myPompes[index].pompe!.idPompe}",
+                                          verified: controller
+                                                          .myPompes[index]
+                                                          .releve!
+                                                          .releveEntree ==
+                                                      true &&
+                                                  controller
+                                                          .myPompes[index]
+                                                          .releve!
+                                                          .releveEntree ==
+                                                      true
+                                              ? true
+                                              : false,
+                                        );
+                                      },
+                                      separatorBuilder:
+                                          (BuildContext context, int index) {
+                                        return 21.verticalSpace;
+                                      },
+                                    ),
+                                    30.verticalSpace,
+                                  ],
                                 ),
                               ),
                             ),

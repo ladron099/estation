@@ -15,13 +15,14 @@ class Auth {
               body: jsonEncode({"email": email, "password": password}))
           .timeout(const Duration(seconds: 10));
       return response;
-    } catch (e) { 
+    } catch (e) {
       return e.toString();
     }
   }
 
   refreshToken() async {
     try {
+      print(await SessionManager().get('token'));
       print(await SessionManager().get('refreshToken'));
       var response = await http
           .post(
@@ -34,7 +35,7 @@ class Auth {
                 "refreshToken": '${await SessionManager().get('refreshToken')}'
               }))
           .timeout(const Duration(seconds: 10));
-      print(jsonDecode(response.body));
+      print(jsonDecode(response.statusCode.toString()));
       if (response.statusCode == 200) {
         SessionManager().set("token", jsonDecode(response.body)['token']);
         SessionManager()

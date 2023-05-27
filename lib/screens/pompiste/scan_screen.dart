@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
 import 'package:estation/components/widgets.dart';
@@ -43,7 +42,7 @@ class ScanScreen extends StatelessWidget {
                     Container(
                       width: double.infinity,
                       height: 300.h,
-                      decoration:   BoxDecoration(
+                      decoration: const BoxDecoration(
                         gradient: gradientColor,
                       ),
                     ),
@@ -202,6 +201,7 @@ class ScanScreen extends StatelessWidget {
                               SizedBox(
                                   width: 150.w,
                                   child: PrimaryButton(
+                                      loading: controller.loading.value,
                                       text: 'submit',
                                       onpress: () {
                                         controller.submit();
