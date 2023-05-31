@@ -30,6 +30,11 @@ class HomePageController extends GetxController {
           loading.toggle();
           update();
           break;
+        case 404:
+          loading.toggle();
+          update();
+
+          break;
 
         case 400:
           Auth().refreshToken().then((value) {
@@ -44,8 +49,15 @@ class HomePageController extends GetxController {
                     loading.toggle();
                     update();
                     break;
+                  case 404:
+                    loading.toggle();
+                    update();
+
+                    break;
 
                   default:
+                    loading.toggle();
+                    update();
                 }
               });
             } else {
@@ -57,6 +69,9 @@ class HomePageController extends GetxController {
           break;
 
         default:
+          loading.toggle();
+          update();
+          
       }
     });
 
