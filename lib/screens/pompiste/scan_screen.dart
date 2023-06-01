@@ -161,7 +161,7 @@ class ScanScreen extends StatelessWidget {
                                                     ),
                                                   )
                                                 : Image.file(
-                                                    controller.ImageFile!,
+                                                    controller.imageFile!,
                                                     fit: BoxFit.cover,
                                                   ),
                                           ),

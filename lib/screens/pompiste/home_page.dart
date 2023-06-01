@@ -150,43 +150,48 @@ class HomePageScreen extends StatelessWidget {
                                       style: primaryStyle,
                                       textAlign: TextAlign.left,
                                     ).tr(),
-                                    SizedBox(
-                                      height: 5.h,
-                                    ),
-                                    Text(
-                                      "NoReleve",
-                                      style: primaryText,
-                                      textAlign: TextAlign.left,
-                                    ).tr(),
+                                    5.verticalSpace,
+                                    controller.myPompes.isEmpty
+                                        ? Column(
+                                            children: [
+                                              100.verticalSpace,
+                                              Center(
+                                                child: Text(
+                                                  "no_pompes_assigned_to_user",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    fontSize: 18.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.grey,
+                                                  ),
+                                                ).tr(),
+                                              ),
+                                              100.verticalSpace,
+                                            ],
+                                          )
+                                        : Text(
+                                            "There are summaries",
+                                            style: primaryText,
+                                            textAlign: TextAlign.left,
+                                          ).tr(),
                                     40.verticalSpace,
                                     ListView.separated(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 10.w),
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 0.w),
                                       shrinkWrap: true,
                                       scrollDirection: Axis.vertical,
                                       itemCount: controller.myPompes.length,
                                       itemBuilder:
                                           (BuildContext context, int index) {
                                         return ReleveBox(
-                                          press: () {
-                                            controller.changeData(
-                                                controller.myPompes[index]);
-                                          },
-                                          pompeId:
-                                              "${controller.myPompes[index].pompe!.nomPompe} :  ${controller.myPompes[index].pompe!.idPompe}",
-                                          verified: controller
-                                                          .myPompes[index]
-                                                          .releve!
-                                                          .releveEntree ==
-                                                      true &&
-                                                  controller
-                                                          .myPompes[index]
-                                                          .releve!
-                                                          .releveEntree ==
-                                                      true
-                                              ? true
-                                              : false,
-                                        );
+                                            press: () {
+                                              controller.changeData(
+                                                  controller.myPompes[index]);
+                                            },
+                                            pompeId:
+                                                "${controller.myPompes[index].pompe!.nomPompe} :  ${controller.myPompes[index].pompe!.idPompe}",
+                                            verified: controller
+                                                .myPompes[index].releve!);
                                       },
                                       separatorBuilder:
                                           (BuildContext context, int index) {

@@ -19,8 +19,8 @@ class HomePageController extends GetxController {
   getMyPompes() async {
     loading.value = true;
     update();
-    print(user!.idUser);
     await UserDao.getPomptes(user!.idUser).then((value) {
+      print(value.statusCode);
       switch (value.statusCode) {
         case 200:
           for (var element in json.decode(value.body)) {
@@ -71,7 +71,6 @@ class HomePageController extends GetxController {
         default:
           loading.toggle();
           update();
-          
       }
     });
 

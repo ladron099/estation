@@ -32,5 +32,6 @@
     "citernes":"Citernes",
     "logout":"Se deconnecter",
     "manager":"Gérant",
-    "moredetails":"Plus de détails ->"
+    "moredetails":"Plus de détails ->",
+    "no_pompes_assigned_to_user":"Vous n'avez aucune pompes affectée aujourd'hui"
 }

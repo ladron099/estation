@@ -15,7 +15,7 @@ class ScanController extends GetxController {
   RxBool loadingImage = false.obs;
   int pompeUser = 0;
   RxBool loading = false.obs;
-  File? ImageFile;
+  File? imageFile;
   TextEditingController number = TextEditingController();
   selectImage() async {
     loadingImage.toggle();
@@ -23,7 +23,7 @@ class ScanController extends GetxController {
     try {
       image = await ImagePicker().pickImage(source: ImageSource.camera);
       if (image != null) {
-        ImageFile = File(image!.path);
+        imageFile = File(image!.path);
 
         final textRecognizer = TextRecognizer();
         final inputImage = InputImage.fromFilePath(image!.path);
@@ -68,21 +68,18 @@ class ScanController extends GetxController {
   addReleve() async {
     loading.toggle();
     update();
-    print(number.text.trim());
-    print(pompeUser);
     await UserDao.addReleve(number.text.trim(), pompeUser).then((value) {
       switch (value.statusCode) {
         case 201:
           Get.snackbar('Success', 'Releve added',
               colorText: Colors.white, backgroundColor: Colors.green);
           Get.offAll(() => const HomePageScreen());
+          loading.toggle();
+          update();
+          Get.delete<ScanController>();
           break;
         case 400:
-          print(value.statusCode);
-          print(value.body);
           Auth().refreshToken().then((value) {
-            print(value.body);
-            print(value.statusCode);
             if (value.statusCode == 200) {
               UserDao.addReleve(number.text.trim(), pompeUser).then((value) {
                 switch (value.statusCode) {
@@ -90,8 +87,10 @@ class ScanController extends GetxController {
                     Get.snackbar('Success', 'Releve added',
                         colorText: Colors.white, backgroundColor: Colors.green);
                     Get.offAll(() => const HomePageScreen());
+
                     loading.toggle();
                     update();
+                    Get.delete<ScanController>();
                     break;
 
                   default:

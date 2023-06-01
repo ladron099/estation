@@ -174,81 +174,79 @@ class ReleveBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: EdgeInsets.all(0.w),
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: 78.h,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: const BorderRadius.all(Radius.circular(20)),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.25),
-                spreadRadius: -1,
-                blurRadius: 7,
-                offset: const Offset(0, 0), // changes position of shadow
-              ),
-            ],
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 78.h,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(12.r)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.25),
+            spreadRadius: -1,
+            blurRadius: 7,
+            offset: const Offset(0, 0), // changes position of shadow
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 100.w,
-                      child: Text(
-                        pompeId!,
-                        style: primaryTitle,
-                        textAlign: TextAlign.left,
-                        overflow: TextOverflow.ellipsis,
-                      ).tr(),
-                    ),
-                    !verified
-                        ? Text(
-                            "notsubmitted",
-                            style: dangerText,
-                            textAlign: TextAlign.left,
-                          ).tr()
-                        : Text(
-                            "receiptsubmitted",
-                            style: successText,
-                            textAlign: TextAlign.left,
-                          ).tr(),
-                  ],
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 100.w,
+                  child: Text(
+                    pompeId!,
+                    style: primaryTitle,
+                    textAlign: TextAlign.left,
+                    overflow: TextOverflow.ellipsis,
+                  ).tr(),
                 ),
-              ),
-              verified
-                  ? Image.asset(
-                      'assets/img/verified.png',
-                      width: 110.w,
-                    )
-                  : Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 15.w),
-                      child: Center(
-                        child: InkWell(
-                          onTap: () {
-                            press!();
-                          },
-                          child: ReleveButton(
-                            icon: Icon(
-                              IconlyLight.camera,
-                              color: Colors.white,
-                              size: 20.sp,
-                            ),
-                          ),
+                !verified
+                    ? Text(
+                        "notsubmitted",
+                        style: dangerText,
+                        textAlign: TextAlign.left,
+                      ).tr()
+                    : Text(
+                        "receiptsubmitted",
+                        style: successText,
+                        textAlign: TextAlign.left,
+                      ).tr(),
+              ],
+            ),
+          ),
+          verified
+              ? Image.asset(
+                  'assets/img/verified.png',
+                  width: 110.w,
+                )
+              : Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15.w),
+                  child: Center(
+                    child: InkWell(
+                      onTap: () {
+                        press!();
+                      },
+                      child: ReleveButton(
+                        icon: Icon(
+                          IconlyLight.camera,
+                          color: Colors.white,
+                          size: 20.sp,
                         ),
                       ),
-                    )
-            ],
-          ),
-        ));
+                    ),
+                  ),
+                )
+        ],
+      ),
+    );
   }
 }
 

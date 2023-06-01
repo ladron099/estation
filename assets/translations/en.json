@@ -32,5 +32,6 @@
     "citernes":"Tanks",
     "logout":"Logout",
     "manager":"Manager",
-    "moredetails":"More details ->" 
+    "moredetails":"More details ->" ,
+    "no_pompes_assigned_to_user":"You have no pompes assigned for today"
 }
