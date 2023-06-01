@@ -21,9 +21,7 @@ class Auth {
   }
 
   refreshToken() async {
-    try {
-      print(await SessionManager().get('token'));
-      print(await SessionManager().get('refreshToken'));
+    try { 
       var response = await http
           .post(
               Uri.parse("https://estation-api.herokuapp.com/api/auth/refresh"),
@@ -34,16 +32,14 @@ class Auth {
               body: jsonEncode({
                 "refreshToken": '${await SessionManager().get('refreshToken')}'
               }))
-          .timeout(const Duration(seconds: 10));
-      print(jsonDecode(response.statusCode.toString()));
+          .timeout(const Duration(seconds: 10)); 
       if (response.statusCode == 200) {
         SessionManager().set("token", jsonDecode(response.body)['token']);
         SessionManager()
             .set("refreshToken", jsonDecode(response.body)['refreshToken']);
       }
       return response;
-    } catch (e) {
-      print(e);
+    } catch (e) { 
       rethrow;
     }
   }

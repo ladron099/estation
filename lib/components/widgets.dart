@@ -442,45 +442,42 @@ class DropDownMenu extends StatefulWidget {
 class _DropDownMenuState extends State<DropDownMenu> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
-      child: Container(
-        height: 60.h,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          color: Colors.transparent,
-          borderRadius: BorderRadius.circular(25.r),
-          border: Border.all(color: const Color(0xffAAAAAA), width: 1),
-        ),
-        child: Row(
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
-              child: SizedBox(
-                height: 65.h,
-                width: 300.w,
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<Station>(
-                    value: widget.listItem,
-                    items: widget.items,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                    iconSize: 20,
-                    icon: const Icon(
-                      CupertinoIcons.chevron_down,
-                      color: Colors.black,
-                    ),
-                    iconEnabledColor: Colors.grey[800],
-                    isExpanded: true,
-                    onChanged: widget.function,
+    return Container(
+      height: 60.h,
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(25.r),
+        border: Border.all(color: const Color(0xffAAAAAA), width: 1),
+      ),
+      child: Row(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            child: SizedBox(
+              height: 65.h,
+              width: 300.w,
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton<Station>(
+                  value: widget.listItem,
+                  items: widget.items,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
                   ),
+                  iconSize: 20,
+                  icon: const Icon(
+                    CupertinoIcons.chevron_down,
+                    color: Colors.black,
+                  ),
+                  iconEnabledColor: Colors.grey[800],
+                  isExpanded: true,
+                  onChanged: widget.function,
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

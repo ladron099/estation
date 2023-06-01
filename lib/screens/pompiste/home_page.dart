@@ -122,88 +122,88 @@ class HomePageScreen extends StatelessWidget {
                               ),
                             ),
                             44.verticalSpace,
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              margin: EdgeInsets.only(left: 30.h, right: 30.h),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20.r)),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.25),
-                                    spreadRadius: -1,
-                                    blurRadius: 7,
-                                    offset: const Offset(
-                                        0, 0), // changes position of shadow
-                                  ),
-                                ],
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 30.w),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    20.verticalSpace,
-                                    Text(
-                                      "releve",
-                                      style: primaryStyle,
-                                      textAlign: TextAlign.left,
-                                    ).tr(),
-                                    5.verticalSpace,
-                                    controller.myPompes.isEmpty
-                                        ? Column(
-                                            children: [
-                                              100.verticalSpace,
-                                              Center(
-                                                child: Text(
-                                                  "no_pompes_assigned_to_user",
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                    fontSize: 18.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.grey,
-                                                  ),
-                                                ).tr(),
-                                              ),
-                                              100.verticalSpace,
-                                            ],
-                                          )
-                                        : Text(
-                                            "There are summaries",
-                                            style: primaryText,
-                                            textAlign: TextAlign.left,
-                                          ).tr(),
-                                    40.verticalSpace,
-                                    ListView.separated(
-                                      padding:
-                                          EdgeInsets.symmetric(horizontal: 0.w),
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: controller.myPompes.length,
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        return ReleveBox(
-                                            press: () {
-                                              controller.changeData(
-                                                  controller.myPompes[index]);
-                                            },
-                                            pompeId:
-                                                "${controller.myPompes[index].pompe!.nomPompe} :  ${controller.myPompes[index].pompe!.idPompe}",
-                                            verified: controller
-                                                .myPompes[index].releve!);
-                                      },
-                                      separatorBuilder:
-                                          (BuildContext context, int index) {
-                                        return 21.verticalSpace;
-                                      },
+                              Container(
+                                width: MediaQuery.of(context).size.width,
+                                margin: EdgeInsets.only(left: 30.h, right: 30.h),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20.r)),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.25),
+                                      spreadRadius: -1,
+                                      blurRadius: 7,
+                                      offset: const Offset(
+                                          0, 0), // changes position of shadow
                                     ),
-                                    30.verticalSpace,
                                   ],
                                 ),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 30.w),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      20.verticalSpace,
+                                      Text(
+                                        "releve",
+                                        style: primaryStyle,
+                                        textAlign: TextAlign.left,
+                                      ).tr(),
+                                      5.verticalSpace,
+                                      controller.myPompes.isEmpty
+                                          ? Column(
+                                              children: [
+                                                100.verticalSpace,
+                                                Center(
+                                                  child: Text(
+                                                    "no_pompes_assigned_to_user",
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                      fontSize: 18.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: Colors.grey,
+                                                    ),
+                                                  ).tr(),
+                                                ),
+                                                100.verticalSpace,
+                                              ],
+                                            )
+                                          : Text(
+                                              "There are summaries",
+                                              style: primaryText,
+                                              textAlign: TextAlign.left,
+                                            ).tr(),
+                                      40.verticalSpace,
+                                      ListView.separated(
+                                        padding:
+                                            EdgeInsets.symmetric(horizontal: 0.w),
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: controller.myPompes.length,
+                                        itemBuilder:
+                                            (BuildContext context, int index) {
+                                          return ReleveBox(
+                                              press: () {
+                                                controller.changeData(
+                                                    controller.myPompes[index]);
+                                              },
+                                              pompeId:
+                                                  "${controller.myPompes[index].pompe!.nomPompe} :  ${controller.myPompes[index].pompe!.idPompe}",
+                                              verified: controller
+                                                  .myPompes[index].releve!);
+                                        },
+                                        separatorBuilder:
+                                            (BuildContext context, int index) {
+                                          return 21.verticalSpace;
+                                        },
+                                      ),
+                                      30.verticalSpace,
+                                    ],
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
                         ),
                       ),
                     ),

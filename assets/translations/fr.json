@@ -33,5 +33,10 @@
     "logout":"Se deconnecter",
     "manager":"Gérant",
     "moredetails":"Plus de détails ->",
-    "no_pompes_assigned_to_user":"Vous n'avez aucune pompes affectée aujourd'hui"
+    "no_pompes_assigned_to_user":"Vous n'avez aucune pompes affectée aujourd'hui",
+    "price":"Prix :",
+    "history":"Historique des actions",
+    "qty":"Quantité",
+    "capacity":"Capacité",
+    "compteur":"Compteur"
 }

@@ -33,5 +33,10 @@
     "logout":"Logout",
     "manager":"Manager",
     "moredetails":"More details ->" ,
-    "no_pompes_assigned_to_user":"You have no pompes assigned for today"
+    "no_pompes_assigned_to_user":"You have no pompes assigned for today",
+    "price":"Price :",
+    "history":"Actions History",
+    "qty":"Quantity",
+    "capacity":"Capacity",
+    "compteur":"Counter"        
 }

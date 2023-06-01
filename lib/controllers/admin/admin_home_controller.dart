@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:estation/apiFunctions/auth.dart';
 import 'package:estation/apiFunctions/station_dao.dart';
-import 'package:estation/screens/login_screen.dart';
 import 'package:estation/utils/models/User.dart';
 import 'package:estation/utils/models/station.dart';
 import 'package:estation/utils/services.dart';
@@ -20,7 +19,6 @@ class AdminHomeController extends GetxController {
     currentIndex = index;
     update();
     carouselController.animateToPage(index);
-    print("test index $index: $reason");
     update();
   }
 
@@ -32,9 +30,6 @@ class AdminHomeController extends GetxController {
       user = value;
 
       StationDao.getStations().then((value) {
-        print("status code: ${value.body}");
-        print("status code: ${value.statusCode}");
-
         switch (value.statusCode) {
           case 200:
             for (var element in json.decode(value.body)) {
@@ -48,8 +43,6 @@ class AdminHomeController extends GetxController {
             Auth().refreshToken().then((value) {
               if (value.statusCode == 200) {
                 StationDao.getStations().then((value) {
-                  print("status code: ${value.body}");
-                  print("status code: ${value.statusCode}");
                   switch (value.statusCode) {
                     case 200:
                       for (var element in json.decode(value.body)) {

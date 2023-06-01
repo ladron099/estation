@@ -1,14 +1,14 @@
+import 'package:get/get.dart';
 import 'dart:convert';
 
 import 'package:estation/apiFunctions/auth.dart';
 import 'package:estation/utils/models/station.dart';
 import 'package:estation/utils/services.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../apiFunctions/station_dao.dart';
 
-class EmployeesListController extends GetxController {
+class CiterneController extends GetxController {
   List<DropdownMenuItem<Station>>? dropdownItems;
   Station? selectedStation;
   List<Station> stations = [];
@@ -23,7 +23,7 @@ class EmployeesListController extends GetxController {
     loading.toggle();
     update();
 
-    StationDao.getStations().then((value) { 
+    StationDao.getStations().then((value) {
       switch (value.statusCode) {
         case 200:
           for (var element in json.decode(value.body)) {
@@ -38,7 +38,7 @@ class EmployeesListController extends GetxController {
           break;
         case 401:
           Auth().refreshToken().then((value) {
-            StationDao.getStations().then((value) { 
+            StationDao.getStations().then((value) {
               switch (value.statusCode) {
                 case 200:
                   for (var element in json.decode(value.body)) {
@@ -46,7 +46,7 @@ class EmployeesListController extends GetxController {
 
                     dropdownItems = buildDropDownMenuItems(stations);
                     selectedStation = dropdownItems![0].value;
-                    update(); 
+                    update();
                   }
                   loading.toggle();
                   update();

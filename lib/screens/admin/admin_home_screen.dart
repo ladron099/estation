@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
 import 'package:estation/components/widgets.dart';
 import 'package:estation/controllers/admin/admin_home_controller.dart';
+import 'package:estation/screens/admin/citerne_screen.dart';
 import 'package:estation/utils/connectivity_wrapper.dart';
 import 'package:estation/utils/services.dart';
 import 'package:flutter/cupertino.dart';
@@ -395,62 +396,73 @@ class AdminHomeScreen extends StatelessWidget {
                                           ),
                                         ),
                                         10.verticalSpace,
-                                        Container(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 20.w, vertical: 20.h),
-                                          width:
-                                              MediaQuery.of(context).size.width,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                                    Radius.circular(20)),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Colors.grey
-                                                    .withOpacity(0.25),
-                                                spreadRadius: -1,
-                                                blurRadius: 7,
-                                                offset: const Offset(0,
-                                                    0), // changes position of shadow
-                                              ),
-                                            ],
-                                          ),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.end,
-                                            children: [
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    "5",
-                                                    style: TextStyle(
-                                                        color: primaryColor,
-                                                        fontSize: 20.sp,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                    textAlign: TextAlign.left,
-                                                  ),
-                                                  const Text(
-                                                    "Citernes",
-                                                    textAlign: TextAlign.left,
-                                                  ).tr()
-                                                ],
-                                              ),
-                                              Center(
-                                                child: Icon(
-                                                  CupertinoIcons.drop,
-                                                  color: successColor,
-                                                  size: 35.sp,
+                                        InkWell(
+                                          onTap: () {
+                                            Get.to(() => const CiterneScreen(),
+                                                transition:
+                                                    Transition.upToDown);
+                                            controller.update();
+                                          },
+                                          child: Container(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 20.w,
+                                                vertical: 20.h),
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  const BorderRadius.all(
+                                                      Radius.circular(20)),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.25),
+                                                  spreadRadius: -1,
+                                                  blurRadius: 7,
+                                                  offset: const Offset(0,
+                                                      0), // changes position of shadow
                                                 ),
-                                              )
-                                            ],
+                                              ],
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      "5",
+                                                      style: TextStyle(
+                                                          color: primaryColor,
+                                                          fontSize: 20.sp,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                      textAlign: TextAlign.left,
+                                                    ),
+                                                    const Text(
+                                                      "Citernes",
+                                                      textAlign: TextAlign.left,
+                                                    ).tr()
+                                                  ],
+                                                ),
+                                                Center(
+                                                  child: Icon(
+                                                    CupertinoIcons.drop,
+                                                    color: successColor,
+                                                    size: 35.sp,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
                                           ),
                                         ),
                                         10.verticalSpace,

@@ -98,16 +98,16 @@ class ForgetPasswordScreen extends StatelessWidget {
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
-                                          InkWell(
-                                            onTap: () {
-                                              Get.back();
-                                            },
-                                            child: const Icon(
-                                              IconlyLight.arrow_left_circle,
-                                              color: Color(0xff14213D),
+                                            InkWell(
+                                              onTap: () {
+                                                Get.back();
+                                              },
+                                              child: const Icon(
+                                                IconlyLight.arrow_left_circle,
+                                                color: Color(0xff14213D),
+                                              ),
                                             ),
-                                          ),
-                                          80.horizontalSpace,
+                                            80.horizontalSpace,
                                           Text(
                                             "resetpassword",
                                             style: TextStyle(
