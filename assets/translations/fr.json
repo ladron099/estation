@@ -38,5 +38,8 @@
     "history":"Historique des actions",
     "qty":"Quantité",
     "capacity":"Capacité",
-    "compteur":"Compteur"
+    "compteur":"Compteur",
+    "pricegaz":"Prix Gasoil {}",
+    "todaynumber":"Chiffre d’aujourd’hui",
+    "jauguage":"Jaugage des citernes"
 }

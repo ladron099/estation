@@ -18,32 +18,34 @@ void main() async {
       main = value;
     },
   );
-  runApp(ConnectivityAppWrapper(
-    app: EasyLocalization(
-      supportedLocales: supportedLocales,
-      path: 'assets/translations',
-      fallbackLocale: const Locale('en'),
-      startLocale: const Locale("en"),
-      child: ScreenUtilInit(
-        designSize: const Size(390, 844),
-        minTextAdapt: true,
-        splitScreenMode: false,
+  runApp(
+    ConnectivityAppWrapper(
+      app: EasyLocalization(
+        supportedLocales: supportedLocales,
+        path: 'assets/translations',
+        fallbackLocale: const Locale('en'),
+        startLocale: const Locale("en"),
+        child: ScreenUtilInit(
+          designSize: const Size(390, 844),
+          minTextAdapt: true,
+          splitScreenMode: false,
         builder: (context, child) {
-          return GetMaterialApp(
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
-            debugShowCheckedModeBanner: false,
-            title: 'EStation',
-            theme: ThemeData(
-              useMaterial3: true,
-              fontFamily: 'inter',
-              primaryColor: primaryColor,
-            ),
-            home: main,
-          );
-        },
+            return GetMaterialApp(
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
+              debugShowCheckedModeBanner: false,
+              title: 'EStation',
+              theme: ThemeData(
+                useMaterial3: true,
+                fontFamily: 'inter',
+                primaryColor: primaryColor,
+              ),
+              home: main,
+            );
+          },
+        ),
       ),
     ),
-  ));
+  );
 }

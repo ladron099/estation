@@ -1,17 +1,12 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
 import 'package:estation/components/widgets.dart';
 import 'package:estation/controllers/admin/admin_home_controller.dart';
-import 'package:estation/screens/admin/citerne_screen.dart';
 import 'package:estation/utils/connectivity_wrapper.dart';
 import 'package:estation/utils/services.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
-import 'employees_list_screen.dart';
 
 class AdminHomeScreen extends StatelessWidget {
   const AdminHomeScreen({super.key});
@@ -85,7 +80,7 @@ class AdminHomeScreen extends StatelessWidget {
                                           textAlign: TextAlign.left,
                                         ).tr(),
                                       ),
-                                10.verticalSpace,
+                                7.verticalSpace,
                                 Padding(
                                   padding:
                                       EdgeInsets.symmetric(horizontal: 50.0.w),
@@ -98,434 +93,502 @@ class AdminHomeScreen extends StatelessWidget {
                                   ).tr(),
                                 ),
                                 40.verticalSpace,
-                                Column(
-                                  children: [
-                                    GetBuilder<AdminHomeController>(
-                                        init: AdminHomeController(),
-                                        builder: (controller) {
-                                          return CarouselSlider(
-                                            carouselController:
-                                                controller.carouselController,
-                                            options: CarouselOptions(
-                                              viewportFraction: 0.8,
-                                              enlargeFactor: 0.12,
-                                              onPageChanged: (index, reason) {
-                                                controller.changeIndex(
-                                                    index, reason);
-                                              },
-                                              height: 229.h,
-                                              autoPlayInterval:
-                                                  const Duration(seconds: 3),
-                                              autoPlayAnimationDuration:
-                                                  const Duration(
-                                                      milliseconds: 800),
-                                              autoPlayCurve:
-                                                  Curves.fastOutSlowIn,
-                                              enlargeCenterPage: true,
-                                              scrollDirection: Axis.horizontal,
-                                            ),
-                                            items: controller.stations.map((i) {
-                                              return Builder(
-                                                builder:
-                                                    (BuildContext context) {
-                                                  return Container(
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 16.w),
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                              .size
-                                                              .width,
-                                                      margin:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal:
-                                                                  5.0.w),
-                                                      decoration: BoxDecoration(
-                                                          gradient:
-                                                              cardGradient,
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius.circular(
-                                                                      20.r))),
-                                                      child: Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            "${i.nomStation}",
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .white,
-                                                                fontSize: 18.sp,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                          ),
-                                                          4.verticalSpace,
-                                                          Text(
-                                                            "${i.adresse}",
-                                                            style: TextStyle(
-                                                              color:
-                                                                  Colors.white,
-                                                              fontSize: 14.sp,
-                                                            ),
-                                                          ),
-                                                          9.verticalSpace,
-                                                          Container(
-                                                            height: 2.h,
-                                                            width: 150.w,
-                                                            decoration: BoxDecoration(
-                                                                color: Colors
-                                                                    .white
-                                                                    .withOpacity(
-                                                                        0.5),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            20.r)),
-                                                          ),
-                                                          9.verticalSpace,
-                                                          Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceBetween,
-                                                            children: [
-                                                              Column(
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Text(
-                                                                    'receipt',
-                                                                    style: TextStyle(
-                                                                        color: Colors
-                                                                            .white,
-                                                                        fontSize: 14
-                                                                            .sp,
-                                                                        fontWeight:
-                                                                            FontWeight.bold),
-                                                                  ).tr(),
-                                                                  4.verticalSpace,
-                                                                  Text(
-                                                                    'notsubmitted',
-                                                                    style:
-                                                                        TextStyle(
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontSize:
-                                                                          13.sp,
-                                                                    ),
-                                                                  ).tr(),
-                                                                  4.verticalSpace,
-                                                                  Text(
-                                                                    'today_number',
-                                                                    style: TextStyle(
-                                                                        color: Colors
-                                                                            .white,
-                                                                        fontSize: 14
-                                                                            .sp,
-                                                                        fontWeight:
-                                                                            FontWeight.bold),
-                                                                  ).tr(),
-                                                                  4.verticalSpace,
-                                                                  Text(
-                                                                    '3005',
-                                                                    style:
-                                                                        TextStyle(
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontSize:
-                                                                          13.sp,
-                                                                    ),
-                                                                  ).tr(),
-                                                                  4.verticalSpace,
-                                                                  Text(
-                                                                    'today_number',
-                                                                    style: TextStyle(
-                                                                        color: Colors
-                                                                            .white,
-                                                                        fontSize: 15
-                                                                            .sp,
-                                                                        fontWeight:
-                                                                            FontWeight.bold),
-                                                                  ).tr(),
-                                                                  4.verticalSpace,
-                                                                  Text(
-                                                                    '8995',
-                                                                    style:
-                                                                        TextStyle(
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontSize:
-                                                                          13.sp,
-                                                                    ),
-                                                                  ).tr(),
-                                                                ],
-                                                              ),
-                                                            ],
-                                                          )
-                                                        ],
-                                                      ));
-                                                },
-                                              );
-                                            }).toList(),
-                                          );
-                                        }),
-                                    10.verticalSpace,
-                                    Container(
-                                      alignment: Alignment.bottomCenter,
-                                      padding: EdgeInsets.only(bottom: 13.h),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: List.generate(
-                                            controller.stations.length,
-                                            (index) => Container(
-                                                  height: 10.h,
-                                                  width: 10.w,
-                                                  margin: const EdgeInsets.only(
-                                                      right: 5),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20.r),
-                                                    color: controller
-                                                                .currentIndex ==
-                                                            index
-                                                        ? Colors.white
-                                                        : Colors.grey[500],
-                                                  ),
-                                                )),
-                                      ),
-                                    ),
-                                    3.verticalSpace,
-                                  ],
-                                ),
                                 Expanded(
                                   child: Container(
                                     width: double.infinity,
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 40.w),
                                     decoration: BoxDecoration(
-                                        color: Colors.white,
+                                        color: backgroundColor,
                                         borderRadius:
                                             BorderRadius.circular(20.r)),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        InkWell(
-                                          onTap: () {
-                                            Get.to(
-                                                () =>
-                                                    const EmployeesListScreen(),
-                                                transition:
-                                                    Transition.upToDown);
-                                            controller.update();
-                                          },
-                                          child: Container(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 20.w,
-                                                vertical: 20.h),
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius:
-                                                  const BorderRadius.all(
-                                                      Radius.circular(20)),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  color: Colors.grey
-                                                      .withOpacity(0.25),
-                                                  spreadRadius: -1,
-                                                  blurRadius: 7,
-                                                  offset: const Offset(0,
-                                                      0), // changes position of shadow
-                                                ),
-                                              ],
-                                            ),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.end,
-                                              children: [
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Text(
-                                                      controller
-                                                          .stations[controller
-                                                              .currentIndex]
-                                                          .users!
-                                                          .length
-                                                          .toString(),
-                                                      style: TextStyle(
-                                                          color: primaryColor,
-                                                          fontSize: 20.sp,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                      textAlign: TextAlign.left,
-                                                    ),
-                                                    const Text(
-                                                      "Pompistes",
-                                                      textAlign: TextAlign.left,
-                                                    ).tr()
-                                                  ],
-                                                ),
-                                                Center(
-                                                  child: Icon(
-                                                    CupertinoIcons
-                                                        .person_alt_circle,
-                                                    color: primaryColor,
-                                                    size: 35.sp,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
+                                    child: Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 24.w),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          24.verticalSpace,
+                                          DropDownMenu(
+                                            items: controller.dropdownItems,
+                                            listItem:
+                                                controller.selectedStation,
+                                            function: (value) {
+                                              controller
+                                                  .dropDownMenuChange(value);
+                                              controller.update();
+                                            },
                                           ),
-                                        ),
-                                        10.verticalSpace,
-                                        InkWell(
-                                          onTap: () {
-                                            Get.to(() => const CiterneScreen(),
-                                                transition:
-                                                    Transition.upToDown);
-                                            controller.update();
-                                          },
-                                          child: Container(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 20.w,
-                                                vertical: 20.h),
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius:
-                                                  const BorderRadius.all(
-                                                      Radius.circular(20)),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  color: Colors.grey
-                                                      .withOpacity(0.25),
-                                                  spreadRadius: -1,
-                                                  blurRadius: 7,
-                                                  offset: const Offset(0,
-                                                      0), // changes position of shadow
-                                                ),
-                                              ],
-                                            ),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.end,
+                                          32.verticalSpace,
+                                          for (int i = 0;
+                                              i <
+                                                  controller.homeData.carburant!
+                                                      .length;
+                                              i++)
+                                            Column(
                                               children: [
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Text(
-                                                      "5",
-                                                      style: TextStyle(
-                                                          color: primaryColor,
-                                                          fontSize: 20.sp,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                      textAlign: TextAlign.left,
+                                                Container(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                            .size
+                                                            .width,
+                                                    constraints: BoxConstraints(
+                                                      minHeight: 70.h,
                                                     ),
-                                                    const Text(
-                                                      "Citernes",
-                                                      textAlign: TextAlign.left,
-                                                    ).tr()
-                                                  ],
-                                                ),
-                                                Center(
-                                                  child: Icon(
-                                                    CupertinoIcons.drop,
-                                                    color: successColor,
-                                                    size: 35.sp,
-                                                  ),
-                                                )
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                      borderRadius:
+                                                          const BorderRadius
+                                                                  .all(
+                                                              Radius.circular(
+                                                                  20)),
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                          color: Colors.grey
+                                                              .withOpacity(
+                                                                  0.25),
+                                                          spreadRadius: -1,
+                                                          blurRadius: 7,
+                                                          offset: const Offset(
+                                                              0,
+                                                              0), // changes position of shadow
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 20.w),
+                                                      child: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          13.verticalSpace,
+                                                          Row(
+                                                            children: [
+                                                              Image.asset(
+                                                                'assets/img/dollar.png',
+                                                                width: 15.w,
+                                                                height: 15.w,
+                                                              ),
+                                                              7.horizontalSpace,
+                                                              Text(
+                                                                controller
+                                                                    .homeData
+                                                                    .carburant![
+                                                                        i]
+                                                                    .nomCarburant!,
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .black,
+                                                                    fontSize:
+                                                                        12.sp),
+                                                              ).tr(),
+                                                            ],
+                                                          ),
+                                                          7.verticalSpace,
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                controller
+                                                                    .homeData
+                                                                    .carburant![
+                                                                        i]
+                                                                    .prixCarburant!
+                                                                    .toString(),
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .black,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontSize:
+                                                                        20.sp),
+                                                              ),
+                                                              const Spacer(),
+                                                              Text(
+                                                                controller
+                                                                            .homeData
+                                                                            .carburant![
+                                                                                i]
+                                                                            .percentChange!
+                                                                            .toString() ==
+                                                                        "0"
+                                                                    ? "0%"
+                                                                    : controller
+                                                                        .homeData
+                                                                        .carburant![
+                                                                            i]
+                                                                        .percentChange!
+                                                                        .toString(),
+                                                                style: TextStyle(
+                                                                    color: controller.homeData.carburant![i].percentChange == "0"
+                                                                        ? yellowColor
+                                                                        : controller.homeData.carburant![i].increase!
+                                                                            ? successColor
+                                                                            : dangerColor,
+                                                                    fontWeight: FontWeight.bold,
+                                                                    fontSize: 20.sp),
+                                                              ),
+                                                              7.horizontalSpace,
+                                                              controller
+                                                                          .homeData
+                                                                          .carburant![
+                                                                              i]
+                                                                          .percentChange ==
+                                                                      "0"
+                                                                  ? Image.asset(
+                                                                      'assets/img/pause.png',
+                                                                      width:
+                                                                          26.w,
+                                                                      height:
+                                                                          26.w,
+                                                                    )
+                                                                  : controller
+                                                                          .homeData
+                                                                          .carburant![
+                                                                              i]
+                                                                          .increase!
+                                                                      ? Image
+                                                                          .asset(
+                                                                          'assets/img/up.png',
+                                                                          width:
+                                                                              26.w,
+                                                                          height:
+                                                                              26.w,
+                                                                        )
+                                                                      : Image
+                                                                          .asset(
+                                                                          'assets/img/down.png',
+                                                                          width:
+                                                                              26.w,
+                                                                          height:
+                                                                              26.w,
+                                                                        ),
+                                                            ],
+                                                          ),
+                                                          6.verticalSpace,
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                "MAD",
+                                                                style: TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    color: Colors
+                                                                        .black,
+                                                                    fontSize:
+                                                                        19.sp),
+                                                              ).tr(),
+                                                            ],
+                                                          ),
+                                                          18.verticalSpace,
+                                                        ],
+                                                      ),
+                                                    )),
+                                                20.verticalSpace,
                                               ],
                                             ),
-                                          ),
-                                        ),
-                                        10.verticalSpace,
-                                        Container(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 20.w, vertical: 20.h),
-                                          width:
-                                              MediaQuery.of(context).size.width,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                                    Radius.circular(20)),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Colors.grey
-                                                    .withOpacity(0.25),
-                                                spreadRadius: -1,
-                                                blurRadius: 7,
-                                                offset: const Offset(0,
-                                                    0), // changes position of shadow
+                                          Container(
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              constraints: BoxConstraints(
+                                                minHeight: 70.h,
                                               ),
-                                            ],
-                                          ),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.end,
-                                            children: [
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    "8",
-                                                    style: TextStyle(
-                                                        color: primaryColor,
-                                                        fontSize: 20.sp,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                    textAlign: TextAlign.left,
+                                              decoration: BoxDecoration(
+                                                gradient: lightGradientColor,
+                                                borderRadius:
+                                                    const BorderRadius.all(
+                                                        Radius.circular(20)),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.grey
+                                                        .withOpacity(0.25),
+                                                    spreadRadius: -1,
+                                                    blurRadius: 7,
+                                                    offset: const Offset(0,
+                                                        0), // changes position of shadow
                                                   ),
-                                                  const Text(
-                                                    "Pompes",
-                                                    textAlign: TextAlign.left,
-                                                  ).tr()
                                                 ],
                                               ),
-                                              Center(
-                                                child: Icon(
-                                                  CupertinoIcons.gear_solid,
-                                                  color:
-                                                      const Color(0xff48A7F5),
-                                                  size: 35.sp,
+                                              child: Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 20.w),
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: [
+                                                    13.verticalSpace,
+                                                    Row(
+                                                      children: [
+                                                        Image.asset(
+                                                          'assets/img/Chart.png',
+                                                          width: 15.w,
+                                                          height: 15.w,
+                                                        ),
+                                                        7.horizontalSpace,
+                                                        Text(
+                                                          "todaynumber",
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 12.sp),
+                                                        ).tr(),
+                                                      ],
+                                                    ),
+                                                    7.verticalSpace,
+                                                    Row(
+                                                      children: [
+                                                        Text(
+                                                          controller.homeData
+                                                              .chiffreToday!
+                                                              .toString(),
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 20.sp),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    6.verticalSpace,
+                                                    Row(
+                                                      children: [
+                                                        Text(
+                                                          "MAD",
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 19.sp),
+                                                        ).tr(),
+                                                      ],
+                                                    ),
+                                                    18.verticalSpace,
+                                                  ],
                                                 ),
-                                              )
-                                            ],
+                                              )),
+                                          19.verticalSpace,
+                                          Container(
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            // margin: EdgeInsets.only(
+                                            //     left: 30.h, right: 30.h),
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20.r)),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.25),
+                                                  spreadRadius: -1,
+                                                  blurRadius: 7,
+                                                  offset: const Offset(0,
+                                                      0), // changes position of shadow
+                                                ),
+                                              ],
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 25.w),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  17.verticalSpace,
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                        bottom: 26.0.h),
+                                                    child: Row(
+                                                      children: [
+                                                        Image.asset(
+                                                          'assets/img/Drop.png',
+                                                          width: 18.w,
+                                                          height: 19.w,
+                                                        ),
+                                                        10.horizontalSpace,
+                                                        Text(
+                                                          "jauguage",
+                                                          style: TextStyle(
+                                                              color: const Color(
+                                                                  0xff14213D),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 14.sp),
+                                                        ).tr(),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    constraints: BoxConstraints(
+                                                        minHeight: 200.h),
+                                                    height: 200.h,
+                                                    child: ListView.separated(
+                                                      physics:
+                                                          const NeverScrollableScrollPhysics(),
+                                                      shrinkWrap: true,
+                                                      itemBuilder:
+                                                          (BuildContext context,
+                                                                  int index) =>
+                                                              Container(
+                                                        width: double.infinity,
+                                                        constraints:
+                                                            BoxConstraints(
+                                                          minHeight: 60.h,
+                                                        ),
+                                                        decoration: BoxDecoration(
+                                                            color: Colors.white,
+                                                            borderRadius:
+                                                                BorderRadius.all(
+                                                                    Radius.circular(
+                                                                        13.r)),
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                color: Colors
+                                                                    .grey
+                                                                    .withOpacity(
+                                                                        0.50),
+                                                                spreadRadius:
+                                                                    -1,
+                                                                blurRadius: 7,
+                                                                offset: const Offset(
+                                                                    0,
+                                                                    0), // changes position of shadow
+                                                              ),
+                                                            ]),
+                                                        child: Padding(
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                                  horizontal:
+                                                                      15.0.w),
+                                                          child: Column(
+                                                            children: [
+                                                              17.verticalSpace,
+                                                              Row(
+                                                                children: [
+                                                                  Text(
+                                                                    controller
+                                                                        .homeData
+                                                                        .citerneJaugage![
+                                                                            index]
+                                                                        .nomCiterne!,
+                                                                    style: TextStyle(
+                                                                        color: const Color(
+                                                                            0xff14213D),
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .bold,
+                                                                        fontSize:
+                                                                            14.sp),
+                                                                  ).tr(),
+                                                                  12.horizontalSpace,
+                                                                  Text(
+                                                                    controller
+                                                                        .homeData
+                                                                        .citerneJaugage![
+                                                                            index]
+                                                                        .nomProduit!,
+                                                                    style: TextStyle(
+                                                                        color: const Color(
+                                                                            0xff14213D),
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .normal,
+                                                                        fontSize:
+                                                                            14.sp),
+                                                                  ).tr(),
+                                                                  const Spacer(),
+                                                                  Text(
+                                                                    "Jaugage",
+                                                                    style: TextStyle(
+                                                                        color: const Color(
+                                                                            0xff14213D),
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .bold,
+                                                                        fontSize:
+                                                                            14.sp),
+                                                                  ).tr(),
+                                                                ],
+                                                              ),
+                                                              10.verticalSpace,
+                                                              Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
+                                                                children: [
+                                                                  ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            10.r),
+                                                                    child:
+                                                                        SizedBox(
+                                                                      height:
+                                                                          10.h,
+                                                                      width:
+                                                                          143.w,
+                                                                      child:
+                                                                          LinearProgressIndicator(
+                                                                        value: double.parse(controller.homeData.citerneJaugage![index].percentageLevel!) /
+                                                                            100,
+                                                                        backgroundColor:
+                                                                            const Color(0xffD9D9D9),
+                                                                        valueColor:
+                                                                            const AlwaysStoppedAnimation<Color>(
+                                                                          Color(
+                                                                              0xff6366F1),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Text(
+                                                                    controller
+                                                                        .homeData
+                                                                        .citerneJaugage![
+                                                                            index]
+                                                                        .jaugage
+                                                                        .toString(),
+                                                                    style: TextStyle(
+                                                                        color: const Color(
+                                                                            0xff14213D),
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .w500,
+                                                                        fontSize:
+                                                                            14.sp),
+                                                                  ).tr(),
+                                                                ],
+                                                              ),
+                                                              17.verticalSpace,
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      itemCount: controller
+                                                          .homeData
+                                                          .citerneJaugage!
+                                                          .length,
+                                                      separatorBuilder:
+                                                          (BuildContext context,
+                                                                  int index) =>
+                                                              10.verticalSpace,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
                                           ),
-                                        )
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),

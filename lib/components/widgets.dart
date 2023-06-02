@@ -446,9 +446,9 @@ class _DropDownMenuState extends State<DropDownMenu> {
       height: 60.h,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        color: Colors.transparent,
+        color: const Color(0xffAAAAAA).withOpacity(0.2),
         borderRadius: BorderRadius.circular(25.r),
-        border: Border.all(color: const Color(0xffAAAAAA), width: 1),
+        // border: Border.all(color: const Color(0xffAAAAAA), width: 1),
       ),
       child: Row(
         children: [

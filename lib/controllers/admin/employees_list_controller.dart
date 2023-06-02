@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:estation/apiFunctions/auth.dart';
+import 'package:estation/utils/models/User.dart';
 import 'package:estation/utils/models/station.dart';
 import 'package:estation/utils/services.dart';
 import 'package:flutter/material.dart';
@@ -13,17 +14,61 @@ class EmployeesListController extends GetxController {
   Station? selectedStation;
   List<Station> stations = [];
   RxBool loading = false.obs;
-
+  List<User> users = [];
   dropDownMenuChange(value) {
+    users.clear();
     selectedStation = value;
+    loading.value = true;
+    update();
+    StationDao.getUsersStation(value.id).then((value) {
+      print(value.statusCode);
+      print(value.body);
+      switch (value.statusCode) {
+        case 200:
+          for (var element in json.decode(value.body)) {
+            users.add(User.fromJson(element));
+            update();
+          }
+          loading.value = false;
+          update();
+          // loading.toggle();
+          // update();
+          break;
+        case 401:
+          Auth().refreshToken().then((value) {
+            StationDao.getUsersStation(value).then((value) {
+              switch (value.statusCode) {
+                case 200:
+                  for (var element in json.decode(value.body)) {
+                    users.add(User.fromJson(element));
+                    update();
+                  }
+                  loading.value = false;
+                  update();
+                  break;
+                default:
+                  loading.value = false;
+                  update();
+              }
+            });
+          });
+          break;
+        default:
+          loading.value = false;
+          update();
+      }
+    });
+    update();
   }
 
   @override
   void onInit() {
-    loading.toggle();
+    loading.value = true;
     update();
 
-    StationDao.getStations().then((value) { 
+    StationDao.getStations().then((value) {
+      print(value.body);
+      print(value.statusCode);
       switch (value.statusCode) {
         case 200:
           for (var element in json.decode(value.body)) {
@@ -32,13 +77,17 @@ class EmployeesListController extends GetxController {
           }
           dropdownItems = buildDropDownMenuItems(stations);
           selectedStation = dropdownItems![0].value;
+          dropDownMenuChange(selectedStation);
+          loading.value = false;
           update();
-          loading.toggle();
+          break;
+        case 404:
+          loading.value = false;
           update();
           break;
         case 401:
           Auth().refreshToken().then((value) {
-            StationDao.getStations().then((value) { 
+            StationDao.getStations().then((value) {
               switch (value.statusCode) {
                 case 200:
                   for (var element in json.decode(value.body)) {
@@ -46,9 +95,10 @@ class EmployeesListController extends GetxController {
 
                     dropdownItems = buildDropDownMenuItems(stations);
                     selectedStation = dropdownItems![0].value;
-                    update(); 
+                    dropDownMenuChange(selectedStation);
+                    update();
                   }
-                  loading.toggle();
+                  loading.value = false;
                   update();
                   break;
                 default:

@@ -38,5 +38,8 @@
     "history":"Actions History",
     "qty":"Quantity",
     "capacity":"Capacity",
-    "compteur":"Counter"        
+    "compteur":"Counter"        ,
+    "pricegaz":"Gaz Price {}",
+    "todaynumber":"Today's number",
+    "jauguage":"Tank gauging"
 }

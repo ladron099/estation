@@ -203,56 +203,88 @@ class ProductsScreen extends StatelessWidget {
                                 textAlign: TextAlign.left,
                               ).tr(),
                               39.verticalSpace,
-                              SizedBox(
-                                height: 300.h,
-                                width: double.infinity,
-                                child: ListView.separated(
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 0.w),
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: 34,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8.0),
-                                      child: Container(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 32.w, vertical: 20.h),
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(15)),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color:
-                                                  Colors.grey.withOpacity(0.25),
-                                              spreadRadius: -1,
-                                              blurRadius: 7,
-                                              offset: const Offset(0,
-                                                  0), // changes position of shadow
-                                            ),
-                                          ],
-                                        ),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                SizedBox(
-                                                  width: 100.w,
-                                                  child: Text(
-                                                    "Action",
+                                SizedBox(
+                                  height: 300.h,
+                                  width: double.infinity,
+                                  child: ListView.separated(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 0.w),
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: 34,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 8.0),
+                                        child: Container(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 32.w, vertical: 20.h),
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: const BorderRadius.all(
+                                                Radius.circular(15)),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color:
+                                                    Colors.grey.withOpacity(0.25),
+                                                spreadRadius: -1,
+                                                blurRadius: 7,
+                                                offset: const Offset(0,
+                                                    0), // changes position of shadow
+                                              ),
+                                            ],
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  SizedBox(
+                                                    width: 100.w,
+                                                    child: Text(
+                                                      "Action",
+                                                      maxLines: 2,
+                                                      style: TextStyle(
+                                                          color: darkColor,
+                                                          fontSize: 15.sp,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                      textAlign: TextAlign.left,
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 100.w,
+                                                    child: Text(
+                                                      "12/10/23",
+                                                      maxLines: 2,
+                                                      style: TextStyle(
+                                                        color: darkColor,
+                                                        fontSize: 15.sp,
+                                                      ),
+                                                      textAlign: TextAlign.left,
+                                                    ).tr(),
+                                                  )
+                                                ],
+                                              ),
+                                              const Spacer(),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    "qty",
                                                     maxLines: 2,
                                                     style: TextStyle(
                                                         color: darkColor,
@@ -260,62 +292,30 @@ class ProductsScreen extends StatelessWidget {
                                                         fontWeight:
                                                             FontWeight.bold),
                                                     textAlign: TextAlign.left,
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: 100.w,
-                                                  child: Text(
-                                                    "12/10/23",
+                                                  ).tr(),
+                                                  Text(
+                                                    "100",
                                                     maxLines: 2,
                                                     style: TextStyle(
                                                       color: darkColor,
                                                       fontSize: 15.sp,
                                                     ),
                                                     textAlign: TextAlign.left,
-                                                  ).tr(),
-                                                )
-                                              ],
-                                            ),
-                                            const Spacer(),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  "qty",
-                                                  maxLines: 2,
-                                                  style: TextStyle(
-                                                      color: darkColor,
-                                                      fontSize: 15.sp,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                  textAlign: TextAlign.left,
-                                                ).tr(),
-                                                Text(
-                                                  "100",
-                                                  maxLines: 2,
-                                                  style: TextStyle(
-                                                    color: darkColor,
-                                                    fontSize: 15.sp,
-                                                  ),
-                                                  textAlign: TextAlign.left,
-                                                ).tr()
-                                              ],
-                                            ),
-                                          ],
+                                                  ).tr()
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                  separatorBuilder:
-                                      (BuildContext context, int index) {
-                                    return 21.verticalSpace;
-                                  },
+                                      );
+                                    },
+                                    separatorBuilder:
+                                        (BuildContext context, int index) {
+                                      return 21.verticalSpace;
+                                    },
+                                  ),
                                 ),
-                              ),
-                              30.verticalSpace,
+                                30.verticalSpace,
                             ],
                           ),
                         ),
