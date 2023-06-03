@@ -55,7 +55,7 @@ class CiterneScreen extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
             decoration: const BoxDecoration(
-              color: Colors.white,
+              color: backgroundColor,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(30),
                 topRight: Radius.circular(30),
@@ -117,136 +117,174 @@ class CiterneScreen extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       25.verticalSpace,
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Container(
-                                          constraints:
-                                              BoxConstraints(minHeight: 230.h),
-                                          height: 447.h,
-                                          child: ListView.separated(
-                                            shrinkWrap: true,
-                                            scrollDirection: Axis.vertical,
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 20.w),
-                                            itemBuilder: (BuildContext context,
-                                                    int index) =>
-                                                Padding(
+                                      controller
+                                              .homeData.citerneJaugage!.isEmpty
+                                          ? Center(
+                                              child: const Text("nodata").tr(),
+                                            )
+                                          : Padding(
                                               padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 8.0),
+                                                  const EdgeInsets.all(8.0),
                                               child: Container(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 18.w,
-                                                    vertical: 19.h),
-                                                width: MediaQuery.of(context)
-                                                    .size
-                                                    .width,
-                                                decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                  borderRadius:
-                                                      const BorderRadius.all(
-                                                          Radius.circular(15)),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                      color: Colors.grey
-                                                          .withOpacity(0.25),
-                                                      spreadRadius: -1,
-                                                      blurRadius: 7,
-                                                      offset: const Offset(0,
-                                                          0), // changes position of shadow
-                                                    ),
-                                                  ],
-                                                ),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  children: [
-                                                    Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        SizedBox(
-                                                          width: 100.w,
-                                                          child: Text(
-                                                            "Citerne X",
-                                                            maxLines: 2,
-                                                            style: TextStyle(
-                                                                color:
-                                                                    darkColor,
-                                                                fontSize: 15.sp,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                            textAlign:
-                                                                TextAlign.left,
+                                                constraints: BoxConstraints(
+                                                    minHeight: 230.h),
+                                                height: 447.h,
+                                                child: ListView.separated(
+                                                  shrinkWrap: true,
+                                                  scrollDirection:
+                                                      Axis.vertical,
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 20.w),
+                                                  itemBuilder:
+                                                      (BuildContext context,
+                                                              int index) =>
+                                                          Padding(
+                                                    padding: const EdgeInsets
+                                                            .symmetric(
+                                                        horizontal: 8.0),
+                                                    child: Container(
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 18.w,
+                                                              vertical: 19.h),
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                              .size
+                                                              .width,
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.white,
+                                                        borderRadius:
+                                                            const BorderRadius
+                                                                    .all(
+                                                                Radius.circular(
+                                                                    15)),
+                                                        boxShadow: [
+                                                          BoxShadow(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.25),
+                                                            spreadRadius: -1,
+                                                            blurRadius: 7,
+                                                            offset: const Offset(
+                                                                0,
+                                                                0), // changes position of shadow
                                                           ),
-                                                        ),
-                                                        SizedBox(
-                                                          width: 100.w,
-                                                          child: Text(
-                                                            "Gazoil",
-                                                            maxLines: 2,
-                                                            style: TextStyle(
-                                                              color: darkColor,
-                                                              fontSize: 15.sp,
-                                                            ),
-                                                            textAlign:
-                                                                TextAlign.left,
-                                                          ).tr(),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    const Spacer(),
-                                                    Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Text(
-                                                          "capacite",
-                                                          maxLines: 2,
-                                                          style: TextStyle(
-                                                              color: darkColor,
-                                                              fontSize: 15.sp,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                          textAlign:
-                                                              TextAlign.left,
-                                                        ).tr(),
-                                                        Text(
-                                                          "1000 L",
-                                                          maxLines: 2,
-                                                          style: TextStyle(
-                                                            color: darkColor,
-                                                            fontSize: 15.sp,
+                                                        ],
+                                                      ),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              SizedBox(
+                                                                width: 100.w,
+                                                                child: Text(
+                                                                  controller
+                                                                      .homeData
+                                                                      .citerneJaugage![
+                                                                          index]
+                                                                      .nomCiterne!,
+                                                                  maxLines: 2,
+                                                                  style: TextStyle(
+                                                                      color:
+                                                                          darkColor,
+                                                                      fontSize:
+                                                                          15.sp,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold),
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .left,
+                                                                ),
+                                                              ),
+                                                              SizedBox(
+                                                                width: 100.w,
+                                                                child: Text(
+                                                                  controller
+                                                                      .homeData
+                                                                      .citerneJaugage![
+                                                                          index]
+                                                                      .nomProduit!,
+                                                                  maxLines: 2,
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color:
+                                                                        darkColor,
+                                                                    fontSize:
+                                                                        15.sp,
+                                                                  ),
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .left,
+                                                                ).tr(),
+                                                              )
+                                                            ],
                                                           ),
-                                                          textAlign:
-                                                              TextAlign.left,
-                                                        ).tr()
-                                                      ],
+                                                          const Spacer(),
+                                                          Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Text(
+                                                                "capacite",
+                                                                maxLines: 2,
+                                                                style: TextStyle(
+                                                                    color:
+                                                                        darkColor,
+                                                                    fontSize:
+                                                                        15.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .left,
+                                                              ).tr(),
+                                                              Text(
+                                                                "${controller.homeData.citerneJaugage![index].jaugage!} L",
+                                                                maxLines: 2,
+                                                                style:
+                                                                    TextStyle(
+                                                                  color:
+                                                                      darkColor,
+                                                                  fontSize:
+                                                                      15.sp,
+                                                                ),
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .left,
+                                                              ).tr()
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
-                                                  ],
+                                                  ),
+                                                  itemCount: controller.homeData
+                                                      .citerneJaugage!.length,
+                                                  separatorBuilder:
+                                                      (BuildContext context,
+                                                              int index) =>
+                                                          10.verticalSpace,
                                                 ),
                                               ),
                                             ),
-                                            itemCount: 14,
-                                            separatorBuilder:
-                                                (BuildContext context,
-                                                        int index) =>
-                                                    10.verticalSpace,
-                                          ),
-                                        ),
-                                      ),
                                       25.verticalSpace,
                                     ],
                                   ),

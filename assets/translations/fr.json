@@ -41,5 +41,6 @@
     "compteur":"Compteur",
     "pricegaz":"Prix Gasoil {}",
     "todaynumber":"Chiffre d’aujourd’hui",
-    "jauguage":"Jaugage des citernes"
+    "jauguage":"Jaugage des citernes",
+    "nodata":"Pas de données disponibles"
 }

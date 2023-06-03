@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'dart:developer';
 
-import 'package:carousel_slider/carousel_controller.dart';
 import 'package:estation/apiFunctions/auth.dart';
 import 'package:estation/apiFunctions/station_dao.dart';
 import 'package:estation/utils/models/User.dart';
@@ -12,8 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AdminHomeController extends GetxController {
-  int currentIndex = 0;
-  CarouselController carouselController = CarouselController();
   User? user;
   List<User> users = [];
   List<Station> stations = [];
@@ -21,12 +17,6 @@ class AdminHomeController extends GetxController {
   Station? selectedStation;
   Homedata homeData = Homedata();
   RxBool loading = false.obs;
-  changeIndex(index, reason) {
-    currentIndex = index;
-    update();
-    carouselController.animateToPage(index);
-    update();
-  }
 
   dropDownMenuChange(value) {
     users.clear();
@@ -37,7 +27,6 @@ class AdminHomeController extends GetxController {
       switch (value.statusCode) {
         case 200:
           homeData = Homedata.fromJson(json.decode(value.body));
-          print("${homeData.toJson()}");
           loading.value = false;
           update();
 

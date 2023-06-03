@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
 import 'package:estation/screens/admin/admin_home_screen.dart';
+import 'package:estation/screens/admin/citerne_screen.dart';
 import 'package:estation/screens/admin/employees_list_screen.dart';
 import 'package:estation/utils/models/station.dart';
 import 'package:estation/utils/services.dart';
@@ -12,6 +13,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+
+import '../screens/admin/products_screen.dart';
 
 class PrimaryTextField extends StatelessWidget {
   String hintText;
@@ -350,6 +353,9 @@ class DrawerWidget extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             Get.back();
+                            Get.to(() => const CiterneScreen(),
+                                transition: Transition.rightToLeftWithFade,
+                                duration: const Duration(milliseconds: 500));
                           },
                           child: Row(
                             children: [
@@ -372,6 +378,9 @@ class DrawerWidget extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             Get.back();
+                            Get.to(() => const ProductsScreen(),
+                                transition: Transition.rightToLeftWithFade,
+                                duration: const Duration(milliseconds: 500));
                           },
                           child: Row(
                             children: [
@@ -450,34 +459,29 @@ class _DropDownMenuState extends State<DropDownMenu> {
         borderRadius: BorderRadius.circular(25.r),
         // border: Border.all(color: const Color(0xffAAAAAA), width: 1),
       ),
-      child: Row(
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w),
-            child: SizedBox(
-              height: 65.h,
-              width: 300.w,
-              child: DropdownButtonHideUnderline(
-                child: DropdownButton<Station>(
-                  value: widget.listItem,
-                  items: widget.items,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                  ),
-                  iconSize: 20,
-                  icon: const Icon(
-                    CupertinoIcons.chevron_down,
-                    color: Colors.black,
-                  ),
-                  iconEnabledColor: Colors.grey[800],
-                  isExpanded: true,
-                  onChanged: widget.function,
-                ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 23.w),
+        child: SizedBox(
+          width: 300.w,
+          child: DropdownButtonHideUnderline(
+            child: DropdownButton<Station>(
+              value: widget.listItem,
+              items: widget.items,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16.sp,
               ),
+              iconSize: 20.sp,
+              icon: const Icon(
+                CupertinoIcons.chevron_down,
+                color: Colors.black,
+              ),
+              iconEnabledColor: Colors.grey[800],
+              isExpanded: true,
+              onChanged: widget.function,
             ),
           ),
-        ],
+        ),
       ),
     );
   }

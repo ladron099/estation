@@ -20,9 +20,7 @@ class EmployeesListController extends GetxController {
     selectedStation = value;
     loading.value = true;
     update();
-    StationDao.getUsersStation(value.id).then((value) {
-      print(value.statusCode);
-      print(value.body);
+    StationDao.getUsersStation(value.id).then((value) { 
       switch (value.statusCode) {
         case 200:
           for (var element in json.decode(value.body)) {
@@ -66,9 +64,7 @@ class EmployeesListController extends GetxController {
     loading.value = true;
     update();
 
-    StationDao.getStations().then((value) {
-      print(value.body);
-      print(value.statusCode);
+    StationDao.getStations().then((value) { 
       switch (value.statusCode) {
         case 200:
           for (var element in json.decode(value.body)) {

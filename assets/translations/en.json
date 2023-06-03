@@ -41,5 +41,6 @@
     "compteur":"Counter"        ,
     "pricegaz":"Gaz Price {}",
     "todaynumber":"Today's number",
-    "jauguage":"Tank gauging"
+    "jauguage":"Tank gauging",
+    "nodata":"No data to display"
 }

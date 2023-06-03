@@ -38,6 +38,7 @@ class AdminHomeScreen extends StatelessWidget {
                   title: Image.asset(
                     'assets/img/logoWhite.png',
                     width: 140.w,
+                    height: 140.h,
                   ),
                   centerTitle: true,
                   actions: [
@@ -60,6 +61,7 @@ class AdminHomeScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                14.verticalSpace,
                                 !controller.loading.value
                                     ? Padding(
                                         padding: EdgeInsets.symmetric(
@@ -504,7 +506,7 @@ class AdminHomeScreen extends StatelessWidget {
                                                                             FontWeight
                                                                                 .normal,
                                                                         fontSize:
-                                                                            14.sp),
+                                                                            12.sp),
                                                                   ).tr(),
                                                                   const Spacer(),
                                                                   Text(
@@ -587,6 +589,7 @@ class AdminHomeScreen extends StatelessWidget {
                                               ),
                                             ),
                                           ),
+                                          19.verticalSpace,
                                         ],
                                       ),
                                     ),

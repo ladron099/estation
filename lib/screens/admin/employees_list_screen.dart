@@ -111,13 +111,13 @@ class EmployeesListScreen extends StatelessWidget {
                                       .toList()
                                       .isEmpty
                                   ? Container(
-                                      child:
-                                          const Center(child: Text("no data")),
+                                      child: Center(
+                                          child: const Text("nodata").tr()),
                                     )
                                   : Container(
                                       constraints:
                                           BoxConstraints(minHeight: 140.h),
-                                      height: 145.h,
+                                      height: 140.h,
                                       child: ListView.separated(
                                         shrinkWrap: true,
                                         scrollDirection: Axis.horizontal,
@@ -137,6 +137,9 @@ class EmployeesListScreen extends StatelessWidget {
                                           },
                                           child: Container(
                                               width: 150.w,
+                                              constraints: BoxConstraints(
+                                                  minWidth: 140.w,
+                                                  minHeight: 140.h),
                                               decoration: BoxDecoration(
                                                 gradient: const LinearGradient(
                                                   end: Alignment.topCenter,
@@ -162,11 +165,16 @@ class EmployeesListScreen extends StatelessWidget {
                                                     size: 37,
                                                   ),
                                                   10.verticalSpace,
-                                                  Center(
-                                                    child: SizedBox(
-                                                      width: 100.w,
+                                                  SizedBox(
+                                                    width: 100.w,
+                                                    child: Center(
                                                       child: Text(
                                                         "${controller.users[index].prenom} ${controller.users[index].nom}",
+                                                        maxLines: 1,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
                                                         style: TextStyle(
                                                           color: Colors.white,
                                                           fontSize: 13.sp,
@@ -181,9 +189,11 @@ class EmployeesListScreen extends StatelessWidget {
                                                       width: 100.w,
                                                       child: Text(
                                                         "${controller.users[index].email} ",
+                                                        maxLines: 1,
                                                         textAlign:
                                                             TextAlign.center,
-                                                        maxLines: 2,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
                                                         style: TextStyle(
                                                           color: Colors.white,
                                                           fontSize: 13.sp,
@@ -191,15 +201,6 @@ class EmployeesListScreen extends StatelessWidget {
                                                       ).tr(),
                                                     ),
                                                   ),
-                                                  12.verticalSpace,
-                                                  Text(
-                                                    "moredetails",
-                                                    style: TextStyle(
-                                                      color: Colors.white
-                                                          .withOpacity(0.5),
-                                                      fontSize: 12.sp,
-                                                    ),
-                                                  ).tr(),
                                                 ],
                                               )),
                                         ),
@@ -234,8 +235,8 @@ class EmployeesListScreen extends StatelessWidget {
                                       .toList()
                                       .isEmpty
                                   ? Container(
-                                      child: const Center(
-                                        child: Text('no data'),
+                                      child: Center(
+                                        child: const Text('nodata').tr(),
                                       ),
                                     )
                                   : Container(
@@ -402,17 +403,19 @@ class EmployeesListScreen extends StatelessWidget {
                                                                             BoxDecoration(
                                                                           gradient:
                                                                               cardGradient,
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(500.r),
+                                                                          shape:
+                                                                              BoxShape.circle,
                                                                         ),
                                                                         child:
-                                                                            Icon(
-                                                                          IconlyLight
-                                                                              .arrow_right,
-                                                                          size:
-                                                                              13.sp,
-                                                                          color:
-                                                                              Colors.white,
+                                                                            Center(
+                                                                          child:
+                                                                              Icon(
+                                                                            IconlyLight.arrow_right,
+                                                                            size:
+                                                                                13.sp,
+                                                                            color:
+                                                                                Colors.white,
+                                                                          ),
                                                                         ),
                                                                       )),
                                                                     ],
