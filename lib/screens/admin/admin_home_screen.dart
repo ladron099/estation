@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
 import 'package:estation/components/widgets.dart';
 import 'package:estation/controllers/admin/admin_home_controller.dart';
+import 'package:estation/screens/admin/charts_screen.dart';
 import 'package:estation/utils/connectivity_wrapper.dart';
 import 'package:estation/utils/services.dart';
 import 'package:flutter/material.dart';
@@ -66,12 +67,26 @@ class AdminHomeScreen extends StatelessWidget {
                                     ? Padding(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 50.0.w),
-                                        child: Text(
-                                          plural('welcomeuser', 0,
-                                              args: [controller.user!.nom!]),
-                                          style: whiteTitle,
-                                          textAlign: TextAlign.left,
-                                        ).tr(),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              plural('welcomeuser', 0, args: [
+                                                controller.user!.nom!
+                                              ]),
+                                              style: whiteTitle,
+                                              textAlign: TextAlign.left,
+                                            ).tr(),
+                                            InkWell(
+                                              onTap: () {
+                                                controller.onInit();
+                                              },
+                                              child: const Icon(Icons.refresh,
+                                                  color: Colors.white),
+                                            )
+                                          ],
+                                        ),
                                       )
                                     : Padding(
                                         padding: EdgeInsets.symmetric(
@@ -100,8 +115,9 @@ class AdminHomeScreen extends StatelessWidget {
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                         color: backgroundColor,
-                                        borderRadius:
-                                            BorderRadius.circular(20.r)),
+                                        borderRadius: BorderRadius.only(
+                                            topRight: Radius.circular(20.r),
+                                            topLeft: Radius.circular(20.r))),
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 24.w),
@@ -120,7 +136,22 @@ class AdminHomeScreen extends StatelessWidget {
                                               controller.update();
                                             },
                                           ),
-                                          32.verticalSpace,
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Get.to(
+                                                    () => ChartScreen(),
+                                                  );
+                                                },
+                                                child: const Text(
+                                                  'seeall',
+                                                ).tr(),
+                                              ),
+                                            ],
+                                          ),
                                           for (int i = 0;
                                               i <
                                                   controller.homeData.carburant!

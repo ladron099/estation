@@ -101,7 +101,8 @@ class EmployeesListController extends GetxController {
               }
             });
           });
-          break;
+          break; 
+
         default:
       }
     });

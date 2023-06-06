@@ -28,9 +28,16 @@ class ScanController extends GetxController {
         final textRecognizer = TextRecognizer();
         final inputImage = InputImage.fromFilePath(image!.path);
         final recognizedText = await textRecognizer.processImage(inputImage);
-        number.text = recognizedText.text.substring(1, 10);
-        var aStr = number.text.replaceAll(RegExp(r'[^0-9]'), '');
+        number.text = recognizedText.text;
+        var aStr = number.text.replaceAll(RegExp(r'[^0-9]'), '').length > 10
+            ? number.text.replaceAll(RegExp(r'[^0-9]'), '').substring(1, 10)
+            : number.text.replaceAll(RegExp(r'[^0-9]'), '');
         number.text = aStr;
+        if (number.text.isEmpty) {
+          Get.snackbar('Error', 'The Image does not contain a number',
+              colorText: Colors.white, backgroundColor: Colors.red);
+        }
+        update();
       }
     } catch (e) {
       rethrow;

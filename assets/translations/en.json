@@ -42,5 +42,8 @@
     "pricegaz":"Gaz Price {}",
     "todaynumber":"Today's number",
     "jauguage":"Tank gauging",
-    "nodata":"No data to display"
+    "nodata":"No data to display",
+    "therearesummaries":"There are Summaries",
+    "therearenosummaries":"There are no Summaries",
+    "seeall":"See all ->"
 }

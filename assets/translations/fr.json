@@ -42,5 +42,8 @@
     "pricegaz":"Prix Gasoil {}",
     "todaynumber":"Chiffre d’aujourd’hui",
     "jauguage":"Jaugage des citernes",
-    "nodata":"Pas de données disponibles"
+    "nodata":"Pas de données disponibles",
+    "therearesummaries":"Il y'a de relevé",
+    "seeall":"Voir tout ->",
+    "therearenosummaries":"Il n y'a aucun de relevé"
 }

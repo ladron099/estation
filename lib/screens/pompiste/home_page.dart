@@ -87,38 +87,59 @@ class HomePageScreen extends StatelessWidget {
                                   ],
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 19),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      !controller.loading.value
-                                          ? Text(
-                                              plural('welcomeuser', 0, args: [
-                                                controller.user!.nom!
-                                              ]),
-                                              style: whiteTitle,
-                                              textAlign: TextAlign.left,
-                                            ).tr()
-                                          : Text(
-                                              'welcome',
-                                              style: whiteTitle,
-                                              textAlign: TextAlign.left,
-                                            ).tr(),
-                                      5.verticalSpace,
-                                      SizedBox(
-                                        width: 221.w,
-                                        child: Text(
-                                          "welcomemsg",
-                                          style: whiteText,
-                                          textAlign: TextAlign.left,
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 2,
-                                        ).tr(),
-                                      ),
-                                    ],
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: .0.w),
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 23.w, vertical: 0.h),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        !controller.loading.value
+                                            ? Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    plural('welcomeuser', 0,
+                                                        args: [
+                                                          controller.user!.nom!
+                                                        ]),
+                                                    style: whiteTitle,
+                                                    textAlign: TextAlign.left,
+                                                  ).tr(),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      controller.onInit();
+                                                    },
+                                                    child: const Icon(
+                                                        Icons.refresh,
+                                                        color: Colors.white),
+                                                  )
+                                                ],
+                                              )
+                                            : Text(
+                                                'welcome',
+                                                style: whiteTitle,
+                                                textAlign: TextAlign.left,
+                                              ).tr(),
+                                        5.verticalSpace,
+                                        SizedBox(
+                                          width: 221.w,
+                                          child: Text(
+                                            "welcomemsg",
+                                            style: whiteText,
+                                            textAlign: TextAlign.left,
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
+                                          ).tr(),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -172,7 +193,7 @@ class HomePageScreen extends StatelessWidget {
                                             ],
                                           )
                                         : Text(
-                                            "There are summaries",
+                                            "therearesummaries",
                                             style: primaryText,
                                             textAlign: TextAlign.left,
                                           ).tr(),

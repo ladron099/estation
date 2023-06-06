@@ -52,12 +52,12 @@ final primaryTitle = TextStyle(
     fontFamily: 'inter');
 final dangerText = TextStyle(
     color: dangerColor,
-    fontSize: 13.sp,
+    fontSize: 15.sp,
     fontWeight: FontWeight.w300,
     fontFamily: 'inter');
 final successText = TextStyle(
     color: successColor,
-    fontSize: 13.sp,
+    fontSize: 15.sp,
     fontWeight: FontWeight.w300,
     fontFamily: 'inter');
 final secondaryStyle = TextStyle(

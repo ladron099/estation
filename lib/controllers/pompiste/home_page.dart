@@ -17,14 +17,15 @@ class HomePageController extends GetxController {
   List<Pompeuser> myPompes = [];
 
   getMyPompes() async {
+    myPompes.clear();
     loading.value = true;
     update();
-    await UserDao.getPomptes(user!.idUser).then((value) { 
+    await UserDao.getPomptes(user!.idUser).then((value) {
       switch (value.statusCode) {
         case 200:
           for (var element in json.decode(value.body)) {
             myPompes.add(Pompeuser.fromJson(element));
-            update(); 
+            update();
           }
           loading.toggle();
           update();
@@ -79,6 +80,7 @@ class HomePageController extends GetxController {
 
   @override
   void onInit() async {
+    user = User();
     loading.toggle();
     update();
     await getUserFromMemory()!.then((value) async {
@@ -94,11 +96,12 @@ class HomePageController extends GetxController {
   }
 
   void changeData(Pompeuser myPomp) {
-    final scanController = Get.put(ScanController()); 
+    final scanController = Get.put(ScanController());
     scanController.pompeUser = myPomp.idPompeUser!;
     scanController.update();
     Get.to(() => const ScanInfoScreen(),
         transition: Transition.rightToLeftWithFade,
         duration: const Duration(milliseconds: 500));
+    Get.delete<HomePageController>();
   }
 }

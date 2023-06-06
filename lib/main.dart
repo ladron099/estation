@@ -13,6 +13,10 @@ void main() async {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await GetStorage.init();
   Widget? main;
+  String? lang;
+  await getLang().then((value) {
+    lang = value;
+  });
   await initWidget().then(
     (value) {
       main = value;
@@ -24,12 +28,12 @@ void main() async {
         supportedLocales: supportedLocales,
         path: 'assets/translations',
         fallbackLocale: const Locale('en'),
-        startLocale: const Locale("en"),
+        startLocale: Locale(lang ?? 'en'),
         child: ScreenUtilInit(
           designSize: const Size(390, 844),
           minTextAdapt: true,
           splitScreenMode: false,
-        builder: (context, child) {
+          builder: (context, child) {
             return GetMaterialApp(
               localizationsDelegates: context.localizationDelegates,
               supportedLocales: context.supportedLocales,

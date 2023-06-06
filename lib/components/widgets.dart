@@ -6,10 +6,10 @@ import 'package:estation/screens/admin/admin_home_screen.dart';
 import 'package:estation/screens/admin/citerne_screen.dart';
 import 'package:estation/screens/admin/employees_list_screen.dart';
 import 'package:estation/utils/models/station.dart';
-import 'package:estation/utils/services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -226,10 +226,8 @@ class ReleveBox extends StatelessWidget {
             ),
           ),
           verified
-              ? Image.asset(
-                  'assets/img/verified.png',
-                  width: 110.w,
-                )
+              ? Icon(CupertinoIcons.checkmark_alt_circle,
+                  color: successColor, size: 43.sp)
               : Padding(
                   padding: EdgeInsets.symmetric(horizontal: 15.w),
                   child: Center(
@@ -268,163 +266,180 @@ class DrawerWidget extends StatelessWidget {
                 sigmaX: 8,
                 sigmaY: 8,
               ),
-              child: Expanded(
-                child: Container(
-                  width: double.infinity,
-                  decoration: const BoxDecoration(
-                    color: blueColor,
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
-                    ),
+              child: Container(
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  color: blueColor,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
                   ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.h),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        40.verticalSpace,
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Image.asset(
-                              'assets/img/logoWhite.png',
-                              width: 120.w,
+                ),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.h),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      40.verticalSpace,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Image.asset(
+                            'assets/img/logoWhite.png',
+                            width: 120.w,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Get.back();
+                            },
+                            child: Icon(
+                              IconlyLight.arrow_left_circle,
+                              color: Colors.white,
+                              size: 26.sp,
                             ),
-                            InkWell(
-                              onTap: () {
-                                Get.back();
-                              },
-                              child: Icon(
-                                IconlyLight.arrow_left_circle,
-                                color: Colors.white,
-                                size: 26.sp,
-                              ),
-                            )
+                          )
+                        ],
+                      ),
+                      80.verticalSpace,
+                      InkWell(
+                        onTap: () {
+                          Get.back();
+                          Get.to(() => const AdminHomeScreen());
+                        },
+                        child: Row(
+                          children: [
+                            Icon(
+                              CupertinoIcons.home,
+                              color: Colors.white,
+                              size: 26.sp,
+                            ),
+                            20.horizontalSpace,
+                            Text("home",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16.05.sp,
+                                        fontFamily: 'inter'))
+                                .tr()
                           ],
                         ),
-                        80.verticalSpace,
-                        InkWell(
-                          onTap: () {
-                            Get.back();
-                            Get.to(() => const AdminHomeScreen());
-                          },
-                          child: Row(
-                            children: [
-                              Icon(
-                                CupertinoIcons.home,
-                                color: Colors.white,
-                                size: 26.sp,
-                              ),
-                              20.horizontalSpace,
-                              Text("home",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 16.05.sp,
-                                          fontFamily: 'inter'))
-                                  .tr()
-                            ],
-                          ),
+                      ),
+                      38.verticalSpace,
+                      InkWell(
+                        onTap: () {
+                          Get.back();
+                          Get.to(() => const EmployeesListScreen());
+                        },
+                        child: Row(
+                          children: [
+                            Icon(
+                              IconlyBold.user_3,
+                              color: Colors.white,
+                              size: 26.sp,
+                            ),
+                            20.horizontalSpace,
+                            Text("employees",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16.05.sp,
+                                        fontFamily: 'inter'))
+                                .tr()
+                          ],
                         ),
-                        38.verticalSpace,
-                        InkWell(
-                          onTap: () {
-                            Get.back();
-                            Get.to(() => const EmployeesListScreen());
-                          },
-                          child: Row(
-                            children: [
-                              Icon(
-                                IconlyBold.user_3,
-                                color: Colors.white,
-                                size: 26.sp,
-                              ),
-                              20.horizontalSpace,
-                              Text("employees",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 16.05.sp,
-                                          fontFamily: 'inter'))
-                                  .tr()
-                            ],
-                          ),
+                      ),
+                      38.verticalSpace,
+                      InkWell(
+                        onTap: () {
+                          Get.back();
+                          Get.to(() => const CiterneScreen(),
+                              transition: Transition.rightToLeftWithFade,
+                              duration: const Duration(milliseconds: 500));
+                        },
+                        child: Row(
+                          children: [
+                            Icon(
+                              CupertinoIcons.drop_fill,
+                              color: Colors.white,
+                              size: 26.sp,
+                            ),
+                            20.horizontalSpace,
+                            Text("citernes",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16.05.sp,
+                                        fontFamily: 'inter'))
+                                .tr()
+                          ],
                         ),
-                        38.verticalSpace,
-                        InkWell(
-                          onTap: () {
-                            Get.back();
-                            Get.to(() => const CiterneScreen(),
-                                transition: Transition.rightToLeftWithFade,
-                                duration: const Duration(milliseconds: 500));
-                          },
-                          child: Row(
-                            children: [
-                              Icon(
-                                CupertinoIcons.drop_fill,
-                                color: Colors.white,
-                                size: 26.sp,
-                              ),
-                              20.horizontalSpace,
-                              Text("citernes",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 16.05.sp,
-                                          fontFamily: 'inter'))
-                                  .tr()
-                            ],
-                          ),
+                      ),
+                      38.verticalSpace,
+                      InkWell(
+                        onTap: () {
+                          Get.back();
+                          Get.to(() => const ProductsScreen(),
+                              transition: Transition.rightToLeftWithFade,
+                              duration: const Duration(milliseconds: 500));
+                        },
+                        child: Row(
+                          children: [
+                            Icon(
+                              IconlyLight.more_square,
+                              color: Colors.white,
+                              size: 26.sp,
+                            ),
+                            20.horizontalSpace,
+                            Text("products",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16.05.sp,
+                                        fontFamily: 'inter'))
+                                .tr()
+                          ],
                         ),
-                        38.verticalSpace,
-                        InkWell(
-                          onTap: () {
-                            Get.back();
-                            Get.to(() => const ProductsScreen(),
-                                transition: Transition.rightToLeftWithFade,
-                                duration: const Duration(milliseconds: 500));
-                          },
-                          child: Row(
-                            children: [
-                              Icon(
-                                IconlyLight.more_square,
-                                color: Colors.white,
-                                size: 26.sp,
-                              ),
-                              20.horizontalSpace,
-                              Text("products",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 16.05.sp,
-                                          fontFamily: 'inter'))
-                                  .tr()
-                            ],
-                          ),
+                      ),
+                      const Spacer(),
+                      InkWell(
+                        onTap: () async {
+                          Get.back();
+                          if (Get.locale!.languageCode == 'en') {
+                            Get.locale =
+                                const Locale.fromSubtags(languageCode: 'fr');
+                            await SessionManager()
+                                .set('lang', Get.locale!.languageCode);
+                            context.setLocale(const Locale('fr'));
+                          } else {
+                            Get.locale =
+                                const Locale.fromSubtags(languageCode: 'en');
+                            context.setLocale(const Locale('en'));
+                          }
+                          await SessionManager()
+                              .set('lang', Get.locale!.languageCode);
+                        },
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.language,
+                              color: Colors.white,
+                              size: 26.sp,
+                            ),
+                            20.horizontalSpace,
+                            Get.locale!.languageCode == 'en'
+                                ? Text("Changer vers Français",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16.05.sp,
+                                            fontFamily: 'inter'))
+                                    .tr()
+                                : Text("Change to English",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16.05.sp,
+                                            fontFamily: 'inter'))
+                                    .tr()
+                          ],
                         ),
-                        const Spacer(),
-                        InkWell(
-                          onTap: () {
-                            Get.back();
-                            logout();
-                          },
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.logout_rounded,
-                                color: Colors.white,
-                                size: 26.sp,
-                              ),
-                              20.horizontalSpace,
-                              Text("logout",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 16.05.sp,
-                                          fontFamily: 'inter'))
-                                  .tr()
-                            ],
-                          ),
-                        ),
-                        40.verticalSpace
-                      ],
-                    ),
+                      ),
+                      40.verticalSpace
+                    ],
                   ),
                 ),
               ))),

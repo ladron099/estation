@@ -17,7 +17,7 @@ Future<Widget> initWidget() async {
       if (value.profile!.nom == "ADMIN") {
         mainPage = const AdminHomeScreen();
       } else if (value.profile!.nom == "USER") {
-        mainPage = const HomePageScreen();  
+        mainPage = const HomePageScreen();
       } else {
         mainPage = const LoginScreen();
       }
@@ -27,6 +27,10 @@ Future<Widget> initWidget() async {
   }
 
   return mainPage;
+}
+
+Future<String> getLang() async {
+  return await SessionManager().get("lang")?? "en";
 }
 
 Future<User>? getUserFromMemory() async {

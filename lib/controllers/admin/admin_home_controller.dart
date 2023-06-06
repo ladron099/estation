@@ -20,7 +20,7 @@ class AdminHomeController extends GetxController {
 
   dropDownMenuChange(value) {
     users.clear();
-    selectedStation = value;
+    selectedStation = value;  
     loading.value = true;
     update();
     StationDao.stationInfo(value.id).then((value) {
@@ -60,6 +60,7 @@ class AdminHomeController extends GetxController {
   void onInit() {
     loading.value = true;
     update();
+    stations.clear();
     getUserFromMemory()!.then((value) {
       user = value;
       StationDao.getStations().then((value) {
