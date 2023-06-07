@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:estation/components/appVars.dart';
 import 'package:estation/components/widgets.dart';
@@ -39,7 +38,7 @@ class ScanInfoScreen extends StatelessWidget {
               Container(
                 width: double.infinity,
                 height: 300.h,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: gradientColor,
                 ),
               ),
@@ -48,7 +47,7 @@ class ScanInfoScreen extends StatelessWidget {
                 width: double.infinity,
                 height: double.infinity,
                 decoration: const BoxDecoration(
-                  color: Colors.white,
+                  color: backgroundColor,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30),
                     topRight: Radius.circular(30),

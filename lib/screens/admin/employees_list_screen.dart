@@ -289,9 +289,9 @@ class EmployeesListScreen extends StatelessWidget {
                                                             () =>
                                                                 const UserProfileScreen(),
                                                             arguments:
-                                                                controller
+                                                             [   controller
                                                                         .users[
-                                                                    index],
+                                                                    index], controller.selectedStation],
                                                             transition: Transition
                                                                 .rightToLeftWithFade,
                                                             duration:

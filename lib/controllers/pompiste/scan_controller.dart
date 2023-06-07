@@ -32,12 +32,12 @@ class ScanController extends GetxController {
         var aStr = number.text.replaceAll(RegExp(r'[^0-9]'), '').length > 10
             ? number.text.replaceAll(RegExp(r'[^0-9]'), '').substring(1, 10)
             : number.text.replaceAll(RegExp(r'[^0-9]'), '');
-        number.text = aStr;
+      number.text = aStr;
         if (number.text.isEmpty) {
           Get.snackbar('Error', 'The Image does not contain a number',
               colorText: Colors.white, backgroundColor: Colors.red);
         }
-        update();
+      update();
       }
     } catch (e) {
       rethrow;

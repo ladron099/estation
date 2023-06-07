@@ -51,7 +51,7 @@ class ScanScreen extends StatelessWidget {
                       width: double.infinity,
                       height: double.infinity,
                       decoration: const BoxDecoration(
-                        color: Colors.white,
+                        color: backgroundColor,
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30),
                           topRight: Radius.circular(30),

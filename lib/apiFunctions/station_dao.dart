@@ -39,4 +39,16 @@ class StationDao {
       rethrow;
     }
   }
+
+  static productByStation(int id) async {
+    try {
+      var response = await http.get(
+        Uri.parse("$apiUrl/produit/getByStation/$id"),
+        headers: await Network.headers(hasToken: true),
+      );
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

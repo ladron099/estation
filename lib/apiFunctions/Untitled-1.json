@@ -1,0 +1,86 @@
+{
+    "releve": [
+        {
+            "id_releve": 6,
+            "pompeUser": {
+                "idPompeUser": 1,
+                "pompe": {
+                    "id_pompe": 1,
+                    "nom_pompe": "POMPE1"
+                },
+                "user": {
+                    "id_user": 1,
+                    "nom": "Oussama",
+                    "prenom": "Berhili",
+                    "email": "oussama@gmail.com",
+                    "matricule": "D47159",
+                    "profile": {
+                        "id_profile": 1,
+                        "nom": "USER",
+                        "description": "User profile"
+                    }
+                },
+                "dateDebut": "2023-06-02T23:59:00",
+                "dateFin": "2023-06-03T14:30:00",
+                "releve": false
+            },
+            "date_releve": "2023-06-03T12:45:20.363996",
+            "compteur": 492362
+        },
+        {
+            "id_releve": 8,
+            "pompeUser": {
+                "idPompeUser": 1,
+                "pompe": {
+                    "id_pompe": 1,
+                    "nom_pompe": "POMPE1"
+                },
+                "user": {
+                    "id_user": 1,
+                    "nom": "Oussama",
+                    "prenom": "Berhili",
+                    "email": "oussama@gmail.com",
+                    "matricule": "D47159",
+                    "profile": {
+                        "id_profile": 1,
+                        "nom": "USER",
+                        "description": "User profile"
+                    }
+                },
+                "dateDebut": "2023-06-02T23:59:00",
+                "dateFin": "2023-06-03T14:30:00",
+                "releve": false
+            },
+            "date_releve": "2023-06-03T12:54:40.194102",
+            "compteur": 492102
+        },
+        {
+            "id_releve": 11,
+            "pompeUser": {
+                "idPompeUser": 6,
+                "pompe": {
+                    "id_pompe": 2,
+                    "nom_pompe": "POMPE 2"
+                },
+                "user": {
+                    "id_user": 1,
+                    "nom": "Oussama",
+                    "prenom": "Berhili",
+                    "email": "oussama@gmail.com",
+                    "matricule": "D47159",
+                    "profile": {
+                        "id_profile": 1,
+                        "nom": "USER",
+                        "description": "User profile"
+                    }
+                },
+                "dateDebut": "2023-06-06T00:25:00",
+                "dateFin": "2023-06-06T13:20:00",
+                "releve": false
+            },
+            "date_releve": "2023-06-05T23:20:06.761132",
+            "compteur": 9800
+        }
+    ],
+    "msg": "releve"
+}

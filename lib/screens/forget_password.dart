@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:estation/components/appVars.dart';
 import 'package:estation/components/widgets.dart';
 import 'package:estation/controllers/forget_password.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,6 @@ import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 import 'package:get/get.dart';
-
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
@@ -21,7 +21,6 @@ class ForgetPasswordScreen extends StatelessWidget {
           return Scaffold(
             extendBodyBehindAppBar: true,
             bottomNavigationBar: BottomAppBar(
-              
               padding: EdgeInsets.symmetric(horizontal: 0.w),
               elevation: 0,
               child: WaveWidget(
@@ -75,7 +74,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                       width: double.infinity,
                       height: double.infinity,
                       decoration: const BoxDecoration(
-                        color: Colors.white,
+                        color: backgroundColor,
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30),
                           topRight: Radius.circular(30),
@@ -98,16 +97,16 @@ class ForgetPasswordScreen extends StatelessWidget {
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
-                                            InkWell(
-                                              onTap: () {
-                                                Get.back();
-                                              },
-                                              child: const Icon(
-                                                IconlyLight.arrow_left_circle,
-                                                color: Color(0xff14213D),
-                                              ),
+                                          InkWell(
+                                            onTap: () {
+                                              Get.back();
+                                            },
+                                            child: const Icon(
+                                              IconlyLight.arrow_left_circle,
+                                              color: Color(0xff14213D),
                                             ),
-                                            80.horizontalSpace,
+                                          ),
+                                          80.horizontalSpace,
                                           Text(
                                             "resetpassword",
                                             style: TextStyle(

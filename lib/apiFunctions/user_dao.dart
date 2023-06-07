@@ -36,7 +36,19 @@ class UserDao {
           body: jsonEncode({
             "compteur": compteur,
             "pompeUser": {"idPompeUser": pompeUser},
-          }));  
+          }));
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  static getUserDetails(id) async {
+    try {
+      var response = await http.get(
+        Uri.parse("$apiUrl/releve/getByUser/$id"),
+        headers: await Network.headers(hasToken: true),
+      );
       return response;
     } catch (e) {
       rethrow;

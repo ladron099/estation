@@ -54,7 +54,7 @@ class HomePageScreen extends StatelessWidget {
                       width: double.infinity,
                       height: double.infinity,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: backgroundColor,
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30.r),
                           topRight: Radius.circular(30.r),

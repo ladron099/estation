@@ -5,6 +5,7 @@ import 'package:estation/components/appVars.dart';
 import 'package:estation/screens/admin/admin_home_screen.dart';
 import 'package:estation/screens/admin/citerne_screen.dart';
 import 'package:estation/screens/admin/employees_list_screen.dart';
+import 'package:estation/screens/admin/product_list_screen.dart';
 import 'package:estation/utils/models/station.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +14,6 @@ import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-
-import '../screens/admin/products_screen.dart';
 
 class PrimaryTextField extends StatelessWidget {
   String hintText;
@@ -375,7 +374,7 @@ class DrawerWidget extends StatelessWidget {
                       InkWell(
                         onTap: () {
                           Get.back();
-                          Get.to(() => const ProductsScreen(),
+                          Get.to(() => const ProductListScreen(),
                               transition: Transition.rightToLeftWithFade,
                               duration: const Duration(milliseconds: 500));
                         },
@@ -423,13 +422,13 @@ class DrawerWidget extends StatelessWidget {
                             ),
                             20.horizontalSpace,
                             Get.locale!.languageCode == 'en'
-                                ? Text("Changer vers Français",
+                                ? Text("Français",
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 16.05.sp,
                                             fontFamily: 'inter'))
                                     .tr()
-                                : Text("Change to English",
+                                : Text("English",
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 16.05.sp,
